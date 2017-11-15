@@ -21,7 +21,9 @@
 
 ## Usage
 
-> Some usage instructions
+> From within the root directory:
+    npm run build
+    npm run watch
 
 ## Requirements
 
@@ -41,12 +43,7 @@
 ### Installing Dependencies
 
 From within the root directory:
-
-```sh
-npm install -g bower
-npm install
-bower install
-```
+  npm install
 
 ### Roadmap
 
