@@ -4,10 +4,10 @@
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Vi Chang
+  - Alan Chin
+  - Phil Cho
+  - Dan Roberts
 
 ## Table of Contents
 
@@ -25,11 +25,16 @@
 
 ## Requirements
 
-- Node 6.4.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- babel-core
+- babel-loader
+- babel-preset-latest
+- babel-preset-react
+- Express
+- Node
+- Nodeomn
+- React
+- Webpack
+
 
 ## Development
 
@@ -45,7 +50,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_DOC)
+View the project roadmap [here](https://docs.google.com/document/d/1TFdDzi3ELo2wi1CWtThc8EXoplLz35ehzBUZWbLi9vY/edit?usp=sharing)
 
 
 ## Contributing
