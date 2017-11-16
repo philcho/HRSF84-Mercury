@@ -5,6 +5,7 @@ export default Event = (props) => {
     <div className="container event">
       <img id="event-img" src=""/>
       <div id="event-name"></div>
+      <div id="event-description"></div>
     </div>
   )
 };
