@@ -1,6 +1,6 @@
-# Project Name
+# urbae
 
-> Pithy project description
+> An online yearbook for classes and groups.
 
 ## Team
 
@@ -33,7 +33,7 @@
 - babel-preset-react
 - Express
 - Node
-- Nodeomn
+- Nodemon
 - React
 - Webpack
 
