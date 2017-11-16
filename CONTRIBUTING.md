@@ -120,8 +120,8 @@ Thanks for contributing!
 ### Guidelines
 
 1. Uphold the current code standard:
-    - Keep your code [DRY][https://en.wikipedia.org/wiki/Don%27t_repeat_yourself].
-    - Apply the [boy scout rule][http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule].
+    - Keep your code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+    - Apply the [boy scout rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule).
     - Follow [STYLE-GUIDE.md](STYLE-GUIDE.md)
 1. Run the [tests][] before submitting a pull request.
 1. Tests are very, very important. Submit tests if your pull request contains
