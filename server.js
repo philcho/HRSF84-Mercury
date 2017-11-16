@@ -6,7 +6,6 @@ const app = express();
 const path = require('path');
 
 const compiler = webpack(webpackConfig);
-
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/dist'));
@@ -30,5 +29,5 @@ app.use(webpackDevMiddleware(compiler, {
 const server = app.listen(PORT, function () {
   const host = server.address().address;
   const port = server.address().port;
-  console.log('Listening on port', PORT);
+  console.log(`----- Server listening on http://localhost:${PORT} -----`);
 });
