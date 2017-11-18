@@ -15,7 +15,12 @@
     "watch": "nodemon server.js"
   },
   "dependencies": {
-    "normalize.css": "^7.0.0"
+    "normalize.css": "^7.0.0",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.2"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
