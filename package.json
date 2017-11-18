@@ -9,7 +9,7 @@
     "node": ">=6.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/ServerSpec.js; pkill -n node;",
     "build": "webpack --watch",
     "start": "node server.js",
     "watch": "nodemon server.js"
