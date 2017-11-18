@@ -4,6 +4,7 @@ const server = require('../server');
 const db = require('../db');
 
 describe('', () => {
+  'use strict';
 
 });
 
