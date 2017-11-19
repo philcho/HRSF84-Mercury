@@ -8,7 +8,7 @@ export default class Index extends React.Component {
 
   render() {
     return (
-      <div className="index container">
+      <div className="index container column">
         <div>URBAE</div>
         <div>Class of 84</div>
       </div>
