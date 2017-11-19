@@ -7,7 +7,9 @@ module.exports = {
     {
       // name of the html file without the extension : name of the load file
       'template': './loadTemplate.js',
-      'profile': './loadProfile.js'
+      'index': './loadIndex.js',
+      'profile': './loadProfile.js',
+      'students': './loadStudents.js'
     }
   ,
   output: {
@@ -17,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
           'babel-loader',

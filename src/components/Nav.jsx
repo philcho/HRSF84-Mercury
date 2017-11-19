@@ -8,7 +8,7 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <div id="nav">
+      <div className="nav">
         <img id="logo" src=""/>
 
         <div id="menu"></div>
