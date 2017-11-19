@@ -2,10 +2,10 @@ import React from 'react';
 
 export default Event = (props) => {
   return (
-    <div className="container event">
+    <div className="event container">
       <img id="event-img" src=""/>
-      <div id="event-name"></div>
-      <div id="event-description"></div>
+      <div id="event-name">Event Name</div>
+      <div id="event-description">This is the event description.</div>
     </div>
   )
 };
