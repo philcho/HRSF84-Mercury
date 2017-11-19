@@ -52,14 +52,14 @@ app.get('/profile', (req, res, next) => {
 app.post('/addStudent', (req, res, next) => {
   db.save('student', req.body.student)
     .then((data) => {
-      res.end('You saved a new student with the data: ' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     });
 });
 
 app.get('/getAllStudents', (req, res, next) => {
   db.loadAll('student')
     .then((data) => {
-      res.end('Here is all of our students: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
@@ -67,7 +67,7 @@ app.get('/getStudent:id', (req, res, next) => {
   const id = req.params.id.slice(1);
   db.loadParticular('student', { '_id': id })
     .then((data) => {
-      res.end('Here is the requested student: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     });
 });
 
@@ -80,7 +80,7 @@ app.post('/getParticularStudent', (req, res, next) => {
   // }
   db.loadParticular('student', req.body.studentInfo)
     .then((data) => {
-      res.end(JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
@@ -91,14 +91,14 @@ app.post('/getParticularStudent', (req, res, next) => {
 app.post('/addSuperlative', (req, res, next) => {
   db.save('superlative', req.body.superlative)
     .then((data) => {
-      res.end('You saved a new superlative with the data: ' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     });
 });
 
 app.get('/getAllSuperlatives', (req, res, next) => {
   db.loadAll('superlative')
     .then((data) => {
-      res.end('Here is all of our superlatives: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
@@ -111,7 +111,7 @@ app.post('/getParticularSuperlative', (req, res, next) => {
   // }
   db.loadParticular('superlative', req.body.superlativeInfo)
     .then((data) => {
-      res.end('Here is the requested superlative: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
@@ -122,14 +122,14 @@ app.post('/getParticularSuperlative', (req, res, next) => {
 app.post('/addEvent', (req, res, next) => {
   db.save('event', req.body.event)
     .then((data) => {
-      res.end('You saved a new event with the data: ' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     });
 });
 
 app.get('/getAllEvents', (req, res, next) => {
   db.loadAll('event')
     .then((data) => {
-      res.end('Here is all of our events: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
@@ -142,7 +142,7 @@ app.post('/getParticularEvent', (req, res, next) => {
   // }
   db.loadParticular('event', req.body.eventInfo)
     .then((data) => {
-      res.end('Here is the requested event: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
@@ -162,14 +162,14 @@ app.post('/addShoutout', (req, res, next) => {
 
   db.save('shoutout', req.body.shoutout)
     .then((data) => {
-      res.end('You saved a new shoutout with the data: ' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
 app.get('/getAllShoutouts', (req, res, next) => {
   db.loadAll('shoutout')
     .then((data) => {
-      res.end('Here is all of our shoutouts: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
@@ -182,7 +182,7 @@ app.post('/getParticularShoutout', (req, res, next) => {
   // }
   db.loadParticular('shoutout', req.body.shoutoutInfo)
     .then((data) => {
-      res.end('Here is the requested shoutout: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data));
     })
 });
 
@@ -233,7 +233,7 @@ app.patch('/updateComments', (req, res, next) => {
   db.updateComments(modelType, identifier, comment)
     .then((arg) => {
       console.log('arg', arg);
-      res.end('The update has been done ' + JSON.stringify(arg, undefined, 2));
+      res.end(JSON.stringify(data));
     })
     .catch((e) => {
       console.log('Error in updating a comment', e);
