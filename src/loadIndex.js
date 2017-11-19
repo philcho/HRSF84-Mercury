@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Students from './components/Students.jsx';
+import Template from './index.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   // load the template component on the template.html page
   ReactDOM.render(
-    <Students/>,
-    document.getElementById('students')
+    <Index/>,
+    document.getElementById('index')
   )
 });
