@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Nav extends React.Component {
+export default class Template extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -8,10 +8,8 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <div className="nav">
-        <img id="logo" src=""/>
-
-        <div id="menu"></div>
+      <div>
+        <h1>This is a template for a component!</h1>
       </div>
     );
   }

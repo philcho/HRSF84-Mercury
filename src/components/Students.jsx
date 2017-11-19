@@ -8,7 +8,7 @@ export default class Students extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="students">
         <h1>This is a STUDENTS template for a component!</h1>
       </div>
     );

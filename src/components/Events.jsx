@@ -9,7 +9,7 @@ export default class Events extends React.Component {
 
   render() {
     return (
-      <div id="events" className="container">
+      <div className="events container">
         <Event/>
       </div>
     );
