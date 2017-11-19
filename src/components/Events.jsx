@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from './Nav.jsx';
 import Event from './Event.jsx';
 
 export default class Events extends React.Component {
@@ -9,8 +10,16 @@ export default class Events extends React.Component {
 
   render() {
     return (
-      <div className="events container">
-        <Event/>
+      <div>
+        <Nav/>
+
+        <div className="events list container column">
+          <h1>EVENTS</h1>
+
+          <Event/>
+          <Event/>
+          <Event/>
+        </div>
       </div>
     );
   }

@@ -22,3 +22,52 @@ body {
   color: #222;
   line-height: 1.5;
 }
+
+img {
+  display: block;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  flex-flow: column;
+}
+
+.row {
+  flex-flow: row wrap;
+}
+
+.list {}
+
+.nav {
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.nav a {
+  margin: 0 1rem;
+}
+
+.list-item-img {
+  margin: 2rem;
+}
+
+.list-item-name {}
+
+.list-item-description {}
+
+.student-img {
+  max-width: 300px;
+}
+
+.student-name {}
+
+.event-img {
+  max-width: 600px;
+}
+
+.event-name {}
