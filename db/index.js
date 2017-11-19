@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 mongoose.Promise = Promise;
 
 // The default url only works on local machines
-let connectionURL = 'mongodb://localhost/greenfield';
+var connectionURL = 'mongodb://localhost/greenfield';
 
 // If there is an environment variable, use that to set the db uri
 if ((process.env.DBPLACE !== undefined) && (process.env.DBPLACE !== null)) {
