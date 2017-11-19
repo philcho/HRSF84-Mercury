@@ -7,6 +7,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 // This line sets the environment variables, since we are on our local machines
+// Therefore, in production (or whenever we are hosted on an actual server), this line can be removed
+//   along with the .env file
 require('dotenv').config();
 
 const db = require('./db/index');
@@ -193,6 +195,37 @@ app.post('/getParticularShoutout', (req, res, next) => {
 // Unlike the specific paths, this path accepts the model type as a part of the request body
 // This way the server code doesn't have to have unnecessarily duplicated data
 app.patch('/updateComments', (req, res, next) => {
+  // Example postman requests:
+  // -------------------------
+
+  // === Student ===
+  /*
+  {
+	"modelType" : "student",
+	"identifier": {
+		"_id": "5a0cfe51085065bed328591b"
+	},
+	"comment": {
+		"name": "Vi",
+		"comment": "I know like 50 languages"
+	}
+}
+  */
+
+  // === Event ===
+  /*
+  {
+    "modelType" : "event",
+    "identifier": {
+      "_id": "5a0dd8307bd6aac9c8394636"
+    },
+    "comment": {
+      "name": "Phil",
+      "comment": "I can't do sign language correctly because I have crazy old man arthritis"
+    }
+  }
+  */
+
   const modelType = req.body.modelType;
   const identifier = req.body.identifier;
   const comment = req.body.comment;
@@ -206,7 +239,7 @@ app.patch('/updateComments', (req, res, next) => {
       console.log('Error in updating a comment', e);
       res.end('Sorry but the comment was not added...');
     })
-});
+}); // end of app.patch('/updateComments'
 
 // ==================
 // ===== Listen =====
