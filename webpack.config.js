@@ -6,7 +6,8 @@ module.exports = {
   entry:
     {
       // name of the html file without the extension : name of the load file
-      'template': './loadTemplate.js'
+      'template': './loadTemplate.js',
+      'profile': './loadProfile.js'
     }
   ,
   output: {
