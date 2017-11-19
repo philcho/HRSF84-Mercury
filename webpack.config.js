@@ -2,14 +2,16 @@ const path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
   context: path.join(__dirname, 'src'),
   entry:
     {
       // name of the html file without the extension : name of the load file
       'template': './loadTemplate.js',
       'index': './loadIndex.js',
+      'students': './loadStudents.js',
       'profile': './loadProfile.js',
-      'students': './loadStudents.js'
+      'events': './loadEvents.js'
     }
   ,
   output: {
