@@ -8,10 +8,14 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <div className="nav">
-        <img id="logo" src=""/>
+      <div className="nav container row">
+        <div id="logo">🌚 Mercury</div>
 
-        <div id="menu"></div>
+        <div id="menu">
+          <a href="###">Link1</a>
+          <a href="###">Link2</a>
+          <a href="###">Link3</a>
+        </div>
       </div>
     );
   }
