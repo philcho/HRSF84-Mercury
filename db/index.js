@@ -130,8 +130,8 @@ const loadParticular = (modelType = 'student', identifier) => {
       return data;
     })
     .catch((e) => {
-      console.log('\nError in \'loadParticular\'');
-    })
+      console.log('\nError in \'loadParticular\'', e);
+    });
 };
 
 const loadAll = (modelType = 'student') => {
@@ -140,9 +140,26 @@ const loadAll = (modelType = 'student') => {
       return data;
     })
     .catch((e) => {
-      console.log('\nError in \'loadAll\'');
+      console.log('\nError in \'loadAll\'', e);
     });
 };
 
-module.exports = { save, loadAll, loadParticular };
+// ========================
+// === Update Functions ===
+// ========================
+
+// hostType is the thing that the comment is on (ex. student, event, etc.)
+//   It is hostType instead of modelType, because it a part of the model, not the model itself
+// identifier is an object that is used to select the particular student, same as for loadParticular
+// comment is the comment object, it will be pushed onto the array of comments for the identified student
+const updateComments = (hostType = 'student', identifier, comment) => {
+  return getModelType(hostType)
+    .findOneAndUpdate(identifier, { $push: { 'comments': comment } }, { 'new': true })
+    .then((arg) => {
+      console.log('arg:\n', JSON.stringify(arg, undefined, 2));
+      return arg;
+    });
+};
+
+module.exports = { save, loadAll, loadParticular, updateComments };
 

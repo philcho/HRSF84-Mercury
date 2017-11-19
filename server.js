@@ -61,6 +61,14 @@ app.get('/getAllStudents', (req, res, next) => {
     })
 });
 
+app.get('/getStudent:id', (req, res, next) => {
+  const id = req.params.id.slice(1);
+  db.loadParticular('student', { '_id': id })
+    .then((data) => {
+      res.end('Here is the requested student: \n' + JSON.stringify(data, undefined, 2));
+    });
+});
+
 app.post('/getParticularStudent', (req, res, next) => {
   // example postman request data
   // {
@@ -173,6 +181,30 @@ app.post('/getParticularShoutout', (req, res, next) => {
   db.loadParticular('shoutout', req.body.shoutoutInfo)
     .then((data) => {
       res.end('Here is the requested shoutout: \n' + JSON.stringify(data, undefined, 2));
+    })
+});
+
+
+
+// ===============================
+// ===== Generic Update Path =====
+// ===============================
+
+// Unlike the specific paths, this path accepts the model type as a part of the request body
+// This way the server code doesn't have to have unnecessarily duplicated data
+app.patch('/updateComments', (req, res, next) => {
+  const modelType = req.body.modelType;
+  const identifier = req.body.identifier;
+  const comment = req.body.comment;
+
+  db.updateComments(modelType, identifier, comment)
+    .then((arg) => {
+      console.log('arg', arg);
+      res.end('The update has been done ' + JSON.stringify(arg, undefined, 2));
+    })
+    .catch((e) => {
+      console.log('Error in updating a comment', e);
+      res.end('Sorry but the comment was not added...');
     })
 });
 
