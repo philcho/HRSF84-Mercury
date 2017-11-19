@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Template from './Template';
+import Template from './template';
 
 document.addEventListener('DOMContentLoaded', function () {
   // load the template component on the template.html page

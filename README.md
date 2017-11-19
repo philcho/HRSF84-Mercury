@@ -27,6 +27,7 @@
 
 ## Requirements
 
+- axios
 - babel-core
 - babel-loader
 - babel-preset-latest

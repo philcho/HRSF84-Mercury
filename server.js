@@ -38,6 +38,11 @@ app.get('/template', (req, res, next) => {
   res.sendFile(path.join(__dirname + '/dist/template.html'));
 });
 
+app.get('/profile', (req, res, next) => {
+  // send the html file for that page
+  res.sendFile(path.join(__dirname + '/dist/profile.html'));
+});
+
 // =========================
 // ===== Student Paths =====
 // =========================
@@ -65,7 +70,7 @@ app.post('/getParticularStudent', (req, res, next) => {
   // }
   db.loadParticular('student', req.body.studentInfo)
     .then((data) => {
-      res.end('Here is the requested student: \n' + JSON.stringify(data, undefined, 2));
+      res.end(JSON.stringify(data, undefined, 2));
     })
 });
 
