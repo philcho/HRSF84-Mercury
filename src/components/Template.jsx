@@ -9,7 +9,7 @@ export default class Template extends React.Component {
   render() {
     return (
       <div>
-        <h1>This is a template for a component!</h1>
+        <h1>This is a template for a CLASS component!</h1>
       </div>
     );
   }
