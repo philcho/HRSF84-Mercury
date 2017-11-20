@@ -40,16 +40,11 @@ app.get('/template', (req, res, next) => {
   res.sendFile(path.join(__dirname + '/dist/template.html'));
 });
 
-// Capture GET requests for the bundle.js and bundle.js.map files first. Otherwise, they'll get captured by the more-generic GET request below ('/profile/:id').
-// TODO: Figure out a more elegant solution using regex.
-app.get('/profile/profile.bundle.js.map', (req, res, next) => {
-  // send the bundle.js.map file for that page
-  res.sendFile(path.join(__dirname + '/dist/profile.bundle.js.map'));
-});
-
-app.get('/profile/profile.bundle.js', (req, res, next) => {
-  // send the bundle.js file for that page
-  res.sendFile(path.join(__dirname + '/dist/profile.bundle.js'));
+// Capture GET requests for *.bundle.js and *.bundle.js.map files first. Otherwise, they'll get captured by the more-generic GET request below ('/profile/:id').
+app.get(/.+bundle.js.*/, (req, res, next) => {
+  let filename = req.url.split('/')[2];
+  // send the bundle.js or bundle.js.map file for that page
+  res.sendFile(path.join(__dirname + '/dist/' + filename));
 });
 
 app.get('/profile/:id', (req, res, next) => {
