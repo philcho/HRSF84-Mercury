@@ -43,6 +43,7 @@ const SuperlativePageSchema = mongoose.Schema({ // each superlative gets its own
 const EventPageSchema = mongoose.Schema({
   name: { type: String, require: true },
   date: String, // or number (the number of milliseconds since the epoch)
+  picture: String, // img url
   description: String,
   comments: [{
     name: String,

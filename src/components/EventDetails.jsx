@@ -34,14 +34,16 @@ export default class EventDetails extends React.Component {
         <ul>
           <li>name: {this.state.eventDetailsData.name}</li>
           <li>date: {this.state.eventDetailsData.date}</li>
-          <li>picture: {/* TODO: Add to schema. this.state.eventDetailsData.picture */}</li>
+          <li>picture: {this.state.eventDetailsData.picture}</li>
           <li>description: {this.state.eventDetailsData.description}</li>
-          <li>comments: 
-            <ol>
-              {/* TODO: Add Comments Component */}
-            </ol>
-          </li>
         </ul>
+        <div>
+          {/* TODO: Add Comment Form */}
+          comments: 
+          <ol>
+            {/* TODO: Add Comments Component */}
+          </ol>
+        </div>
       </div>
     );
   }
