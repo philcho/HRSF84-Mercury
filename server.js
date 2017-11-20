@@ -40,10 +40,18 @@ app.get('/template', (req, res, next) => {
   res.sendFile(path.join(__dirname + '/dist/template.html'));
 });
 
-app.get('/profile', (req, res, next) => {
+// Capture GET requests for *.bundle.js and *.bundle.js.map files first. Otherwise, they'll get captured by the more-generic GET request below ('/profile/:id').
+app.get(/.+bundle.js.*/, (req, res, next) => {
+  let filename = req.url.split('/')[2];
+  // send the bundle.js or bundle.js.map file for that page
+  res.sendFile(path.join(__dirname + '/dist/' + filename));
+});
+
+app.get('/profile/:id', (req, res, next) => {
   // send the html file for that page
   res.sendFile(path.join(__dirname + '/dist/profile.html'));
 });
+
 
 // =========================
 // ===== Student Paths =====

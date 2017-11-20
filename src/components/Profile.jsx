@@ -11,9 +11,12 @@ export default class Profile extends React.Component {
   }
 
   getProfileData() {
+    // Example URL: http://localhost:3000/profile/5a0ddac3b218d0cadf73eefb
+    let studentId = window.location.href.split('/profile/')[1];
+
     axios.post('/getParticularStudent', {
       studentInfo: {
-        _id: '5a0ddac3b218d0cadf73eefb'
+        _id: studentId
       }
     })
     .then(function (response) {
@@ -33,7 +36,7 @@ export default class Profile extends React.Component {
           <li>bio: {this.state.profileData.bio}</li>
           <li>comments: 
             <ol>
-              {/* TODO: Build Comments Component */}
+              {/* TODO: Add Comments Component */}
             </ol>
           </li>
         </ul>
