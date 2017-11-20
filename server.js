@@ -132,7 +132,6 @@ app.post('/getParticularSuperlative', (req, res, next) => {
 // =======================
 
 app.post('/addEvent', (req, res, next) => {
-  console.log('addEvent', req.body);
   db.save('event', req.body.event)
     .then((data) => {
       res.end(JSON.stringify(data));
