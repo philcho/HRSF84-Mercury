@@ -13,7 +13,6 @@ export default class EventDetails extends React.Component {
   getEventDetailsData() {
     // Example URL: http://localhost:3000/event/5a0ddac3b218d0cadf73eefb
     let eventId = window.location.href.split('/event/')[1];
-    console.log('eventId', eventId);
 
     axios.post('/getParticularEvent', {
       eventInfo: {
