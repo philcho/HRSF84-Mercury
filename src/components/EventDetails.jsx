@@ -13,7 +13,6 @@ export default class EventDetails extends React.Component {
   getEventDetailsData() {
     // Example URL: http://localhost:3000/event/5a0ddac3b218d0cadf73eefb
     let eventId = window.location.href.split('/event/')[1];
-    console.log('eventId', eventId);
 
     axios.post('/getParticularEvent', {
       eventInfo: {
@@ -21,7 +20,9 @@ export default class EventDetails extends React.Component {
       }
     })
     .then((response) => {
-      this.setState({ eventDetailsData: response.data[0] });
+      if (response.data[0]) {
+        this.setState({ eventDetailsData: response.data[0] });  
+      }
     })
     .catch((error) => {
       console.log('getEventDetailsData error', error);
