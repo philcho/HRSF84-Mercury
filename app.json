@@ -1,0 +1,29 @@
+{
+  "name": "HRSF84-Mercury",
+  "scripts": {
+  },
+  "env": {
+    "DBPASSWORD": {
+      "required": true
+    },
+    "DBPLACE": {
+      "required": true
+    },
+    "DBUSERNAME": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
