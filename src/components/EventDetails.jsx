@@ -20,10 +20,10 @@ export default class EventDetails extends React.Component {
         _id: eventId
       }
     })
-    .then(function (response) {
+    .then((response) => {
       this.setState({ eventDetailsData: response.data[0] });
-    }.bind(this))
-    .catch(function (error) {
+    })
+    .catch((error) => {
       console.log('getEventDetailsData error', error);
     });
   }
@@ -37,9 +37,10 @@ export default class EventDetails extends React.Component {
           <li>picture: {this.state.eventDetailsData.picture}</li>
           <li>description: {this.state.eventDetailsData.description}</li>
         </ul>
+
         <div>
           {/* TODO: Add Comment Form */}
-          comments: 
+          comments:
           <ol>
             {/* TODO: Add Comments Component */}
           </ol>

@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 // Therefore, in production (or whenever we are hosted on an actual server), this line can be removed
 //   along with the .env file
 require('dotenv') // same as const dotenv = require('dotenv');
-.config(); // we just want to call .config, not save
+  .config(); // we just want to call .config, not save
 
 const db = require('./db/index.js');
 const compiler = webpack(webpackConfig);

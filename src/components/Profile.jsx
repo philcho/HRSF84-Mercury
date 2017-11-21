@@ -19,10 +19,10 @@ export default class Profile extends React.Component {
         _id: studentId
       }
     })
-    .then(function (response) {
+    .then((response) => {
       this.setState({ profileData: response.data[0] });
-    }.bind(this))
-    .catch(function (error) {
+    })
+    .catch((error) => {
       console.log('getProfileData error', error);
     });
   }
@@ -34,7 +34,7 @@ export default class Profile extends React.Component {
           <li>name: {this.state.profileData.name}</li>
           <li>picture: {this.state.profileData.picture}</li>
           <li>bio: {this.state.profileData.bio}</li>
-          <li>comments: 
+          <li>comments:
             <ol>
               {/* TODO: Add Comments Component */}
             </ol>
