@@ -9,10 +9,10 @@ const bodyParser = require('body-parser');
 // This line sets the environment variables, since we are on our local machines
 // Therefore, in production (or whenever we are hosted on an actual server), this line can be removed
 //   along with the .env file
-require('dotenv').config();
+require('dotenv') // same as const dotenv = require('dotenv');
+.config(); // we just want to call .config, not save
 
-const db = require('./db/index');
-
+const db = require('./db/index.js');
 const compiler = webpack(webpackConfig);
 const PORT = process.env.PORT || 3000;
 
@@ -37,24 +37,24 @@ app.use(webpackDevMiddleware(compiler, {
 // Path for the page
 app.get('/template', (req, res, next) => {
   // send the html file for that page
-  res.sendFile(path.join(__dirname + '/dist/template.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'template.html'));
 });
 
 // Capture GET requests for *.bundle.js and *.bundle.js.map files first. Otherwise, they'll get captured by the more-generic GET requests below (ex: '/profile/:id').
 app.get(/.+bundle.js.*/, (req, res, next) => {
   let filename = req.url.split('/')[2];
   // send the bundle.js or bundle.js.map file for that page
-  res.sendFile(path.join(__dirname + '/dist/' + filename));
+  res.sendFile(path.join(__dirname, 'dist', filename));
 });
 
 app.get('/profile/:id', (req, res, next) => {
   // send the html file for that page
-  res.sendFile(path.join(__dirname + '/dist/profile.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'profile.html'));
 });
 
 app.get('/event/:id', (req, res, next) => {
   // send the html file for that page
-  res.sendFile(path.join(__dirname + '/dist/event-details.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'event-details.html'));
 });
 
 // =========================
