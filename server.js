@@ -40,10 +40,6 @@ app.get('/template', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'dist', 'template.html'));
 });
 
-app.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
 // Capture GET requests for *.bundle.js and *.bundle.js.map files first. Otherwise, they'll get captured by the more-generic GET requests below (ex: '/profile/:id').
 app.get(/.+bundle.js.*/, (req, res, next) => {
   let filename = req.url.split('/')[2];
