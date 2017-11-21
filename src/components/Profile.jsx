@@ -21,7 +21,7 @@ export default class Profile extends React.Component {
     })
     .then((response) => {
       this.setState({ profileData: response.data[0] });
-    }.bind(this))
+    })
     .catch((error) => {
       console.log('getProfileData error', error);
     });

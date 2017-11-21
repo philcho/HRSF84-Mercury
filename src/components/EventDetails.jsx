@@ -22,7 +22,7 @@ export default class EventDetails extends React.Component {
     })
     .then((response) => {
       this.setState({ eventDetailsData: response.data[0] });
-    }.bind(this))
+    })
     .catch((error) => {
       console.log('getEventDetailsData error', error);
     });
