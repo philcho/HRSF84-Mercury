@@ -6,3 +6,9 @@ dependencies:
   override:
     - npm install
 
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: urbae
+

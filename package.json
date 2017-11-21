@@ -9,7 +9,7 @@
     "node": ">=6.4.0"
   },
   "scripts": {
-    "test": "mocha test/ServerSpec.js",
+    "test": "mocha test --recursive",
     "build": "webpack --watch",
     "start": "node server.js",
     "watch": "nodemon server.js"
