@@ -21,7 +21,9 @@ export default class EventDetails extends React.Component {
       }
     })
     .then((response) => {
-      this.setState({ eventDetailsData: response.data[0] });
+      if (response.data[0]) {
+        this.setState({ eventDetailsData: response.data[0] });  
+      }
     })
     .catch((error) => {
       console.log('getEventDetailsData error', error);
