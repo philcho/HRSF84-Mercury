@@ -124,7 +124,7 @@ const save = (modelType = 'student', data) => {
 // === Load Functions ===
 // ======================
 
-// identifyier is an object that has the unique key/value pair
+// identifier is an object that has the unique key/value pair
 const loadParticular = (modelType = 'student', identifier) => {
   return getModelType(modelType).find(identifier).exec()
     .then((data) => {
