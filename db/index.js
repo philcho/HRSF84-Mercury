@@ -124,7 +124,7 @@ const save = (modelType = 'student', data) => {
 // === Load Functions ===
 // ======================
 
-// identifyier is an object that has the unique key/value pair
+// identifier is an object that has the unique key/value pair
 const loadParticular = (modelType = 'student', identifier) => {
   return getModelType(modelType).find(identifier).exec()
     .then((data) => {
@@ -162,5 +162,41 @@ const updateComments = (hostType = 'student', identifier, comment) => {
     });
 };
 
-module.exports = { save, loadAll, loadParticular, updateComments };
+// identifier is an object that is used to select the particular superlative, same as for loadParticular
+// nomineeName is name of the nominee we want to increase the vote count for
+// Ex. Mongo query:
+//   .findOneAndUpdate(
+//     { 
+//       '_id': ObjectId("5a0ddab6b218d0cadf73eef9"), 
+//       'nominees.name': 'Dan' 
+//     }, 
+//     { $inc: { 'nominees.$.votes': 1 } },
+//     { 'new': true }
+//   )
+const updateVoteCount = (identifier, nomineeName) => {
+  return getModelType('superlative')
+    // If nomineeName exists in array, increment their vote total
+    .findOneAndUpdate(
+      { 
+        '_id': identifier._id,
+        'nominees.name': nomineeName
+      }, 
+      { $inc: { 'nominees.$.votes': 1 } },
+      { 'new': true }
+    )
+    .then((data) => {
+      // If nomineeName wasn't found in the array, create new entry for nomineeName
+      // Push new obj with 'votes' before 'name' since Mongoose pushes keys in reverse order
+      if (!data) {
+        return getModelType('superlative')
+          .findOneAndUpdate(identifier, { $push: { 'nominees': { 'votes': 1, 'name': nomineeName } } }, { 'new': true })
+      }
+      return data;
+    })
+    .catch((e) => {
+      console.log('\nError in \'updateVoteCount\'', e);
+    });
+};
+
+module.exports = { save, loadAll, loadParticular, updateComments, updateVoteCount };
 
