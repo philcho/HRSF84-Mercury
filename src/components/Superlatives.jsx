@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from './Nav.jsx';
-import Student from './Superlative.jsx'
+import Superlative from './Superlative.jsx'
 
 export default class Superlatives extends React.Component {
   constructor(props) {
@@ -14,26 +14,26 @@ export default class Superlatives extends React.Component {
         <Nav />
 
         <div className="students list container column">
-          <h1>STUDENTS</h1>
+          <h1>Superlative</h1>
 
-          {/* hardcoding students for now */}
+          {/* hardcoding superlatives with student data/info for now */}
 
           <div className="container row">
-            <Student />
-            <Student />
-            <Student />
+            <Superlative />
+            <Superlative />
+            <Superlative />
           </div>
 
           <div className="container row">
-            <Student />
-            <Student />
-            <Student />
+            <Superlative />
+            <Superlative />
+            <Superlative />
           </div>
 
           <div className="container row">
-            <Student />
-            <Student />
-            <Student />
+            <Superlative />
+            <Superlative />
+            <Superlative />
           </div>
         </div>
       </div>

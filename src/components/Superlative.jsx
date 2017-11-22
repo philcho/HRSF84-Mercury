@@ -70,6 +70,8 @@ export default class Superlative extends React.Component {
       'margin': '5px'
     };
 
+    // TODO: make/find a css class for Superlatives and replace the student css classes
+
     return (
       <div className="student list-item container column">
         <div className="list-item-name student-name">{this.state.superlativeData.superlative}</div>

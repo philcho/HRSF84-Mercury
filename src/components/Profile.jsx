@@ -18,7 +18,6 @@ export default class Profile extends React.Component {
   }
 
   getProfileData() {
-    // Example URL: http://localhost:3000/profile/5a0ddac3b218d0cadf73eefb
     let studentId = window.location.href.split('/profile/')[1];
 
     axios.post('/getParticularStudent', {
@@ -39,7 +38,7 @@ export default class Profile extends React.Component {
   render() {
     return (
       <div className="profile container column">
-        <Nav/>
+        <Nav />
 
         <div className="profile-info container column">
           <div className="profile-picture">{this.state.profileData.picture}</div>
@@ -50,9 +49,9 @@ export default class Profile extends React.Component {
           </div>
         </div>
 
-        <CommentForm/>
+        <CommentForm />
 
-        <Comments/>
+        <Comments />
       </div>
     );
   }
