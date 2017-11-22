@@ -7,7 +7,7 @@ export default class Superlative extends React.Component {
 
     this.state = {
       superlativeData: {},
-      studentList: []
+      studentList: [] // this is the list of people to vote for
     }
 
     // axios request to get a list of the students
@@ -51,6 +51,8 @@ export default class Superlative extends React.Component {
 
   handleVote(event) {
     event.preventDefault();
+    // TODO: consider doing something to redirect the user to a particular page here
+    //   since we are preventing the default submit behavior
 
     // handle the vote here
     const person = document.getElementById('input').value;
