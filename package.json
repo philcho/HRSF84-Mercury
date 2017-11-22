@@ -10,7 +10,7 @@
   },
   "scripts": {
     "jest": "jest",
-    "test": "mocha test --recursive --timeout 15000 --no-deprecation --compilers js:babel-register,jsx:babel-register --exit",
+    "test": "jest; mocha test --recursive --timeout 15000 --no-deprecation --compilers js:babel-register,jsx:babel-register --exit",
     "build": "webpack --watch",
     "start": "node server.js",
     "watch": "nodemon server.js"
