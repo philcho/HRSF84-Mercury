@@ -33,11 +33,13 @@ const StudentPageSchema = mongoose.Schema({
 });
 
 const SuperlativePageSchema = mongoose.Schema({ // each superlative gets its own page
-  superlative: String, // superlative = most likely to be particular thing (ex. ax murderer)
+  //                           Make sure that there is only 1 instance of each superlative
+  superlative: { type: String, unique: true, dropDups: true }, // superlative = most likely to be particular thing (ex. ax murderer)
   nominees: [{ // form filled
     name: String,
     votes: Number
-  }]
+  }],
+  img: String // stock photo for the superlative
 });
 
 const EventPageSchema = mongoose.Schema({

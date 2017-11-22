@@ -26,14 +26,14 @@ export default class Profile extends React.Component {
         _id: studentId
       }
     })
-    .then((response) => {
-      if (response.data[0]) {
-        this.setState({ profileData: response.data[0] });
-      }
-    })
-    .catch((error) => {
-      console.log('getProfileData error', error);
-    });
+      .then((response) => {
+        if (response.data[0]) {
+          this.setState({ profileData: response.data[0] });
+        }
+      })
+      .catch((error) => {
+        console.log('getProfileData error', error);
+      });
   }
 
   render() {

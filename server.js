@@ -57,6 +57,11 @@ app.get('/event/:id', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'dist', 'event-details.html'));
 });
 
+app.get('/superlative/:name', (req, res, next) => {
+  // send the html file for that superlative
+  res.sendFile(path.join(__dirname, 'dist', 'superlative.html'));
+});
+
 // =========================
 // ===== Student Paths =====
 // =========================

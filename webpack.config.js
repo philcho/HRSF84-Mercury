@@ -13,8 +13,13 @@ module.exports = {
       'profile': './loadProfile.js',
       'events': './loadEvents.js',
       'event-details': './loadEventDetails.js',
+<<<<<<< HEAD
       'shoutouts': './loadShoutouts.js',
       'superlatives': './loadSuperlatives.js'
+=======
+      'superlatives': './loadSuperlatives.js',
+      'superlative': './loadSuperlative.js'
+>>>>>>> Did more work on superlatives
     }
   ,
   output: {
