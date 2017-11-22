@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Nav from './Nav.jsx';
+import CommentForm from './CommentForm.jsx';
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -8,6 +10,10 @@ export default class Profile extends React.Component {
     this.state = {
       profileData: {}
     }
+  }
+
+  componentDidMount() {
+    this.getProfileData();
   }
 
   getProfileData() {
@@ -31,22 +37,24 @@ export default class Profile extends React.Component {
 
   render() {
     return (
-      <div>
-        <ul>
-          <li>name: {this.state.profileData.name}</li>
-          <li>picture: {this.state.profileData.picture}</li>
-          <li>bio: {this.state.profileData.bio}</li>
-          <li>comments:
-            <ol>
-              {/* TODO: Add Comments Component */}
-            </ol>
-          </li>
-        </ul>
+      <div className="profile container column">
+        <Nav/>
+
+        <div className="profile-info container column">
+          <div className="profile-picture">{this.state.profileData.picture}</div>
+
+          <div className="container column">
+            <div className="profile-name">{this.state.profileData.name}</div>
+            <div className="profile-bio">{this.state.profileData.bio}</div>
+          </div>
+        </div>
+
+        <CommentForm/>
+
+        <div className="container column">
+          <div className="profile-comment">This is an example of a comment.</div>
+        </div>
       </div>
     );
-  }
-
-  componentDidMount() {
-    this.getProfileData();
   }
 }
