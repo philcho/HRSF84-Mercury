@@ -55,6 +55,7 @@
     ]
   },
   "jest": {
+    "rootDir": "./src",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
