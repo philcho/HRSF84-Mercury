@@ -9,7 +9,7 @@
     "node": ">=6.4.0"
   },
   "scripts": {
-    "test": "mocha test --recursive --timeout 15000 --no-deprecation --compilers js:babel-register,jsx:babel-register",
+    "test": "mocha test --recursive --timeout 15000 --no-deprecation --compilers js:babel-register,jsx:babel-register --exit",
     "build": "webpack --watch",
     "start": "node server.js",
     "watch": "nodemon server.js"
