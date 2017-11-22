@@ -253,6 +253,25 @@ app.patch('/updateComments', (req, res, next) => {
     })
 }); // end of app.patch('/updateComments'
 
+app.patch('/updateVoteCount', (req, res, next) => {
+  // example postman request data
+  // {
+  //   "identifier": {
+  //     "_id": "5a0cfe51085065bed328591b"
+  //   },
+  //   "nomineeName": "Dan"
+  // }
+
+  db.updateVoteCount(req.body.identifier, req.body.nomineeName)
+    .then((data) => {
+      res.end(JSON.stringify(data));
+    })
+    .catch((e) => {
+      console.log('Error in updating vote counts', e);
+      res.end('Sorry but the vote was not registered...');
+    })
+}); // end of app.patch('/updateVoteCount'
+
 // ==================
 // ===== Listen =====
 // ==================
