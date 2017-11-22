@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Comments from './Comments.jsx';
 
 export default class EventDetails extends React.Component {
   constructor(props) {
@@ -8,6 +9,10 @@ export default class EventDetails extends React.Component {
     this.state = {
       eventDetailsData: {}
     }
+  }
+
+  componentDidMount() {
+    this.getEventDetailsData();
   }
 
   getEventDetailsData() {
@@ -21,7 +26,7 @@ export default class EventDetails extends React.Component {
     })
     .then((response) => {
       if (response.data[0]) {
-        this.setState({ eventDetailsData: response.data[0] });  
+        this.setState({ eventDetailsData: response.data[0] });
       }
     })
     .catch((error) => {
@@ -31,26 +36,23 @@ export default class EventDetails extends React.Component {
 
   render() {
     return (
-      <div>
-        <ul>
-          <li>name: {this.state.eventDetailsData.name}</li>
-          <li>date: {this.state.eventDetailsData.date}</li>
-          <li>picture: {this.state.eventDetailsData.picture}</li>
-          <li>description: {this.state.eventDetailsData.description}</li>
-        </ul>
+      <div className="event-details container column">
+        <Nav/>
 
-        <div>
-          {/* TODO: Add Comment Form */}
-          comments:
-          <ol>
-            {/* TODO: Add Comments Component */}
-          </ol>
+        <div className="event-details-info container column">
+          <div className="event-picture">{this.state.eventDetailsData.picture}</div>
+
+          <div className="container column">
+            <div className="event-name">{this.state.eventDetailsData.name}</div>
+            <div className="event-date">{this.state.eventDetailsData.date}</div>
+            <div className="event-decript">{this.state.eventDetailsData.description}</div>
+          </div>
         </div>
+
+        <CommentForm/>
+
+        <Comments/>
       </div>
     );
   }
-
-  componentDidMount() {
-    this.getEventDetailsData();
-  }
-}
+};

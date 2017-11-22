@@ -12,7 +12,8 @@ module.exports = {
       'students': './loadStudents.js',
       'profile': './loadProfile.js',
       'events': './loadEvents.js',
-      'event-details': './loadEventDetails.js'
+      'event-details': './loadEventDetails.js',
+      'shoutouts': './loadShoutouts.js'
     }
   ,
   output: {

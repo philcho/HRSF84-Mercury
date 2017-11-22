@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './components/Index.jsx';
+import EventDetails from './components/Shoutouts.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Index/>,
-    document.getElementById('index')
+    <Shoutouts/>,
+    document.getElementById('event-details')
   )
 });

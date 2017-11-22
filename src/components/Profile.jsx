@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Nav from './Nav.jsx';
 import CommentForm from './CommentForm.jsx';
+import Comments from './Comments.jsx';
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -51,9 +52,7 @@ export default class Profile extends React.Component {
 
         <CommentForm/>
 
-        <div className="container column">
-          <div className="profile-comment">This is an example of a comment.</div>
-        </div>
+        <Comments/>
       </div>
     );
   }
