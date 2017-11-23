@@ -1,11 +1,14 @@
 import React from 'react';
 
-const Comments = (props) => {
+const Comments = ({comments}) => {
   return(
     <div className="container column">
-      <div className="comment">This is an example of a comment.</div>
+      {comments.map((comment) => {
+        return <div key={comment._id} className="comment">{`${comment.name}: ${comment.comment}`}</div>;
+      })}
     </div>
   );
 };
 
 export default Comments;
+

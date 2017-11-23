@@ -9,7 +9,12 @@ export default class Profile extends React.Component {
     super(props);
 
     this.state = {
-      profileData: {}
+      studentId: window.location.href.split('/profile/')[1],
+      profileData: {
+        comments: [],
+      },
+      commentName: '',
+      commentText: '',
     }
   }
 
@@ -18,11 +23,9 @@ export default class Profile extends React.Component {
   }
 
   getProfileData() {
-    let studentId = window.location.href.split('/profile/')[1];
-
     axios.post('/getParticularStudent', {
       studentInfo: {
-        _id: studentId
+        _id: this.state.studentId,
       }
     })
       .then((response) => {
@@ -33,6 +36,35 @@ export default class Profile extends React.Component {
       .catch((error) => {
         console.log('getProfileData error', error);
       });
+  }
+
+  onSubmitComment(event) {
+    event.preventDefault();
+
+    axios.patch('/updateComments', {
+      modelType: 'student',
+      identifier: {
+        _id: this.state.studentId,
+      },
+      comment: {
+        name: this.state.commentName,
+        comment: this.state.commentText,
+      },
+
+    }).then((response) => {
+      this.getProfileData();
+    
+    }).catch((error) => {
+      console.log('onSubmitComment error', error);
+    });
+  }
+
+  onChangeCommentName(event) {
+    this.setState({commentName: event.target.value});
+  }
+
+  onChangeCommentText(event) {
+    this.setState({commentText: event.target.value});
   }
 
   render() {
@@ -49,10 +81,17 @@ export default class Profile extends React.Component {
           </div>
         </div>
 
-        <CommentForm />
+        <CommentForm
+          onSubmit={this.onSubmitComment.bind(this)}
+          onChangeName={this.onChangeCommentName.bind(this)}
+          onChangeText={this.onChangeCommentText.bind(this)}
+          name={this.state.commentName}
+          text={this.state.commentText}
+        />
 
-        <Comments />
+        <Comments comments={this.state.profileData.comments} />
       </div>
     );
   }
 }
+

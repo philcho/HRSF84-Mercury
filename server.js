@@ -97,7 +97,7 @@ app.post('/getParticularStudent', (req, res, next) => {
   // }
   db.loadParticular('student', req.body.studentInfo)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     })
 });
 
@@ -250,7 +250,7 @@ app.patch('/updateComments', (req, res, next) => {
   db.updateComments(modelType, identifier, comment)
     .then((arg) => {
       console.log('arg', arg);
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(arg));
     })
     .catch((e) => {
       console.log('Error in updating a comment', e);
