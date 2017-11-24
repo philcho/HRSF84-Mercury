@@ -57,6 +57,7 @@
   },
   "jest": {
     "rootDir": "./src",
+    "setupTestFrameworkScriptFile": "<rootDir>/test/enzymeSetup.js",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
