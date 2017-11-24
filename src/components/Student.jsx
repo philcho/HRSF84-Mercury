@@ -3,8 +3,10 @@ import React from 'react';
 const Student = (props) => {
   return (
     <div className="student list-item container column">
-      <img className="list-item-img student-img" src="http://cdn.akc.org/akcdoglovers/PembrokeWelshCorgi_hero.jpg"/>
-      <div className="list-item-name student-name">Student Name</div>
+      <a className="list-item-a student-a" href={`/profile/${props.studentData._id}`}>
+        <img className="list-item-img student-img" src={props.studentData.picture} />
+        <label className="list-item-name student-name">{props.studentData.name}</label>
+      </a>
     </div>
   )
 };

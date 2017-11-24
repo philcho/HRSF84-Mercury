@@ -47,6 +47,11 @@ app.get(/.+bundle.js.*/, (req, res, next) => {
   res.sendFile(path.join(__dirname, 'dist', filename));
 });
 
+app.get('/students', (req, res, next) => {
+  // send the html file for that page
+  res.sendFile(path.join(__dirname, 'dist', 'students.html'));
+});
+
 app.get('/profile/:id', (req, res, next) => {
   // send the html file for that page
   res.sendFile(path.join(__dirname, 'dist', 'profile.html'));
