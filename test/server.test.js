@@ -145,16 +145,6 @@ describe('Server', () => {
         });
     });
 
-    it('should respond with status 200 POST is sent to /getParticularShoutout', (done) => {
-      request(app)
-        .post('/getParticularShoutout')
-        .expect(200)
-        .end((err, res) => {
-          if (err) return done(err);
-          done();
-        });
-    }); 
-
     it('should respond with status 200 when POST is sent to /getParticularShoutout', (done) => {
       request(app)
         .post('/getParticularShoutout')
