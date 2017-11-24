@@ -6,14 +6,17 @@ exports[`Student should render correctly 1`] = `
 >
   <a
     className="list-item-a student-a"
-    href="/profile/undefined"
+    href="/profile/5a0d089080bcabc5ac8cb222"
   >
     <img
       className="list-item-img student-img"
+      src="https://www.w3schools.com/w3css/img_fjords.jpg"
     />
     <label
       className="list-item-name student-name"
-    />
+    >
+      Frodo Baggins
+    </label>
   </a>
 </div>
 `;
