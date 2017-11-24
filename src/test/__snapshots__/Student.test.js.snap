@@ -4,14 +4,16 @@ exports[`Student should render correctly 1`] = `
 <div
   className="student list-item container column"
 >
-  <img
-    className="list-item-img student-img"
-    src="http://cdn.akc.org/akcdoglovers/PembrokeWelshCorgi_hero.jpg"
-  />
-  <div
-    className="list-item-name student-name"
+  <a
+    className="list-item-a student-a"
+    href="/profile/undefined"
   >
-    Student Name
-  </div>
+    <img
+      className="list-item-img student-img"
+    />
+    <label
+      className="list-item-name student-name"
+    />
+  </a>
 </div>
 `;

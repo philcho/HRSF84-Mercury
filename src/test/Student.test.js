@@ -9,8 +9,9 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Student', () => {
   it('should render correctly', () => {
+    const studentData = {};
     const output = shallow(
-      <Student />
+      <Student studentData={studentData} />
     );
     expect(shallowToJson(output)).toMatchSnapshot();
   });
