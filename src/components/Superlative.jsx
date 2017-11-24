@@ -41,6 +41,7 @@ export default class Superlative extends React.Component {
     })
       .then((response) => {
         if (response.data[0]) {
+          console.log('data', response.data[0]);
           this.setState({ superlativeData: response.data[0] });
         }
       })
@@ -60,6 +61,35 @@ export default class Superlative extends React.Component {
 
     if (this.state.studentList.indexOf(person) > -1) {
       console.log('It is a valid name, so increment the vote count');
+
+      // updateVoteCount patch request
+
+      // example postman request data
+      // {
+      //   "identifier": {
+      //     "_id": "5a0cfe51085065bed328591b"
+      //   },
+      //   "nomineeName": "Dan"
+      // }
+
+      // db.updateVoteCount(req.body.identifier, req.body.nomineeName)
+
+      axios.patch('/updateVoteCount', {
+        'identifier': {
+          '_id': ''
+        },
+        'nomineeName': person
+      })
+        .then((response) => {
+          if (response.data[0]) {
+            this.setState({ superlativeData: response.data[0] });
+          }
+        })
+        .catch((error) => {
+          console.log('getSuperlativeData error', error);
+        });
+
+
     } else {
       console.log('It is NOT a valid name... so do nothing?');
     }
