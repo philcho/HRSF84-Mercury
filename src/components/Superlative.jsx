@@ -111,8 +111,11 @@ export default class Superlative extends React.Component {
 
           <button>Vote!</button>
         </form>
+        <br />
+        <p>Leaderboard here</p>
+        <div>
 
-        <div>Leaderboard here</div>
+        </div>
       </div>
     );
   }
