@@ -77,13 +77,6 @@ app.get('/superlative/:name', (req, res, next) => {
 // ===== Student Paths =====
 // =========================
 
-app.post('/addStudent', (req, res, next) => {
-  db.save('student', req.body.student)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    });
-});
-
 app.get('/getAllStudents', (req, res, next) => {
   db.loadAll('student')
     .then((data) => {
@@ -99,37 +92,12 @@ app.get('/getStudent:id', (req, res, next) => {
     });
 });
 
-app.post('/getParticularStudent', (req, res, next) => {
-  /* Example postman request:
-  {
-    "studentInfo": {
-      "_id": "5a0ddac3b218d0cadf73eefb"
-    }
-  }
-  */
-
-  db.loadParticular('student', req.body.studentInfo)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
-    .catch((error) => {
-      res.send(error);
-    });
-});
-
 // =============================
 // ===== Superlative Paths =====
 // =============================
 
 app.get('/superlatives', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
-});
-
-app.post('/addSuperlative', (req, res, next) => {
-  db.save('superlative', req.body.superlative)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    });
 });
 
 app.get('/getAllSuperlatives', (req, res, next) => {
@@ -139,52 +107,13 @@ app.get('/getAllSuperlatives', (req, res, next) => {
     })
 });
 
-app.post('/getParticularSuperlative', (req, res, next) => {
-  /* Example postman request:
-  {
-    "superlativeInfo": {
-      "_id": "5a0ddacbb218d0cadf73eefc"
-    }
-  }
-  */
-
-  db.loadParticular('superlative', req.body.superlativeInfo)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
-    .catch((error) => {
-      res.send(error);
-    });
-});
 
 // =======================
 // ===== Event Paths =====
 // =======================
 
-app.post('/addEvent', (req, res, next) => {
-  db.save('event', req.body.event)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    });
-});
-
 app.get('/getAllEvents', (req, res, next) => {
   db.loadAll('event')
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
-});
-
-app.post('/getParticularEvent', (req, res, next) => {
-  /* Example postman request:
-  {
-    "eventInfo": {
-      "_id": "5a0ddad0b218d0cadf73eefe"
-    }
-  }
-  */
-
-  db.loadParticular('event', req.body.eventInfo)
     .then((data) => {
       res.send(JSON.stringify(data));
     })
@@ -194,49 +123,12 @@ app.post('/getParticularEvent', (req, res, next) => {
 // ===== Shoutout Paths =====
 // ==========================
 
-app.post('/addShoutout', (req, res, next) => {
-  /* Example postman request:
-  {
-    "shoutout": {
-      "category": "quote",
-      "text": "We should do a yearbook",
-      "name": "Vi"
-    }
-  }
-  */
-
-  db.save('shoutout', req.body.shoutout)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
-});
-
 app.get('/getAllShoutouts', (req, res, next) => {
   db.loadAll('shoutout')
     .then((data) => {
       res.send(JSON.stringify(data));
     })
 });
-
-app.post('/getParticularShoutout', (req, res, next) => {
-  /* Example postman request:
-  {
-    "shoutoutInfo": {
-      "_id": "5a0ddad5b218d0cadf73eeff"
-    }
-  }
-  */
-
-  db.loadParticular('shoutout', req.body.shoutoutInfo)
-    .then((data) => {
-      res.end(JSON.stringify(data));
-
-    }).catch((error) => {
-      res.send(error);
-    });
-});
-
-
 
 // =========================
 // ===== Generic Paths =====
@@ -253,10 +145,10 @@ app.post('/add', (req, res, next) => {
   /*
   {
     "modelType": "student",
-     "data": {
-       "name": "Dan",
-       "picture": "https://avatars1.githubusercontent.com/u/18223722?s=400&u=4ed26a12635ac37f5f3f95d27c81afe53a4c5ed7&v=4",
-       "bio": "I am a Hack Reactor student who focuses on the MERN stack."
+    "data": {
+      "name": "Dan",
+      "picture": "https://avatars1.githubusercontent.com/u/18223722?s=400&u=4ed26a12635ac37f5f3f95d27c81afe53a4c5ed7&v=4",
+      "bio": "I am a Hack Reactor student who focuses on the MERN stack."
     }
   }
   */
@@ -281,6 +173,44 @@ app.post('/add', (req, res, next) => {
       res.send(JSON.stringify(data));
     })
 });
+
+app.post('/getParticular', (req, res, next) => {
+  // Example postman request:
+  // ------------------------
+
+  // === Student ===
+  /*
+  {
+    "modelType": "student",
+    "identifier": {
+      "_id": "5a0ddac3b218d0cadf73eefb"
+    }
+  }
+  */
+
+
+  // === Superlative ===
+  /*
+  {
+    "modelType": "superlative",
+    "identifier": {
+      "_id": "5a0ddacbb218d0cadf73eefc"
+    }
+  }
+  */
+
+  const modelType = req.body.modelType;
+  const identifier = req.body.identifier;
+
+  db.loadParticular(modelType, identifier)
+    .then((data) => {
+      res.send(JSON.stringify(data));
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+});
+
 
 app.patch('/updateComments', (req, res, next) => {
   // Example postman requests:
