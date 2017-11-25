@@ -11,10 +11,10 @@ export default class EventDetails extends React.Component {
     this.state = {
       eventId: window.location.href.split('/event/')[1],
       eventDetailsData: {
-        comments: [],
+        comments: []
       },
       commentName: '',
-      commentText: '',
+      commentText: ''
     }
   }
 
@@ -26,17 +26,17 @@ export default class EventDetails extends React.Component {
     // Example URL: http://localhost:3000/event/5a0ddac3b218d0cadf73eefb
     axios.post('/getParticularEvent', {
       eventInfo: {
-        _id: this.state.eventId,
+        _id: this.state.eventId
       }
     })
-    .then((response) => {
-      if (response.data[0]) {
-        this.setState({ eventDetailsData: response.data[0] });
-      }
-    })
-    .catch((error) => {
-      console.log('getEventDetailsData error', error);
-    });
+      .then((response) => {
+        if (response.data[0]) {
+          this.setState({ eventDetailsData: response.data[0] });
+        }
+      })
+      .catch((error) => {
+        console.log('getEventDetailsData error', error);
+      });
   }
   
   onSubmitComment(event) {
@@ -45,19 +45,19 @@ export default class EventDetails extends React.Component {
     axios.patch('/updateComments', {
       modelType: 'event',
       identifier: {
-        _id: this.state.eventId,
+        _id: this.state.eventId
       },
       comment: {
         name: this.state.commentName,
-        comment: this.state.commentText,
-      },
-
-    }).then((response) => {
-      this.getEventDetailsData();
-
-    }).catch((error) => {
-      console.log('onSubmitComment error', error);
-    });
+        comment: this.state.commentText
+      }
+    })
+      .then((response) => {
+        this.getEventDetailsData();
+      })
+      .catch((error) => {
+        console.log('onSubmitComment error', error);
+      });
   }
 
   onChangeCommentName(event) {
