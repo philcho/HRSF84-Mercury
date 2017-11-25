@@ -53,7 +53,7 @@ export default class Profile extends React.Component {
 
     }).then((response) => {
       this.getProfileData();
-    
+
     }).catch((error) => {
       console.log('onSubmitComment error', error);
     });
@@ -73,7 +73,7 @@ export default class Profile extends React.Component {
         <Nav />
 
         <div className="profile-info container column">
-          <div className="profile-picture">{this.state.profileData.picture}</div>
+          <img className="profile-picture" src={this.state.profileData.picture}/>
 
           <div className="container column">
             <div className="profile-name">{this.state.profileData.name}</div>
@@ -94,4 +94,3 @@ export default class Profile extends React.Component {
     );
   }
 }
-
