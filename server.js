@@ -7,8 +7,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 // This line sets the environment variables, since we are on our local machines
-// Therefore, in production (or whenever we are hosted on an actual server), this line can be removed
-//   along with the .env file
+// Therefore, in production (or whenever we are hosted on an actual server),
+//   this line can be removed along with the .env file
 require('dotenv') // same as const dotenv = require('dotenv');
   .config(); // we just want to call .config, not save
 
@@ -30,75 +30,37 @@ app.use(webpackDevMiddleware(compiler, {
   historyApiFallback: true,
 }));
 
-// =====================
-// === Template Path ===
-// =====================
+// // Path for the page
+// app.get('/template', (req, res, next) => {
+//   // send the html file for that page
+//   res.sendFile(path.join(__dirname, 'dist', 'template.html'));
+// });
 
-// Path for the page
-app.get('/template', (req, res, next) => {
-  // send the html file for that page
-  res.sendFile(path.join(__dirname, 'dist', 'template.html'));
-});
-
-// Capture GET requests for *.bundle.js and *.bundle.js.map files first. Otherwise, they'll get captured by the more-generic GET requests below (ex: '/profile/:id').
+// Capture GET requests for *.bundle.js and *.bundle.js.map files first.
+// Otherwise, they'll get captured by the more-generic GET requests below (ex: '/profile/:id').
 app.get(/.+bundle.js.*/, (req, res, next) => {
   let filename = req.url.split('/')[2];
   // send the bundle.js or bundle.js.map file for that page
   res.sendFile(path.join(__dirname, 'dist', filename));
 });
 
-app.get('/students', (req, res, next) => {
-  // send the html file for that page
-  res.sendFile(path.join(__dirname, 'dist', 'students.html'));
-});
+// ==========================
+// ===== Specific Paths =====
+// ==========================
 
-app.get('/profile/:id', (req, res, next) => {
-  // send the html file for that page
-  res.sendFile(path.join(__dirname, 'dist', 'profile.html'));
-});
-
-app.get('/events', (req, res, next) => {
-  // send the html file for that page
-  res.sendFile(path.join(__dirname, 'dist', 'events.html'));
-});
-
-app.get('/event/:id', (req, res, next) => {
-  // send the html file for that page
-  res.sendFile(path.join(__dirname, 'dist', 'event-details.html'));
-});
-
-app.get('/shoutouts', (req, res, next) => {
-  // send the html file for that superlative
-  res.sendFile(path.join(__dirname, 'dist', 'shoutouts.html'));
-});
-
-app.get('/superlatives', (req, res, next) => {
-  // send the html file for that superlative
-  res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
-});
-
-app.get('/superlative/:name', (req, res, next) => {
-  // send the html file for that superlative
-  console.log('name of superlative:', req.params);
-  res.sendFile(path.join(__dirname, 'dist', 'superlative.html'));
-});
-
-// =========================
-// ===== Student Paths =====
-// =========================
-
-app.post('/addStudent', (req, res, next) => {
-  db.save('student', req.body.student)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    });
-});
+// =====================
+// === Student Paths ===
+// =====================
 
 app.get('/getAllStudents', (req, res, next) => {
   db.loadAll('student')
     .then((data) => {
       res.send(JSON.stringify(data));
     })
+});
+
+app.get('/students', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'dist', 'students.html'));
 });
 
 app.get('/getStudent:id', (req, res, next) => {
@@ -109,70 +71,13 @@ app.get('/getStudent:id', (req, res, next) => {
     });
 });
 
-app.post('/getParticularStudent', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "studentInfo": {
-  //     "_id": "5a0ddac3b218d0cadf73eefb"
-  //   }
-  // }
-  db.loadParticular('student', req.body.studentInfo)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
-    .catch((error) => {
-      res.send(error);
-    });
+app.get('/profile/:id', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'dist', 'profile.html'));
 });
 
-// =============================
-// ===== Superlative Paths =====
-// =============================
-
-app.get('/superlatives', (req, res, next) => {
-  res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
-});
-
-app.post('/addSuperlative', (req, res, next) => {
-  db.save('superlative', req.body.superlative)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    });
-});
-
-app.get('/getAllSuperlatives', (req, res, next) => {
-  db.loadAll('superlative')
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
-});
-
-app.post('/getParticularSuperlative', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "superlativeInfo": {
-  //     "_id": "5a0ddacbb218d0cadf73eefc"
-  //   }
-  // }
-  db.loadParticular('superlative', req.body.superlativeInfo)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
-    .catch((error) => {
-      res.send(error);
-    });
-});
-
-// =======================
-// ===== Event Paths =====
-// =======================
-
-app.post('/addEvent', (req, res, next) => {
-  db.save('event', req.body.event)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    });
-});
+// ===================
+// === Event Paths ===
+// ===================
 
 app.get('/getAllEvents', (req, res, next) => {
   db.loadAll('event')
@@ -181,38 +86,17 @@ app.get('/getAllEvents', (req, res, next) => {
     })
 });
 
-app.post('/getParticularEvent', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "eventInfo": {
-  //     "_id": "5a0ddad0b218d0cadf73eefe"
-  //   }
-  // }
-  db.loadParticular('event', req.body.eventInfo)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
+app.get('/events', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'dist', 'events.html'));
 });
 
-// ==========================
-// ===== Shoutout Paths =====
-// ==========================
-
-app.post('/addShoutout', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "shoutout": {
-  //     "category": "quote",
-  //     "text": "We should do a yearbook",
-  //     "name": "Vi"
-  //   }
-  // }
-
-  db.save('shoutout', req.body.shoutout)
-    .then((data) => {
-      res.send(JSON.stringify(data));
-    })
+app.get('/event/:id', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'dist', 'event-details.html'));
 });
+
+// ======================
+// === Shoutout Paths ===
+// ======================
 
 app.get('/getAllShoutouts', (req, res, next) => {
   db.loadAll('shoutout')
@@ -221,30 +105,110 @@ app.get('/getAllShoutouts', (req, res, next) => {
     })
 });
 
-app.post('/getParticularShoutout', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "shoutoutInfo": {
-  //     "_id": "5a0ddad5b218d0cadf73eeff"
-  //   }
-  // }
-  db.loadParticular('shoutout', req.body.shoutoutInfo)
-    .then((data) => {
-      res.end(JSON.stringify(data));
-
-    }).catch((error) => {
-      res.send(error);
-    });
+app.get('/shoutouts', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'dist', 'shoutouts.html'));
 });
 
+// =========================
+// === Superlative Paths ===
+// =========================
 
+app.get('/getAllSuperlatives', (req, res, next) => {
+  db.loadAll('superlative')
+    .then((data) => {
+      res.send(JSON.stringify(data));
+    })
+});
 
-// ===============================
-// ===== Generic Update Path =====
-// ===============================
+app.get('/superlative/:name', (req, res, next) => {
+  console.log('name of superlative:', req.params);
+  res.sendFile(path.join(__dirname, 'dist', 'superlative.html'));
+});
 
-// Unlike the specific paths, this path accepts the model type as a part of the request body
-// This way the server code doesn't have to have unnecessarily duplicated data
+app.get('/superlatives', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
+});
+
+// =========================
+// ===== Generic Paths =====
+// =========================
+//
+// Unlike the specific paths, generic path accepts the model type as a part of the request body
+// This way the server code doesn't have to have unnecessarily duplicated code
+
+app.post('/add', (req, res, next) => {
+  // Example postman requests:
+  // -------------------------
+
+  // === Student ===
+  /*
+  {
+    "modelType": "student",
+    "data": {
+      "name": "Dan",
+      "picture": "https://avatars1.githubusercontent.com/u/18223722?s=400&u=4ed26a12635ac37f5f3f95d27c81afe53a4c5ed7&v=4",
+      "bio": "I am a Hack Reactor student who focuses on the MERN stack."
+    }
+  }
+  */
+
+  // === Shoutout ===
+  /*
+  {
+    "modelType": "shoutout",
+    "data": {
+      "category": "quote",
+      "text": "My name is Ian",
+      "name": "Alan"
+    }
+  }
+  */
+
+  const type = req.body.modelType;
+  const data = req.body.data;
+
+  db.save(type, data)
+    .then((data) => {
+      res.send(JSON.stringify(data));
+    })
+});
+
+app.post('/getParticular', (req, res, next) => {
+  // Example postman request:
+  // ------------------------
+
+  // === Student ===
+  /*
+  {
+    "modelType": "student",
+    "identifier": {
+      "_id": "5a0ddac3b218d0cadf73eefb"
+    }
+  }
+  */
+
+  // === Superlative ===
+  /*
+  {
+    "modelType": "superlative",
+    "identifier": {
+      "_id": "5a0ddacbb218d0cadf73eefc"
+    }
+  }
+  */
+
+  const modelType = req.body.modelType;
+  const identifier = req.body.identifier;
+
+  db.loadParticular(modelType, identifier)
+    .then((data) => {
+      res.send(JSON.stringify(data));
+    })
+    .catch((error) => {
+      res.send(error);
+    })
+});
+
 app.patch('/updateComments', (req, res, next) => {
   // Example postman requests:
   // -------------------------
@@ -252,15 +216,15 @@ app.patch('/updateComments', (req, res, next) => {
   // === Student ===
   /*
   {
-	"modelType" : "student",
-	"identifier": {
-		"_id": "5a0cfe51085065bed328591b"
-	},
-	"comment": {
-		"name": "Vi",
-		"comment": "I know like 50 languages"
-	}
-}
+    "modelType" : "student",
+    "identifier": {
+      "_id": "5a0cfe51085065bed328591b"
+    },
+    "comment": {
+      "name": "Vi",
+      "comment": "I know like 50 languages"
+    }
+  }
   */
 
   // === Event ===
@@ -293,13 +257,14 @@ app.patch('/updateComments', (req, res, next) => {
 }); // end of app.patch('/updateComments'
 
 app.patch('/updateVoteCount', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "identifier": {
-  //     "_id": "5a0cfe51085065bed328591b"
-  //   },
-  //   "nomineeName": "Dan"
-  // }
+  /* Example postman request:
+  {
+    "identifier": {
+      "_id": "5a0cfe51085065bed328591b"
+    },
+    "nomineeName": "Dan"
+  }
+  */
 
   db.updateVoteCount(req.body.identifier, req.body.nomineeName)
     .then((data) => {
@@ -318,7 +283,7 @@ app.patch('/updateVoteCount', (req, res, next) => {
 const server = app.listen(PORT, function () {
   const host = server.address().address;
   const port = server.address().port;
-  console.log(`----- Server listening on http://localhost:${PORT} -----`);
+  console.log(`\n----- Server listening on http://localhost:${PORT} -----\n`);
 });
 
 module.exports = { app };
