@@ -5,11 +5,6 @@ import Student from '../components/Student';
 
 describe('Student', () => {
   it('should render correctly', () => {
-<<<<<<< HEAD
-    const studentData = {};
-    const output = shallow(
-      <Student studentData={studentData} />
-=======
     const student = {
       "_id":"5a0d089080bcabc5ac8cb222",
       "name":"Frodo Baggins",
@@ -20,7 +15,6 @@ describe('Student', () => {
     };
     const output = shallow(
       <Student studentData={student} key={student._id} />
->>>>>>> Update test for Student component to include passed-in props.
     );
     expect(shallowToJson(output)).toMatchSnapshot();
   });
