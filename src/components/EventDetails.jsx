@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import Nav from './Nav.jsx';
 import Comments from './Comments.jsx';
+import CommentForm from './CommentForm.jsx';
 
 export default class EventDetails extends React.Component {
   constructor(props) {
