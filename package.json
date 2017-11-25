@@ -24,6 +24,7 @@
     "express": "^4.16.2",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.2",
+    "nodemon": "^1.12.1",
     "normalize.css": "^7.0.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
@@ -46,7 +47,6 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^21.2.1",
     "mocha": "^4.0.1",
-    "nodemon": "^1.12.1",
     "regenerator-runtime": "^0.11.0",
     "supertest": "^3.0.0"
   },

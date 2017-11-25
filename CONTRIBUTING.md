@@ -25,9 +25,8 @@
 3. Add a script tag with the source of a slash `/`, the id you used in step 2, and `.bundle.js` (Ex. `/students.bundle.js`)
 4. In the `src` directory, add a load file with the name of `load` and the name you used for the id in step 2, with a `.js` extension, in camelCase (Ex. `loadStudents.js`)
 5. In the load file, add imports for `React`, `ReactDOM`, and the `.jsx` component(s) you want to add (Ex. `import Students from './components/Students.jsx';`)
-6. In the load file, listen for the event `DOMContentLoaded`, then render the component on the DOM Node with the id established in step 2
-Ex:
-``
+6. In the load file, listen for the event `DOMContentLoaded`, then render the component on the DOM Node with the id established in step 2, Ex:
+```
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Students/>,
