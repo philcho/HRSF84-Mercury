@@ -22,22 +22,45 @@
 ## Usage
 
 > From within the root directory:
-    npm run build
-    npm run watch
+- npm run build
+- npm run watch
+- Make sure you have a `.env` file with the credentials and path for your database
 
 ## Requirements
 
 - axios
+- bluebird
+- body-parser
+- babel-cli
 - babel-core
+- babel-jest
 - babel-loader
+- babel-preset-es2015
 - babel-preset-latest
 - babel-preset-react
+- babel-register
+- chai
+- d3
+- dotenv
+- enzyme
+- enzyme-adapter-react-16
+- enzyme-to-json
+- eslint-config-hackreactor
 - Express
+- git://github.com/reactorcore/eslint-config-hackreactor
+- jest
+- mocha
+- mongodb
+- mongoose
 - Node
 - Nodemon
+- normalize.css
 - React
+- react-dom
+- regenerator-runtime
+- supertest
 - Webpack
-
+- webpack-dev-middleware
 
 ## Development
 
@@ -48,7 +71,7 @@ From within the root directory:
 
 ### Roadmap
 
-View the project roadmap [here](https://docs.google.com/document/d/1TFdDzi3ELo2wi1CWtThc8EXoplLz35ehzBUZWbLi9vY/edit?usp=sharing)
+View the project roadmap [here](https://docs.google.com/document/d/1Sx0uH4fuaieY4Rqgm4_x8kOHvXwZdvgkPmYOPMK5abQ/edit)
 
 
 ## Contributing

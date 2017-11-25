@@ -79,6 +79,7 @@ app.get('/superlatives', (req, res, next) => {
 
 app.get('/superlative/:name', (req, res, next) => {
   // send the html file for that superlative
+  console.log('name of superlative:', req.params);
   res.sendFile(path.join(__dirname, 'dist', 'superlative.html'));
 });
 
@@ -127,6 +128,10 @@ app.post('/getParticularStudent', (req, res, next) => {
 // =============================
 // ===== Superlative Paths =====
 // =============================
+
+app.get('/superlatives', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
+});
 
 app.post('/addSuperlative', (req, res, next) => {
   db.save('superlative', req.body.superlative)
@@ -225,9 +230,9 @@ app.post('/getParticularShoutout', (req, res, next) => {
   // }
   db.loadParticular('shoutout', req.body.shoutoutInfo)
     .then((data) => {
-      res.send(JSON.stringify(data));
-    })
-    .catch((error) => {
+      res.end(JSON.stringify(data));
+
+    }).catch((error) => {
       res.send(error);
     });
 });
@@ -316,4 +321,4 @@ const server = app.listen(PORT, function () {
   console.log(`----- Server listening on http://localhost:${PORT} -----`);
 });
 
-module.exports = {app};
+module.exports = { app };

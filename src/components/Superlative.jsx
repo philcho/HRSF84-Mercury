@@ -1,27 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 
+import * as d3 from 'd3';
+
 export default class Superlative extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      superlativeData: {},
-      studentList: [] // this is the list of people to vote for
+      'superlativeData': {
+      },
+      'nominees': [] // this is the list of people to vote for
+      // this is in addition to the superlativeData.nominees, because this is only the names, not complex objects
     }
-
-    // axios request to get a list of the students
-    axios.get('/getAllStudents')
-      .then((response) => {
-        this.setState({
-          'studentList': response.data.map((student, index, collection) => {
-            return student.name;
-          })
-        });
-      })
-      .then(() => {
-        console.log('students: ', JSON.stringify(this.state.studentList, undefined, 2));
-      });
   }
 
   componentDidMount() {
@@ -41,7 +32,13 @@ export default class Superlative extends React.Component {
     })
       .then((response) => {
         if (response.data[0]) {
-          this.setState({ superlativeData: response.data[0] });
+          console.log('data', response.data[0]);
+          this.setState({
+            superlativeData: response.data[0],
+            nominees: response.data[0].nominees.map((nominee, index, collection) => {
+              return nominee.name;
+            })
+          });
         }
       })
       .catch((error) => {
@@ -51,17 +48,28 @@ export default class Superlative extends React.Component {
 
   handleVote(event) {
     event.preventDefault();
-    // TODO: consider doing something to redirect the user to a particular page here
-    //   since we are preventing the default submit behavior
+    // TODO: Show something that tells the user they voted
 
     // handle the vote here
     const person = document.getElementById('input').value;
-    console.log(JSON.stringify(person, undefined, 2));
 
-    if (this.state.studentList.indexOf(person) > -1) {
-      console.log('It is a valid name, so increment the vote count');
+    if (this.state.nominees.indexOf(person) > -1) {
+      axios.patch('/updateVoteCount', {
+        'identifier': {
+          '_id': this.state.superlativeData._id
+        },
+        'nomineeName': person
+      })
+        .then((response) => {
+          // update the superlativeData
+          // This is a decent enough place to update, in case if someone else voted since the user loaded this page
+          this.setState({ 'superlativeData': response.data });
+        })
+        .catch((error) => {
+          console.log('Error in updating the vote:', error);
+        });
     } else {
-      console.log('It is NOT a valid name... so do nothing?');
+      console.log('It is NOT a valid name... so tell the user');
     }
   }
 
@@ -81,7 +89,7 @@ export default class Superlative extends React.Component {
           <input id='input' list="superlatives" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
 
           <datalist id="chosenSuperlative">
-            {this.state.studentList.map((studentName, index, collection) => {
+            {this.state.nominees.map((studentName, index, collection) => {
               return (<option value={studentName} key={index} />);
             })}
           </datalist>
