@@ -72,27 +72,25 @@ export default class Superlative extends React.Component {
       'margin': '5px'
     };
 
-    // TODO: make/find a css class for Superlatives and replace the student css classes
-
     return (
-      <div className="student list-item container column">
-        <div className="list-item-name student-name">{this.state.superlativeData.superlative}</div>
-        <img className="list-item-img student-img" src={this.state.superlativeData.img} />
+      <div className="superlative list-item container column">
+        <div className="list-item-name superative-name">{this.state.superlativeData.superlative}</div>
+        <img className="list-item-img superative-img" src={this.state.superlativeData.img} />
 
         <form onSubmit={(event) => { this.handleVote(event) }} >
-          <label>
-            <input id='input' list="superlatives" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " /></label>
+          <input id='input' list="superlatives" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
+
           <datalist id="chosenSuperlative">
             {this.state.studentList.map((studentName, index, collection) => {
               return (<option value={studentName} key={index} />);
             })}
           </datalist>
+
           <button>Vote!</button>
         </form>
-        <br />
-        <p>Leaderboard here</p>
+
+        <div>Leaderboard here</div>
       </div>
     )
   }
 }
-
