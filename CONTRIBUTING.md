@@ -22,10 +22,19 @@
 
 1. Create your HTML file in the `dist` directory
 2. Give it a div tag with an id that is the all lowercase name of what you are handling (Ex. `students`)
-3. Add a script tag with the source of a slash `/`, the id you used in step 2, `.bundle.js` (Ex. `/students.bundle.js`)
+3. Add a script tag with the source of a slash `/`, the id you used in step 2, and `.bundle.js` (Ex. `/students.bundle.js`)
 4. In the `src` directory, add a load file with the name of `load` and the name you used for the id in step 2, with a `.js` extension, in camelCase (Ex. `loadStudents.js`)
 5. In the load file, add imports for `React`, `ReactDOM`, and the `.jsx` component(s) you want to add (Ex. `import Students from './components/Students.jsx';`)
 6. In the load file, listen for the event `DOMContentLoaded`, then render the component on the DOM Node with the id established in step 2
+Ex:
+``
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <Students/>,
+    document.getElementById('students')
+  )
+});
+``
 7. In `webpack.config.js`, in module.exports.entry, add the key/value pair of the id from step 2 and the relative path to the load file (Ex. `'students': './loadStudents.js'`)
 8. Then, make sure that the project is 'built' with your changes by running `npm run build`
 9. Note, since it is in 'watch' mode, any changes that you make while `npm run build` is still running will be built automatically.
