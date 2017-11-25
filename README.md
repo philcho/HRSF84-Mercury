@@ -1,6 +1,6 @@
-# urbae
+# Collective
 
-> An online yearbook for classes and groups.
+> A digital yearbook for classes and groups.
 
 ## Team
 
