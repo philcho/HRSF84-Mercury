@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Nav from './Nav.jsx';
 import Superlative from './Superlative.jsx'
 
@@ -35,7 +36,7 @@ export default class Superlatives extends React.Component {
           <div className="container row">
             {this.state.superlatives.map((superlative, index) => {
               return (
-                <Superlative superlative={superlative} key={superative._id}/>
+                <Superlative superlative={superlative} key={superlative._id}/>
               );
             })}
           </div>
