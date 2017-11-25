@@ -7,8 +7,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 // This line sets the environment variables, since we are on our local machines
-// Therefore, in production (or whenever we are hosted on an actual server), this line can be removed
-//   along with the .env file
+// Therefore, in production (or whenever we are hosted on an actual server),
+//   this line can be removed along with the .env file
 require('dotenv') // same as const dotenv = require('dotenv');
   .config(); // we just want to call .config, not save
 
@@ -30,17 +30,14 @@ app.use(webpackDevMiddleware(compiler, {
   historyApiFallback: true,
 }));
 
-// =====================
-// === Template Path ===
-// =====================
-
 // Path for the page
 app.get('/template', (req, res, next) => {
   // send the html file for that page
   res.sendFile(path.join(__dirname, 'dist', 'template.html'));
 });
 
-// Capture GET requests for *.bundle.js and *.bundle.js.map files first. Otherwise, they'll get captured by the more-generic GET requests below (ex: '/profile/:id').
+// Capture GET requests for *.bundle.js and *.bundle.js.map files first.
+// Otherwise, they'll get captured by the more-generic GET requests below (ex: '/profile/:id').
 app.get(/.+bundle.js.*/, (req, res, next) => {
   let filename = req.url.split('/')[2];
   // send the bundle.js or bundle.js.map file for that page
@@ -48,37 +45,30 @@ app.get(/.+bundle.js.*/, (req, res, next) => {
 });
 
 app.get('/students', (req, res, next) => {
-  // send the html file for that page
   res.sendFile(path.join(__dirname, 'dist', 'students.html'));
 });
 
 app.get('/profile/:id', (req, res, next) => {
-  // send the html file for that page
   res.sendFile(path.join(__dirname, 'dist', 'profile.html'));
 });
 
 app.get('/events', (req, res, next) => {
-  // send the html file for that page
   res.sendFile(path.join(__dirname, 'dist', 'events.html'));
 });
 
 app.get('/event/:id', (req, res, next) => {
-  // send the html file for that page
   res.sendFile(path.join(__dirname, 'dist', 'event-details.html'));
 });
 
 app.get('/shoutouts', (req, res, next) => {
-  // send the html file for that superlative
   res.sendFile(path.join(__dirname, 'dist', 'shoutouts.html'));
 });
 
 app.get('/superlatives', (req, res, next) => {
-  // send the html file for that superlative
   res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
 });
 
 app.get('/superlative/:name', (req, res, next) => {
-  // send the html file for that superlative
   console.log('name of superlative:', req.params);
   res.sendFile(path.join(__dirname, 'dist', 'superlative.html'));
 });
@@ -239,12 +229,44 @@ app.post('/getParticularShoutout', (req, res, next) => {
 
 
 
-// ===============================
-// ===== Generic Update Path =====
-// ===============================
+// =========================
+// ===== Generic Paths =====
+// =========================
+//
+// Unlike the specific paths, generic path accepts the model type as a part of the request body
+// This way the server code doesn't have to have unnecessarily duplicated code
 
-// Unlike the specific paths, this path accepts the model type as a part of the request body
-// This way the server code doesn't have to have unnecessarily duplicated data
+app.post('/add', (req, res, next) => {
+  // example postman request data
+  //   For a student
+  // {
+  //   "modelType": "student",
+  //    "data": {
+  //      "name": "Dan",
+  //      "picture": "https://avatars1.githubusercontent.com/u/18223722?s=400&u=4ed26a12635ac37f5f3f95d27c81afe53a4c5ed7&v=4",
+  //      "bio": "I am a Hack Reactor student who focuses on the MERN stack."
+  //   }
+  // }
+  //
+  //   For a shoutout
+  // {
+  //   "modelType": "shoutout",
+  //   "data": {
+  //     "category": "quote",
+  //     "text": "My name is Ian",
+  //     "name": "Alan"
+  //   }
+  // }
+
+  const type = req.body.modelType;
+  const data = req.body.data;
+
+  db.save(type, data)
+    .then((data) => {
+      res.send(JSON.stringify(data));
+    })
+});
+
 app.patch('/updateComments', (req, res, next) => {
   // Example postman requests:
   // -------------------------
@@ -252,15 +274,15 @@ app.patch('/updateComments', (req, res, next) => {
   // === Student ===
   /*
   {
-	"modelType" : "student",
-	"identifier": {
-		"_id": "5a0cfe51085065bed328591b"
-	},
-	"comment": {
-		"name": "Vi",
-		"comment": "I know like 50 languages"
-	}
-}
+    "modelType" : "student",
+    "identifier": {
+      "_id": "5a0cfe51085065bed328591b"
+    },
+    "comment": {
+      "name": "Vi",
+      "comment": "I know like 50 languages"
+    }
+  }
   */
 
   // === Event ===
