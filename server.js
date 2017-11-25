@@ -100,12 +100,14 @@ app.get('/getStudent:id', (req, res, next) => {
 });
 
 app.post('/getParticularStudent', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "studentInfo": {
-  //     "_id": "5a0ddac3b218d0cadf73eefb"
-  //   }
-  // }
+  /* Example postman request:
+  {
+    "studentInfo": {
+      "_id": "5a0ddac3b218d0cadf73eefb"
+    }
+  }
+  */
+
   db.loadParticular('student', req.body.studentInfo)
     .then((data) => {
       res.send(JSON.stringify(data));
@@ -138,12 +140,14 @@ app.get('/getAllSuperlatives', (req, res, next) => {
 });
 
 app.post('/getParticularSuperlative', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "superlativeInfo": {
-  //     "_id": "5a0ddacbb218d0cadf73eefc"
-  //   }
-  // }
+  /* Example postman request:
+  {
+    "superlativeInfo": {
+      "_id": "5a0ddacbb218d0cadf73eefc"
+    }
+  }
+  */
+
   db.loadParticular('superlative', req.body.superlativeInfo)
     .then((data) => {
       res.send(JSON.stringify(data));
@@ -172,12 +176,14 @@ app.get('/getAllEvents', (req, res, next) => {
 });
 
 app.post('/getParticularEvent', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "eventInfo": {
-  //     "_id": "5a0ddad0b218d0cadf73eefe"
-  //   }
-  // }
+  /* Example postman request:
+  {
+    "eventInfo": {
+      "_id": "5a0ddad0b218d0cadf73eefe"
+    }
+  }
+  */
+
   db.loadParticular('event', req.body.eventInfo)
     .then((data) => {
       res.send(JSON.stringify(data));
@@ -189,14 +195,15 @@ app.post('/getParticularEvent', (req, res, next) => {
 // ==========================
 
 app.post('/addShoutout', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "shoutout": {
-  //     "category": "quote",
-  //     "text": "We should do a yearbook",
-  //     "name": "Vi"
-  //   }
-  // }
+  /* Example postman request:
+  {
+    "shoutout": {
+      "category": "quote",
+      "text": "We should do a yearbook",
+      "name": "Vi"
+    }
+  }
+  */
 
   db.save('shoutout', req.body.shoutout)
     .then((data) => {
@@ -212,12 +219,14 @@ app.get('/getAllShoutouts', (req, res, next) => {
 });
 
 app.post('/getParticularShoutout', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "shoutoutInfo": {
-  //     "_id": "5a0ddad5b218d0cadf73eeff"
-  //   }
-  // }
+  /* Example postman request:
+  {
+    "shoutoutInfo": {
+      "_id": "5a0ddad5b218d0cadf73eeff"
+    }
+  }
+  */
+
   db.loadParticular('shoutout', req.body.shoutoutInfo)
     .then((data) => {
       res.end(JSON.stringify(data));
@@ -237,26 +246,32 @@ app.post('/getParticularShoutout', (req, res, next) => {
 // This way the server code doesn't have to have unnecessarily duplicated code
 
 app.post('/add', (req, res, next) => {
-  // example postman request data
-  //   For a student
-  // {
-  //   "modelType": "student",
-  //    "data": {
-  //      "name": "Dan",
-  //      "picture": "https://avatars1.githubusercontent.com/u/18223722?s=400&u=4ed26a12635ac37f5f3f95d27c81afe53a4c5ed7&v=4",
-  //      "bio": "I am a Hack Reactor student who focuses on the MERN stack."
-  //   }
-  // }
-  //
-  //   For a shoutout
-  // {
-  //   "modelType": "shoutout",
-  //   "data": {
-  //     "category": "quote",
-  //     "text": "My name is Ian",
-  //     "name": "Alan"
-  //   }
-  // }
+  // Example postman requests:
+  // -------------------------
+
+  // === Student ===
+  /*
+  {
+    "modelType": "student",
+     "data": {
+       "name": "Dan",
+       "picture": "https://avatars1.githubusercontent.com/u/18223722?s=400&u=4ed26a12635ac37f5f3f95d27c81afe53a4c5ed7&v=4",
+       "bio": "I am a Hack Reactor student who focuses on the MERN stack."
+    }
+  }
+  */
+
+  // === Shoutout ===
+  /*
+  {
+    "modelType": "shoutout",
+    "data": {
+      "category": "quote",
+      "text": "My name is Ian",
+      "name": "Alan"
+    }
+  }
+  */
 
   const type = req.body.modelType;
   const data = req.body.data;
@@ -315,13 +330,14 @@ app.patch('/updateComments', (req, res, next) => {
 }); // end of app.patch('/updateComments'
 
 app.patch('/updateVoteCount', (req, res, next) => {
-  // example postman request data
-  // {
-  //   "identifier": {
-  //     "_id": "5a0cfe51085065bed328591b"
-  //   },
-  //   "nomineeName": "Dan"
-  // }
+  /* Example postman request:
+  {
+    "identifier": {
+      "_id": "5a0cfe51085065bed328591b"
+    },
+    "nomineeName": "Dan"
+  }
+  */
 
   db.updateVoteCount(req.body.identifier, req.body.nomineeName)
     .then((data) => {
