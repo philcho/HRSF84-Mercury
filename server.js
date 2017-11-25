@@ -89,14 +89,14 @@ app.get('/superlative/:name', (req, res, next) => {
 app.post('/addStudent', (req, res, next) => {
   db.save('student', req.body.student)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     });
 });
 
 app.get('/getAllStudents', (req, res, next) => {
   db.loadAll('student')
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     })
 });
 
@@ -104,7 +104,7 @@ app.get('/getStudent:id', (req, res, next) => {
   const id = req.params.id.slice(1);
   db.loadParticular('student', { '_id': id })
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     });
 });
 
@@ -131,14 +131,14 @@ app.post('/getParticularStudent', (req, res, next) => {
 app.post('/addSuperlative', (req, res, next) => {
   db.save('superlative', req.body.superlative)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     });
 });
 
 app.get('/getAllSuperlatives', (req, res, next) => {
   db.loadAll('superlative')
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     })
 });
 
@@ -151,7 +151,7 @@ app.post('/getParticularSuperlative', (req, res, next) => {
   // }
   db.loadParticular('superlative', req.body.superlativeInfo)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
 
     }).catch((error) => {
       res.send(error);
@@ -165,14 +165,14 @@ app.post('/getParticularSuperlative', (req, res, next) => {
 app.post('/addEvent', (req, res, next) => {
   db.save('event', req.body.event)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     });
 });
 
 app.get('/getAllEvents', (req, res, next) => {
   db.loadAll('event')
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     })
 });
 
@@ -185,7 +185,7 @@ app.post('/getParticularEvent', (req, res, next) => {
   // }
   db.loadParticular('event', req.body.eventInfo)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     })
 });
 
@@ -205,14 +205,14 @@ app.post('/addShoutout', (req, res, next) => {
 
   db.save('shoutout', req.body.shoutout)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     })
 });
 
 app.get('/getAllShoutouts', (req, res, next) => {
   db.loadAll('shoutout')
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     })
 });
 
@@ -225,7 +225,7 @@ app.post('/getParticularShoutout', (req, res, next) => {
   // }
   db.loadParticular('shoutout', req.body.shoutoutInfo)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
      
     }).catch((error) => {
       res.send(error);
@@ -283,7 +283,7 @@ app.patch('/updateComments', (req, res, next) => {
     })
     .catch((e) => {
       console.log('Error in updating a comment', e);
-      res.end('Sorry but the comment was not added...');
+      res.send('Sorry but the comment was not added...');
     })
 }); // end of app.patch('/updateComments'
 
@@ -298,11 +298,11 @@ app.patch('/updateVoteCount', (req, res, next) => {
 
   db.updateVoteCount(req.body.identifier, req.body.nomineeName)
     .then((data) => {
-      res.end(JSON.stringify(data));
+      res.send(JSON.stringify(data));
     })
     .catch((e) => {
       console.log('Error in updating vote counts', e);
-      res.end('Sorry but the vote was not registered...');
+      res.send('Sorry but the vote was not registered...');
     })
 }); // end of app.patch('/updateVoteCount'
 
