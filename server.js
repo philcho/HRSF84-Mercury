@@ -103,7 +103,10 @@ app.post('/getParticularStudent', (req, res, next) => {
   db.loadParticular('student', req.body.studentInfo)
     .then((data) => {
       res.send(JSON.stringify(data));
-    })
+
+    }).catch((error) => {
+      res.send(error);
+    });
 });
 
 // =============================
@@ -134,7 +137,10 @@ app.post('/getParticularSuperlative', (req, res, next) => {
   db.loadParticular('superlative', req.body.superlativeInfo)
     .then((data) => {
       res.end(JSON.stringify(data));
-    })
+
+    }).catch((error) => {
+      res.send(error);
+    });
 });
 
 // =======================
@@ -205,7 +211,10 @@ app.post('/getParticularShoutout', (req, res, next) => {
   db.loadParticular('shoutout', req.body.shoutoutInfo)
     .then((data) => {
       res.end(JSON.stringify(data));
-    })
+     
+    }).catch((error) => {
+      res.send(error);
+    });
 });
 
 

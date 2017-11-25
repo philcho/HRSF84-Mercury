@@ -10,5 +10,5 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: urbae
+      appname: urbae-staging
 
