@@ -15,6 +15,7 @@ export default class Nav extends React.Component {
           <a href="/students">Students</a>
           <a href="/events">Events</a>
           <a href="/superlatives">Superlatives</a>
+          <a href="/shoutouts">Shoutouts</a>
         </div>
       </div>
     );
