@@ -67,6 +67,11 @@ app.get('/event/:id', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'dist', 'event-details.html'));
 });
 
+app.get('/shoutouts', (req, res, next) => {
+  // send the html file for that superlative
+  res.sendFile(path.join(__dirname, 'dist', 'shoutouts.html'));
+});
+
 app.get('/superlatives', (req, res, next) => {
   // send the html file for that superlative
   res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
