@@ -57,9 +57,24 @@ app.get('/profile/:id', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'dist', 'profile.html'));
 });
 
+app.get('/events', (req, res, next) => {
+  // send the html file for that page
+  res.sendFile(path.join(__dirname, 'dist', 'events.html'));
+});
+
 app.get('/event/:id', (req, res, next) => {
   // send the html file for that page
   res.sendFile(path.join(__dirname, 'dist', 'event-details.html'));
+});
+
+app.get('/shoutouts', (req, res, next) => {
+  // send the html file for that superlative
+  res.sendFile(path.join(__dirname, 'dist', 'shoutouts.html'));
+});
+
+app.get('/superlatives', (req, res, next) => {
+  // send the html file for that superlative
+  res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
 });
 
 app.get('/superlative/:name', (req, res, next) => {
@@ -302,4 +317,3 @@ const server = app.listen(PORT, function () {
 });
 
 module.exports = {app};
-

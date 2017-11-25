@@ -1,40 +1,43 @@
 import React from 'react';
 import Nav from './Nav.jsx';
 import CommentForm from './CommentForm.jsx';
+import Shoutout from './Shoutout.jsx';
 
 export default class Students extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      shoutouts: []
+    };
+  }
+
+  componentDidMount() {
+    this.getAllShoutouts();
+  }
+
+  getAllShoutouts() {
+    axios.get('/getAllShoutouts')
+      .then((response) => {
+        this.setState({ shoutouts: response.data });
+      })
+      .catch((error) => {
+        console.log(`----- getAllEvents error : ${error} -----`);
+      });
   }
 
   render() {
     return (
       <div className="shoutouts container column">
         <Nav/>
-
         <h1>SHOUTOUTS</h1>
-
         <CommentForm/>
 
-        {/* hardcoding shoutouts for now */}
-
         <div className="container row">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-
-        <div className="container row">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-
-        <div className="container row">
-          <div></div>
-          <div></div>
-          <div></div>
+          {this.shoutouts.map((shoutout, index) => {
+            return (
+              <Shoutout shoutout={shoutout} key={shoutout._id}/>
+            );
+          })}
         </div>
       </div>
     );

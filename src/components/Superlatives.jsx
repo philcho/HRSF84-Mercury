@@ -5,7 +5,23 @@ import Superlative from './Superlative.jsx'
 export default class Superlatives extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      superlatives: []
+    };
+  }
+
+  getAllSuperlatives() {
+    axios.get('/getAllSuperlatives')
+      .then((response) => {
+        this.setState({ superlatives: response.data });
+      })
+      .catch((error) => {
+        console.log(`----- getAllEvents error : ${error} -----`);
+      });
+  }
+
+  componentDidMount() {
+    this.getAllSuperlatives();
   }
 
   render() {
@@ -14,26 +30,14 @@ export default class Superlatives extends React.Component {
         <Nav />
 
         <div className="students list container column">
-          <h1>Superlative</h1>
-
-          {/* hardcoding superlatives with student data/info for now */}
+          <h1>Superlatives</h1>
 
           <div className="container row">
-            <Superlative />
-            <Superlative />
-            <Superlative />
-          </div>
-
-          <div className="container row">
-            <Superlative />
-            <Superlative />
-            <Superlative />
-          </div>
-
-          <div className="container row">
-            <Superlative />
-            <Superlative />
-            <Superlative />
+            {this.state.superlatives.map((superlative, index) => {
+              return (
+                <Superlative superlative={superlative} key={superative._id}/>
+              );
+            })}
           </div>
         </div>
       </div>
