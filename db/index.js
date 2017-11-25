@@ -92,7 +92,7 @@ const getModel = (modelType, data) => {
   }
 };
 
-// returns a the model for the functionality
+// returns the model for the functionality
 const getModelType = (modelType) => {
   if (modelType === 'student') {
     return StudentPage;
