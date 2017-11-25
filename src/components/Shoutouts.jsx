@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './Nav.jsx';
 import CommentForm from './CommentForm.jsx';
+import Shoutout from './Shoutout.jsx';
 
 export default class Students extends React.Component {
   constructor(props) {
