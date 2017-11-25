@@ -30,7 +30,7 @@ export default class Students extends React.Component {
       <div>
         <Nav/>
 
-        <div className="students list container column">
+        <div className="students container column">
           <h1>STUDENTS</h1>
 
           <div className="container row">
