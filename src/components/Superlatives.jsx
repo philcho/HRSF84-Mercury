@@ -30,7 +30,7 @@ export default class Superlatives extends React.Component {
       <div>
         <Nav />
 
-        <div className="students list container column">
+        <div className="container column">
           <h1>Superlatives</h1>
 
           <div className="container row">

@@ -31,6 +31,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: auto;
 }
 
 .column {
@@ -41,40 +43,10 @@ img {
   flex-flow: row wrap;
 }
 
-.list {}
-
 .nav {
   justify-content: space-between;
-  margin: 1rem;
 }
 
-.nav a {
-  margin: 0 1rem;
+.nav a:not(:last-child) {
+  margin-right: 1rem;
 }
-
-.list-item-img {}
-
-.list-item-name {}
-
-.list-item-description {}
-
-.student-a {
-  display: block;
-  margin: 2rem;
-  text-align: center;
-}
-
-.student-img {
-  max-width: 300px;
-  margin-bottom: 1rem;
-}
-
-.student-name {
-  cursor: pointer;
-}
-
-.event-img {
-  max-width: 600px;
-}
-
-.event-name {}

@@ -9,7 +9,7 @@ export default class Nav extends React.Component {
   render() {
     return (
       <div className="nav container row">
-        <div id="logo">🌚 Mercury</div>
+        <div id="logo"><a href="/index">🌚</a></div>
 
         <div id="menu">
           <a href="/students">Students</a>
