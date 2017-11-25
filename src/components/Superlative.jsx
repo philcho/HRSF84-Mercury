@@ -22,12 +22,12 @@ export default class Superlative extends React.Component {
   getSuperlativeData() {
     // Example URL: http://localhost:3000/superlative/Most%20Likely%20To%20Be%20An%20Axe%20Murder
 
-    // get the superlative name and undo the url encoding
+    // get the superlative id and undo the url encoding
     const superlativeName = decodeURIComponent(window.location.href.split('/superlative/')[1]);
 
     axios.post('/getParticularSuperlative', {
-      'superlativeInfo': {
-        'superlative': superlativeName
+      superlativeInfo: {
+        _id: superlativeName
       }
     })
       .then((response) => {
