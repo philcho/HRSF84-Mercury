@@ -12,12 +12,30 @@
 
 ## Detailed Workflow
 
+### Running the Scripts
+
+1. On the command line, from the root of the project, run `npm run build`
+2. In a seperate command line, also from the root of the project, run `npm run watch`
+3. Since the 'build' script runs webpack with the `--watch` flag and the `watch` script uses nodemon, the changes you make will be reflected as soon as the processes have run.
+
+### Adding an HTML page
+
+1. Create your HTML file in the `dist` directory
+2. Give it a div tag with an id that is the all lowercase name of what you are handling (Ex. `students`)
+3. Add a script tag with the source of a slash `/`, the id you used in step 2, `.bundle.js` (Ex. `/students.bundle.js`)
+4. In the `src` directory, add a load file with the name of `load` and the name you used for the id in step 2, with a `.js` extension, in camelCase (Ex. `loadStudents.js`)
+5. In the load file, add imports for `React`, `ReactDOM`, and the `.jsx` component(s) you want to add (Ex. `import Students from './components/Students.jsx';`)
+6. In the load file, listen for the event `DOMContentLoaded`, then render the component on the DOM Node with the id established in step 2
+7. In `webpack.config.js`, in module.exports.entry, add the key/value pair of the id from step 2 and the relative path to the load file (Ex. `'students': './loadStudents.js'`)
+8. Then, make sure that the project is 'built' with your changes by running `npm run build`
+9. Note, since it is in 'watch' mode, any changes that you make while `npm run build` is still running will be built automatically.
+
 ### Fork the repo
 
 Use Github’s interface to make a fork of the repo, then add that repo as an upstream remote:
 
 ```
-git remote add upstream https://github.com/organization/<NAME_OF_REPO>.git
+git remote add upstream https://github.com/HRSF84-Mercury/HRSF84-Mercury.git
 ```
 
 ### Cut a namespaced feature branch from master
