@@ -1,9 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 import Nav from './Nav.jsx';
 import CommentForm from './CommentForm.jsx';
 import Shoutout from './Shoutout.jsx';
 
-export default class Students extends React.Component {
+export default class Shoutouts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +34,7 @@ export default class Students extends React.Component {
         <CommentForm/>
 
         <div className="container row">
-          {this.shoutouts.map((shoutout, index) => {
+          {this.state.shoutouts.map((shoutout, index) => {
             return (
               <Shoutout shoutout={shoutout} key={shoutout._id}/>
             );

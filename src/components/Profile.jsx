@@ -11,10 +11,10 @@ export default class Profile extends React.Component {
     this.state = {
       studentId: window.location.href.split('/profile/')[1],
       profileData: {
-        comments: [],
+        comments: []
       },
       commentName: '',
-      commentText: '',
+      commentText: ''
     }
   }
 
@@ -25,7 +25,7 @@ export default class Profile extends React.Component {
   getProfileData() {
     axios.post('/getParticularStudent', {
       studentInfo: {
-        _id: this.state.studentId,
+        _id: this.state.studentId
       }
     })
       .then((response) => {
@@ -44,19 +44,19 @@ export default class Profile extends React.Component {
     axios.patch('/updateComments', {
       modelType: 'student',
       identifier: {
-        _id: this.state.studentId,
+        _id: this.state.studentId
       },
       comment: {
         name: this.state.commentName,
-        comment: this.state.commentText,
-      },
-
-    }).then((response) => {
-      this.getProfileData();
-
-    }).catch((error) => {
-      console.log('onSubmitComment error', error);
-    });
+        comment: this.state.commentText
+      }
+    })
+      .then((response) => {
+        this.getProfileData();
+      })
+      .catch((error) => {
+        console.log('onSubmitComment error', error);
+      });
   }
 
   onChangeCommentName(event) {

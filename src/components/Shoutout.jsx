@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Shoutout = (props) => {
+const Shoutout = ({shoutout}) => {
   return (
     <div className="shoutout list-item container column">
-      <div className="">{props.shoutout.text}</div>
-      <div className="">{props.shoutout.name}</div>
-      <div className="">{props.shoutout.category}</div>
+      <div className="">{shoutout.text}</div>
+      <div className="">{shoutout.name}</div>
+      <div className="">{shoutout.category}</div>
     </div>
   )
 };

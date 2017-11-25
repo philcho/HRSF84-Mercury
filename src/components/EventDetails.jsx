@@ -9,7 +9,12 @@ export default class EventDetails extends React.Component {
     super(props);
 
     this.state = {
-      eventDetailsData: {}
+      eventId: window.location.href.split('/event/')[1],
+      eventDetailsData: {
+        comments: []
+      },
+      commentName: '',
+      commentText: ''
     }
   }
 
@@ -19,21 +24,48 @@ export default class EventDetails extends React.Component {
 
   getEventDetailsData() {
     // Example URL: http://localhost:3000/event/5a0ddac3b218d0cadf73eefb
-    let eventId = window.location.href.split('/event/')[1];
-
     axios.post('/getParticularEvent', {
       eventInfo: {
-        _id: eventId
+        _id: this.state.eventId
       }
     })
-    .then((response) => {
-      if (response.data[0]) {
-        this.setState({ eventDetailsData: response.data[0] });
+      .then((response) => {
+        if (response.data[0]) {
+          this.setState({ eventDetailsData: response.data[0] });
+        }
+      })
+      .catch((error) => {
+        console.log('getEventDetailsData error', error);
+      });
+  }
+  
+  onSubmitComment(event) {
+    event.preventDefault();
+
+    axios.patch('/updateComments', {
+      modelType: 'event',
+      identifier: {
+        _id: this.state.eventId
+      },
+      comment: {
+        name: this.state.commentName,
+        comment: this.state.commentText
       }
     })
-    .catch((error) => {
-      console.log('getEventDetailsData error', error);
-    });
+      .then((response) => {
+        this.getEventDetailsData();
+      })
+      .catch((error) => {
+        console.log('onSubmitComment error', error);
+      });
+  }
+
+  onChangeCommentName(event) {
+    this.setState({commentName: event.target.value});
+  }
+
+  onChangeCommentText(event) {
+    this.setState({commentText: event.target.value});
   }
 
   render() {
@@ -42,7 +74,7 @@ export default class EventDetails extends React.Component {
         <Nav/>
 
         <div className="event-details-info container column">
-          <div className="event-picture">{this.state.eventDetailsData.picture}</div>
+          <img className="event-picture" src={this.state.eventDetailsData.picture} />
 
           <div className="container column">
             <div className="event-name">{this.state.eventDetailsData.name}</div>
@@ -51,9 +83,15 @@ export default class EventDetails extends React.Component {
           </div>
         </div>
 
-        <CommentForm/>
+        <CommentForm
+          onSubmit={this.onSubmitComment.bind(this)}
+          onChangeName={this.onChangeCommentName.bind(this)}
+          onChangeText={this.onChangeCommentText.bind(this)}
+          name={this.state.commentName}
+          text={this.state.commentText}
+        />
 
-        <Comments/>
+        <Comments comments={this.state.eventDetailsData.comments} />
       </div>
     );
   }
