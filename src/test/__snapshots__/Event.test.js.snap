@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event should render correctly with props 1`] = `
+<a
+  className="event container column"
+  href="###"
+>
+  <img
+    className="list-item-img event-img"
+    src="http://cdn1.theodysseyonline.com/files/2015/12/04/635848643983265445-579762_christmas-puppy-pictures-tzulxzui.jpg"
+  />
+  <div
+    className="list-item-name event-name"
+  >
+    Puppy Christmas
+  </div>
+  <div
+    className="list-item-bio event-bio"
+  >
+    There were puppies and we all played and laughed and danced!
+  </div>
+</a>
+`;
