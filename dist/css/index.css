@@ -11,3 +11,33 @@ body {
 .title-collective {
   font-size: 6rem;
 }
+
+.box {
+  position: relative;
+}
+
+.box:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #FFF;
+  border-radius: 10px;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(-10px -10px 0 rgba(4, 244, 255, 0.4));
+}
+
+.box:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #FFF;
+  border-radius: 10px;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(10px 10px 0 rgba(194, 39, 255, 0.4));
+}

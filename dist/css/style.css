@@ -26,7 +26,7 @@ body {
 img {
   display: block;
   margin: auto;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 .container {
@@ -55,6 +55,10 @@ img {
 }
 
 .title-page {
+  background-image: linear-gradient(45deg, #FD8BA9, #9A94E8, #2EDBF8, #F5F1C8, #FD8BA9);
+  background-color: #6122FF;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: 'Open Sans', sans-serif;
   font-size: 3.5rem;
   font-weight: bold;
