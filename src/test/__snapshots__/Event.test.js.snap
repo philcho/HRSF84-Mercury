@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event should render correctly with props 1`] = `
+<a
+  className="event list-item container column"
+  href="/event/_fakeId"
+>
+  <img
+    className="list-item-img event-img"
+    src="https://www.w3schools.com/w3css/img_fjords.jpg"
+  />
+  <div
+    className="list-item-name event-name"
+  >
+    Some Awesome Event
+  </div>
+  <div
+    className="list-item-description event-description"
+  >
+    This is a really cool event
+  </div>
+</a>
+`;
