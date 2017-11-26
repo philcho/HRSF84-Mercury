@@ -30,6 +30,7 @@
 
 .student-box:hover .student-name {
   opacity: 1;
+  cursor: pointer;
 }
 
 .student-box:hover .student-img {
