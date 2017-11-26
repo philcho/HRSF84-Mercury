@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Student should render correctly 1`] = `
+exports[`Student should render correctly with props 1`] = `
 <div
   className="student container column"
 >
   <a
     className="list-item student-box"
-    href="/profile/undefined"
+    href="/profile/5a0d089080bcabc5ac8cb222"
   >
     <img
       className="list-item-img student-img"

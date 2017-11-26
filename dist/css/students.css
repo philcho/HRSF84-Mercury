@@ -14,9 +14,11 @@
 
 .student-name {
   position: absolute;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
   opacity: 0;
   transition: all 0.3s ease;
 }
