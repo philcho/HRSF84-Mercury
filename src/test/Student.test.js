@@ -4,7 +4,7 @@ import { shallowToJson } from 'enzyme-to-json';
 import Student from '../components/Student';
 
 describe('Student', () => {
-  it('should render correctly', () => {
+  it('should render correctly with props', () => {
     const student = {
       "_id":"5a0d089080bcabc5ac8cb222",
       "name":"Frodo Baggins",
