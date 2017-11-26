@@ -11,6 +11,7 @@ export default class Profile extends React.Component {
     this.state = {
       studentId: window.location.href.split('/profile/')[1],
       profileData: {
+        bio: '',
         comments: []
       },
       commentName: '',
@@ -78,7 +79,11 @@ export default class Profile extends React.Component {
 
           <div className="container column">
             <div className="profile-name">{this.state.profileData.name}</div>
-            <div className="profile-bio">{this.state.profileData.bio}</div>
+            <div className="profile-bio">
+              {this.state.profileData.bio.split('\n').map((item, key) => {
+                return <p key={key}>{item}</p>;
+              })}
+            </div>
           </div>
         </div>
 
