@@ -8,15 +8,44 @@ export default class Superlative extends React.Component {
     super(props);
 
     this.state = {
-      'superlativeData': {
-      },
-      'nominees': [] // this is the list of people to vote for
+      'superlativeData': {},
+      'nominees': [], // this is the list of people to vote for
       // this is in addition to the superlativeData.nominees, because this is only the names, not complex objects
+      'chartData': [] // this is the data for the d3 chart
     }
   }
 
   componentDidMount() {
+    this.getStudents();
     this.getSuperlativeData();
+    this.generateChart();
+  }
+
+  componentDidUpdate() {
+    this.generateChart();
+  }
+
+  generateChart() {
+    console.log('start chart');
+
+    // removes any previous instance of a chart
+    // this lets it update when a new vote is made
+    var myNode = document.getElementsByClassName("chart")[0];
+    myNode.innerHTML = '';
+
+    // d3 code
+    d3.select('.chart')
+      .selectAll('div')
+      .data(this.state.chartData)
+      .enter()
+      .append('div')
+      .style('width', (student, index, collection) => { return (student.votes * 50) + 'px'; })
+      .style('background-color', () => { return 'blue'; })
+      .style('border', () => { return '1px solid black'; })
+      .style('margin', () => { return '5px 0px'; })
+      .insert('span')
+      .text((student, index, collection) => { return student.name + ': ' + student.votes; });
+    console.log('end chart');
   }
 
   getSuperlativeData() {
@@ -25,9 +54,10 @@ export default class Superlative extends React.Component {
     // get the superlative id and undo the url encoding
     const superlativeName = decodeURIComponent(window.location.href.split('/superlative/')[1]);
 
-    axios.post('/getParticularSuperlative', {
-      superlativeInfo: {
-        _id: superlativeName
+    axios.post('/getParticular', {
+      'modelType': 'superlative',
+      'identifier': {
+        'superlative': superlativeName
       }
     })
       .then((response) => {
@@ -35,19 +65,43 @@ export default class Superlative extends React.Component {
           console.log('data', response.data[0]);
           this.setState({
             superlativeData: response.data[0],
-            nominees: response.data[0].nominees.map((nominee, index, collection) => {
-              return nominee.name;
+            chartData: response.data[0].nominees.map((nominee, index, collection) => {
+              return { 'name': nominee.name, 'votes': nominee.votes };
             })
           });
+          console.log('The data WAS updated');
+
+          console.log('about to force the update');
+          // Because the change to the state data is nested within the object(s),
+          //   the component will NOT automatically re-render.
+          // Therefore, the next line will compell it to re-render.
+          this.generateChart();
+          // NOTE: Outside of this particular type of situation, forceUpdate should not be used
+          console.log('update was forced');
+        } else {
+          console.log('The data was NOT updated!');
         }
+      })
+      .then(() => {
       })
       .catch((error) => {
         console.log('getSuperlativeData error', error);
       });
   }
 
+  getStudents() {
+    axios.get('/getAllStudents')
+      .then((students) => {
+        this.setState({
+          'nominees': students.data.map((student, index, collection) => {
+            return student.name;
+          })
+        });
+      });
+  }
+
   getLeaders() {
-    if (this.state.superlativeData.nominees.length < 1) {
+    if (this.state.chartData.length < 1) {
       return (
         <h3>
           No votes in yet. Be the first!
@@ -68,6 +122,8 @@ export default class Superlative extends React.Component {
     // handle the vote here
     const person = document.getElementById('input').value;
 
+    console.log('this.state.nominees', JSON.stringify(this.state.nominees, undefined, 2));
+
     if (this.state.nominees.indexOf(person) > -1) {
       axios.patch('/updateVoteCount', {
         'identifier': {
@@ -77,8 +133,13 @@ export default class Superlative extends React.Component {
       })
         .then((response) => {
           // update the superlativeData
-          // This is a decent enough place to update, in case if someone else voted since the user loaded this page
-          this.setState({ 'superlativeData': response.data });
+          return this.setState({ 'superlativeData': response.data });
+        })
+        .then(() => {
+          console.log(JSON.stringify(this.state.chartData, undefined, 2));
+          console.log('about to update the data')
+          return this.getSuperlativeData(); // update the data
+          console.log('updated the data');
         })
         .catch((error) => {
           console.log('Error in updating the vote:', error);
@@ -97,8 +158,8 @@ export default class Superlative extends React.Component {
 
     return (
       <div className="superlative list-item container column">
-        <div className="list-item-name superative-name">{this.state.superlativeData.superlative}</div>
-        <img className="list-item-img superative-img" src={this.state.superlativeData.img} />
+        <div className="list-item-name superlative-name">{this.state.superlativeData.superlative}</div>
+        <img className="list-item-img superlative-img" src={this.state.superlativeData.img} />
 
         <form onSubmit={(event) => { this.handleVote(event) }} >
           <input id='input' list="superlatives" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
@@ -113,9 +174,7 @@ export default class Superlative extends React.Component {
         </form>
         <br />
         <p>Leaderboard here</p>
-        <div>
-
-        </div>
+        <div className='chart'></div>
       </div>
     );
   }
