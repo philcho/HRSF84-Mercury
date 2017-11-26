@@ -7,8 +7,9 @@
 }
 
 .student-img {
-  max-width: 300px;
-  max-height: 300px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* Displays image centered (horiz and vert) and undistorted at the width and height specified above. */
   transition: all 0.3s ease;
 }
 
@@ -29,6 +30,7 @@
 
 .student-box:hover .student-name {
   opacity: 1;
+  cursor: pointer;
 }
 
 .student-box:hover .student-img {
