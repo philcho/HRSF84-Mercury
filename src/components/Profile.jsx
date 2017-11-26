@@ -23,8 +23,9 @@ export default class Profile extends React.Component {
   }
 
   getProfileData() {
-    axios.post('/getParticularStudent', {
-      studentInfo: {
+    axios.post('/getParticular', {
+      'modelType': 'student',
+      'identifier': {
         _id: this.state.studentId
       }
     })
