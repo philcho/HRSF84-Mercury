@@ -24,8 +24,9 @@ export default class EventDetails extends React.Component {
 
   getEventDetailsData() {
     // Example URL: http://localhost:3000/event/5a0ddac3b218d0cadf73eefb
-    axios.post('/getParticularEvent', {
-      eventInfo: {
+    axios.post('/getParticular', {
+      'modelType': 'event',
+      'identifier': {
         _id: this.state.eventId
       }
     })
@@ -38,7 +39,7 @@ export default class EventDetails extends React.Component {
         console.log('getEventDetailsData error', error);
       });
   }
-  
+
   onSubmitComment(event) {
     event.preventDefault();
 
@@ -61,17 +62,17 @@ export default class EventDetails extends React.Component {
   }
 
   onChangeCommentName(event) {
-    this.setState({commentName: event.target.value});
+    this.setState({ commentName: event.target.value });
   }
 
   onChangeCommentText(event) {
-    this.setState({commentText: event.target.value});
+    this.setState({ commentText: event.target.value });
   }
 
   render() {
     return (
       <div className="event-details container column">
-        <Nav/>
+        <Nav />
 
         <div className="event-details-info container column">
           <img className="event-picture" src={this.state.eventDetailsData.picture} />

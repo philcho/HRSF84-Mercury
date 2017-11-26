@@ -46,6 +46,21 @@ export default class Superlative extends React.Component {
       });
   }
 
+  getLeaders() {
+    if (this.state.superlativeData.nominees.length < 1) {
+      return (
+        <h3>
+          No votes in yet. Be the first!
+        </h3>
+      );
+    } else {
+      // get the top 3 and display them
+      <h3>
+        People have voted, so figure out the leader(s) here!
+      </h3>
+    }
+  }
+
   handleVote(event) {
     event.preventDefault();
     // TODO: Show something that tells the user they voted
@@ -99,6 +114,6 @@ export default class Superlative extends React.Component {
 
         <div>Leaderboard here</div>
       </div>
-    )
+    );
   }
 }
