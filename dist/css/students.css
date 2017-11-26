@@ -1,0 +1,34 @@
+.student-box {
+  position: relative;
+  display: block;
+  transform-style: preserve-3d;
+  transform: perspective(100rem);
+  margin: 2rem;
+}
+
+.student-img {
+  max-width: 300px;
+  max-height: 300px;
+  transition: all 0.3s ease;
+}
+
+.student-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.student-img {
+  transform-origin: 100% 100%; /* push down */
+}
+
+.student-box:hover .student-name {
+  opacity: 1;
+}
+
+.student-box:hover .student-img {
+  transform: rotate3d(1, 0, 0, 80deg); /* push down */
+}

@@ -2,11 +2,16 @@ import React from 'react';
 
 const Student = ({studentData}) => {
   return (
-    <div className="student list-item container column">
-      <a className="list-item-a student-a" href={`/profile/${studentData._id}`}>
+    <div className="student container column">
+      <a className="list-item student-box" href={`/profile/${studentData._id}`}>
         <img className="list-item-img student-img" src={studentData.picture} />
         <label className="list-item-name student-name">{studentData.name}</label>
       </a>
+
+      {/* <a className="list-item student-box" href="###">
+        <img className="list-item-img student-img" src="https://cdn.dribbble.com/users/2973/screenshots/1331728/drbbbl_01.jpg"/>
+        <label className="list-item-name student-name">Sam Sepiol</label>
+      </a> */}
     </div>
   )
 };
