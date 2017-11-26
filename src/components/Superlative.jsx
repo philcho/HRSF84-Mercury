@@ -25,9 +25,8 @@ export default class Superlative extends React.Component {
     // get the superlative id and undo the url encoding
     const superlativeName = decodeURIComponent(window.location.href.split('/superlative/')[1]);
 
-    axios.post('/getParticular', {
-      'modelType': 'superlative',
-      'identifier': {
+    axios.post('/getParticularSuperlative', {
+      superlativeInfo: {
         _id: superlativeName
       }
     })
@@ -112,23 +111,9 @@ export default class Superlative extends React.Component {
 
           <button>Vote!</button>
         </form>
-<<<<<<< HEAD
 
         <div>Leaderboard here</div>
       </div>
-=======
-<<<<<<< HEAD
-    <br />
-      <p>Leaderboard here</p>
-      <div>
-
-      </div>
-=======
-
-        <div>Leaderboard here</div>
->>>>>>> 16195ef2f3d7f52aced5b7d3f54c2ecc2fc2bc8b
-      </div >
->>>>>>> (fix) Update Post request code to use the generic paths
     );
   }
 }
