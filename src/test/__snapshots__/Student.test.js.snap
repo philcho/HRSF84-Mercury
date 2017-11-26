@@ -2,11 +2,11 @@
 
 exports[`Student should render correctly 1`] = `
 <div
-  className="student list-item container column"
+  className="student container column"
 >
   <a
-    className="list-item-a student-a"
-    href="/profile/5a0d089080bcabc5ac8cb222"
+    className="list-item student-box"
+    href="/profile/undefined"
   >
     <img
       className="list-item-img student-img"
