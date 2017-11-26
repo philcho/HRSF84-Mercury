@@ -74,6 +74,16 @@ describe('Server', () => {
           done();
         });
     }); 
+
+    it('should respond with status 200 when POST is sent to /getParticularSuperlative', (done) => {
+      request(app)
+        .post('/getParticularSuperlative')
+        .expect(200)
+        .end((err, res) => {
+          if (err) return done(err);
+          done();
+        });
+    });
   });
 
   describe('Student path', () => {
@@ -134,6 +144,17 @@ describe('Server', () => {
           done();
         });
     });
+
+    it('should respond with status 200 when POST is sent to /getParticularShoutout', (done) => {
+      request(app)
+        .post('/getParticularShoutout')
+        .field('shoutoutInfo', JSON.stringify({_id: '5a0ddad5b218d0cadf73eeff'}))
+        .expect(200)
+        .end((err, res) => {
+          if (err) return done(err);
+          done();
+        });
+    }); 
   });
 });
 
