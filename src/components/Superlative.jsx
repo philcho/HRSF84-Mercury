@@ -10,7 +10,7 @@ export default class Superlative extends React.Component {
     this.state = {
       'superlativeData': {},
       'nominees': [], // this is the list of people to vote for
-      // this is in addition to the superlativeData.nominees, because this is only the names, not complex objects
+      // nominees's data is from the list of students
       'chartData': [] // this is the data for the d3 chart
     }
   }
@@ -18,16 +18,9 @@ export default class Superlative extends React.Component {
   componentDidMount() {
     this.getStudents();
     this.getSuperlativeData();
-    this.generateChart();
-  }
-
-  componentDidUpdate() {
-    this.generateChart();
   }
 
   generateChart() {
-    console.log('start chart');
-
     // removes any previous instance of a chart
     // this lets it update when a new vote is made
     var myNode = document.getElementsByClassName("chart")[0];
@@ -45,11 +38,11 @@ export default class Superlative extends React.Component {
       .style('margin', () => { return '5px 0px'; })
       .insert('span')
       .text((student, index, collection) => { return student.name + ': ' + student.votes; });
-    console.log('end chart');
   }
 
   getSuperlativeData() {
-    // Example URL: http://localhost:3000/superlative/Most%20Likely%20To%20Be%20An%20Axe%20Murder
+    // This function uses the current URL
+    // Example URL: http://localhost:3000/superlative/Best%20Socks
 
     // get the superlative id and undo the url encoding
     const superlativeName = decodeURIComponent(window.location.href.split('/superlative/')[1]);
@@ -69,20 +62,8 @@ export default class Superlative extends React.Component {
               return { 'name': nominee.name, 'votes': nominee.votes };
             })
           });
-          console.log('The data WAS updated');
-
-          console.log('about to force the update');
-          // Because the change to the state data is nested within the object(s),
-          //   the component will NOT automatically re-render.
-          // Therefore, the next line will compell it to re-render.
-          this.generateChart();
-          // NOTE: Outside of this particular type of situation, forceUpdate should not be used
-          console.log('update was forced');
-        } else {
-          console.log('The data was NOT updated!');
+          this.generateChart(); // update the Chart with the new data
         }
-      })
-      .then(() => {
       })
       .catch((error) => {
         console.log('getSuperlativeData error', error);
@@ -122,8 +103,6 @@ export default class Superlative extends React.Component {
     // handle the vote here
     const person = document.getElementById('input').value;
 
-    console.log('this.state.nominees', JSON.stringify(this.state.nominees, undefined, 2));
-
     if (this.state.nominees.indexOf(person) > -1) {
       axios.patch('/updateVoteCount', {
         'identifier': {
@@ -131,15 +110,8 @@ export default class Superlative extends React.Component {
         },
         'nomineeName': person
       })
-        .then((response) => {
-          // update the superlativeData
-          return this.setState({ 'superlativeData': response.data });
-        })
-        .then(() => {
-          console.log(JSON.stringify(this.state.chartData, undefined, 2));
-          console.log('about to update the data')
-          return this.getSuperlativeData(); // update the data
-          console.log('updated the data');
+        .then(() => { // update the data
+          this.getSuperlativeData();
         })
         .catch((error) => {
           console.log('Error in updating the vote:', error);
