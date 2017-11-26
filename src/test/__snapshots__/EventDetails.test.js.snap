@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event Details should render correctly when passed data 1`] = `
+<div
+  className="event-details container column"
+>
+  <Nav />
+  <div
+    className="event-details-info container column"
+  >
+    <img
+      className="event-picture"
+      src="http://cdn1.theodysseyonline.com/files/2015/12/04/635848643983265445-579762_christmas-puppy-pictures-tzulxzui.jpg"
+    />
+    <div
+      className="container column"
+    >
+      <div
+        className="event-name"
+      >
+        Graduation
+      </div>
+      <div
+        className="event-date"
+      >
+        October the 21
+      </div>
+      <div
+        className="event-decript"
+      >
+        Oh the places we'll go!
+      </div>
+    </div>
+  </div>
+  <CommentForm
+    name=""
+    onChangeName={[Function]}
+    onChangeText={[Function]}
+    onSubmit={[Function]}
+    text=""
+  />
+  <Comments
+    comments={Array []}
+  />
+</div>
+`;
