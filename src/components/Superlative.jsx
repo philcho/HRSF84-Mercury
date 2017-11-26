@@ -55,7 +55,6 @@ export default class Superlative extends React.Component {
     })
       .then((response) => {
         if (response.data[0]) {
-          console.log('data', response.data[0]);
           this.setState({
             superlativeData: response.data[0],
             chartData: response.data[0].nominees.map((nominee, index, collection) => {
