@@ -75,9 +75,9 @@ describe('Server', () => {
         });
     }); 
 
-    it('should respond with status 200 when POST is sent to /getParticularSuperlative', (done) => {
+    it('should respond with status 200 when POST is sent to /getParticular', (done) => {
       request(app)
-        .post('/getParticularSuperlative')
+        .post('/getParticular')
         .expect(200)
         .end((err, res) => {
           if (err) return done(err);
@@ -121,9 +121,9 @@ describe('Server', () => {
 
     // Add test for successful POST to /getParticularStudent without modifying the db
 
-    it('should respond with status 404 when body-less POST is sent to /getParticularStudent', (done) => {
+    it('should respond with status 404 when body-less POST is sent to /getParticular', (done) => {
       request(app)
-        .get('/getParticularStudent')
+        .get('/getParticular')
         .expect(404)
         .end((err, res) => {
           if (err) return done(err);
@@ -145,9 +145,9 @@ describe('Server', () => {
         });
     });
 
-    it('should respond with status 200 when POST is sent to /getParticularShoutout', (done) => {
+    it('should respond with status 200 when POST is sent to /getParticular', (done) => {
       request(app)
-        .post('/getParticularShoutout')
+        .post('/getParticular')
         .field('shoutoutInfo', JSON.stringify({_id: '5a0ddad5b218d0cadf73eeff'}))
         .expect(200)
         .end((err, res) => {
