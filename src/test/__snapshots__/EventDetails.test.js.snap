@@ -8,11 +8,10 @@ exports[`Event Details should render correctly when passed data 1`] = `
   <div
     className="event-details-info container column"
   >
-    <div
+    <img
       className="event-picture"
-    >
-      http://cdn1.theodysseyonline.com/files/2015/12/04/635848643983265445-579762_christmas-puppy-pictures-tzulxzui.jpg
-    </div>
+      src="http://cdn1.theodysseyonline.com/files/2015/12/04/635848643983265445-579762_christmas-puppy-pictures-tzulxzui.jpg"
+    />
     <div
       className="container column"
     >
@@ -33,7 +32,15 @@ exports[`Event Details should render correctly when passed data 1`] = `
       </div>
     </div>
   </div>
-  <CommentForm />
-  <Comments />
+  <CommentForm
+    name=""
+    onChangeName={[Function]}
+    onChangeText={[Function]}
+    onSubmit={[Function]}
+    text=""
+  />
+  <Comments
+    comments={Array []}
+  />
 </div>
 `;

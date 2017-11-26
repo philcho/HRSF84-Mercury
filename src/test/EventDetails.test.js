@@ -7,28 +7,12 @@ import EventDetails from '../components/EventDetails';
 
 describe('Event Details', () => {
 
-  // --- this works ---
-  // it('calls componentDidMount() lifecycle method', () => {
-  //   const spy = jest.spyOn(EventDetails.prototype, 'componentDidMount');
-  //   const wrapper = mount(<EventDetails />);
-  //   expect(spy).toHaveBeenCalled();
-  //   spy.mockClear();
-  // });
-
-  // --- this works ---
-  // it('calls render() lifecycle method twice when using Enzyme forceUpdate', () => {
-  //   const spy = jest.spyOn(EventDetails.prototype, 'render');
-  //   const wrapper = mount(<EventDetails />);
-  //   wrapper.instance().forceUpdate();
-  //   expect(spy).toHaveBeenCalledTimes(2);
-  //   spy.mockClear();
-  // });
-
-  // --- this works but it's not ideal since it uses setState instead of the fake server to pass data ---
+  // --- this works: Builds Event Details page using fake data. ---
+  // But it's not ideal since it uses setState instead of the fake server to pass data
   it('should render correctly when passed data', () => {
     // We're only using the fake server to prevent the getEventDetailsData() method in EventDetails.jsx from throwing errors
     var mock = new MockAdapter(axios);
-    mock.onPost('/getParticularEvent').reply(200, {});
+    mock.onPost('/getParticular').reply(200, {});
 
     const eventData = {
       "_id":"5a0dd97850afe3ca33f34c04",
@@ -47,8 +31,24 @@ describe('Event Details', () => {
     expect(shallowToJson(output)).toMatchSnapshot();    
   });
 
+  // --- this works: checks if componentDidMount was called ---
+  // it('calls componentDidMount() lifecycle method', () => {
+  //   const spy = jest.spyOn(EventDetails.prototype, 'componentDidMount');
+  //   const wrapper = mount(<EventDetails />);
+  //   expect(spy).toHaveBeenCalled();
+  //   spy.mockClear();
+  // });
 
-  // --- this doesn't work yet. 'expect' is being called before EventDetails has updated its state.  ---
+  // --- this works: checks that a re-render happened after forcing an update ---
+  // it('calls render() lifecycle method twice when using Enzyme forceUpdate', () => {
+  //   const spy = jest.spyOn(EventDetails.prototype, 'render');
+  //   const wrapper = mount(<EventDetails />);
+  //   wrapper.instance().forceUpdate();
+  //   expect(spy).toHaveBeenCalledTimes(2);
+  //   spy.mockClear();
+  // });
+
+  // // --- this doesn't work yet. Supposed to use a mock server to send fake data. But 'expect' is being called before EventDetails has updated its state.  ---
   // it('should render correctly after a POST request', () => {
   //   // Create fake server
   //   var mock = new MockAdapter(axios);
@@ -71,7 +71,7 @@ describe('Event Details', () => {
   //   //     }, 0);
   //   //   });
   //   // });
-  //
+  
   //   // Use Enzyme's 'mount' instead of 'shallow' to ensure we include the 'componentDidMount' call in EventDetails.jsx
   //   const output = mount(
   //     <EventDetails />
