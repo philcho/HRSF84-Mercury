@@ -11,7 +11,7 @@ export default class Index extends React.Component {
     return (
       <div className="index container column">
         <Nav/>
-        <div className="title-collective">COLLECTIVE</div>
+        <div className="title-collective title-page">COLLECTIVE</div>
         <div>Your community awaits you.</div>
       </div>
     );
