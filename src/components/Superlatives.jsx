@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Nav from './Nav.jsx';
-import Superlative from './Superlative.jsx'
+import SuperlativeLink from './SuperlativeLink.jsx';
 
 export default class Superlatives extends React.Component {
   constructor(props) {
@@ -36,13 +36,12 @@ export default class Superlatives extends React.Component {
           <div className="container row">
             {this.state.superlatives.map((superlative, index) => {
               return (
-                <Superlative superlative={superlative} key={superlative._id}/>
+                <SuperlativeLink superlative={superlative} key={superlative._id}/>
               );
             })}
           </div>
         </div>
       </div>
-
     );
   }
 }
