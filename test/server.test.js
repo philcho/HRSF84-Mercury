@@ -10,6 +10,8 @@ const server = rewire('../server');
 const app = server.app;
 
 describe('Server', () => {
+  // Stub functions to prevent tests from attempting to write to the database
+  // Sinon has its own stub function which might be able to achieve the same result
   const dbStub = {
     save: () => new Promise((res, rej) => res()),
     updateComments: () => new Promise((res, rej) => res()),
@@ -29,6 +31,7 @@ describe('Server', () => {
     });
   });
 
+
   describe('Profile requests path', () => {
     it('should respond with status 200 when GET is sent to /profile/id', (done) => {
       request(app)
@@ -40,6 +43,7 @@ describe('Server', () => {
         });
     }); 
   });
+
 
   describe('Event requests path', () => {
     it('should respond with status 200 when GET is sent to /event/id', (done) => {
@@ -100,6 +104,7 @@ describe('Server', () => {
     });
   });
 
+
   describe('Superlative requests path', () => {
     it('should respond with status 200 when GET is sent to /superlative/name', (done) => {
       request(app)
@@ -143,6 +148,7 @@ describe('Server', () => {
         });
     });
   });
+
 
   describe('Student path', () => {
     it('should respond with status 200 when GET is sent to /students', (done) => {
@@ -222,6 +228,7 @@ describe('Server', () => {
         });
     });
   });
+
 
   describe('Superlative requests path', () => {
     it('should respond with status 200 when shoutout POST sent to /add', (done) => {

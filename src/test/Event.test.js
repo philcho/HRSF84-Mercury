@@ -10,8 +10,6 @@ describe('Event', () => {
       "name":"Some Awesome Event",
       "picture":"https://www.w3schools.com/w3css/img_fjords.jpg",
       "description":"This is a really cool event",
-      "__v":0,
-      "comments":[]
     };
     const output = shallow(
       <Event event={event} />
