@@ -40,9 +40,6 @@ export default class Superlative extends React.Component {
       .enter()
       .append('div')
       .style('width', (student, index, collection) => { return (student.votes * 50) + 'px'; })
-      .style('background-color', () => { return 'blue'; })
-      .style('border', () => { return '1px solid black'; })
-      .style('margin', () => { return '5px 0px'; })
       .insert('span')
       .text((student, index, collection) => { return student.name + ': ' + student.votes; });
   }
