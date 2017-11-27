@@ -155,19 +155,13 @@ export default class Superlative extends React.Component {
   }
 
   render() {
-    const inputStyle = {
-      'border': '1px solid black',
-      'padding': '5px',
-      'margin': '5px'
-    };
-
     return (
       <div className="superlative list-item container column">
         <div className="list-item-name superlative-name">{this.state.superlativeData.superlative}</div>
         <img className="list-item-img superlative-img" src={this.state.superlativeData.img} />
 
         <form onSubmit={(event) => { this.handleVote(event) }} >
-          <input id='input' list="chosenSuperlative" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
+          <input className='superlative-input' id='input' list="chosenSuperlative" name="superlativeChoice" placeholder="Who will you vote for? " />
 
           <datalist id="chosenSuperlative">
             {this.state.nominees.map((studentName, index, collection) => {
@@ -175,7 +169,7 @@ export default class Superlative extends React.Component {
             })}
           </datalist>
 
-          <button style={inputStyle}>Vote!</button>
+          <button className='superlative-input' >Vote!</button>
         </form>
         <br />
         <div className='chart'></div>

@@ -1,12 +1,6 @@
 import React from 'react';
 
 const CommentForm = ({ onSubmit, onChangeName, onChangeText, onChangeCategory, name, text, category = null }) => {
-  const inputStyle = {
-    'border': '1px solid black',
-    'padding': '5px',
-    'margin': '5px'
-  };
-
   return (
     <div className='form-comment container'>
       <form onSubmit={onSubmit}>
@@ -20,8 +14,8 @@ const CommentForm = ({ onSubmit, onChangeName, onChangeText, onChangeCategory, n
             </select>
           ) : ''
         }
-        <input style={inputStyle} type="text" name='name' placeholder='name' onChange={onChangeName} value={name} />
-        <input style={inputStyle} type="text" name='comment' placeholder='comment' onChange={onChangeText} value={text} />
+        <input className='form-input' type="text" name='name' placeholder='name' onChange={onChangeName} value={name} />
+        <input className='form-input' type="text" name='comment' placeholder='comment' onChange={onChangeText} value={text} />
         <input type='submit' value='Submit Comment' />
       </form>
     </div>
