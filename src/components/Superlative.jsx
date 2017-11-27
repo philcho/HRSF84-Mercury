@@ -39,7 +39,7 @@ export default class Superlative extends React.Component {
       .data(this.state.chartData)
       .enter()
       .append('div')
-      .style('width', (student, index, collection) => { return (student.votes * 50) + 'px'; })
+      .style('width', (student, index, collection) => { return (student.votes * 2) + '%'; })
       .insert('span')
       .text((student, index, collection) => { return student.name + ': ' + student.votes; });
   }
