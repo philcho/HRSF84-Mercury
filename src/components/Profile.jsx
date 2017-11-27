@@ -75,7 +75,7 @@ export default class Profile extends React.Component {
         <Nav />
 
         <div className="profile-info container column">
-          <img className="profile-picture" src={this.state.profileData.picture}/>
+          <img className="profile-picture" src={this.state.profileData.picture} />
 
           <div className="container column">
             <div className="profile-name">{this.state.profileData.name}</div>
