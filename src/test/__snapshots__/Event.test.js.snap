@@ -3,21 +3,21 @@
 exports[`Event should render correctly with props 1`] = `
 <a
   className="event container column"
-  href="###"
+  href="/event/_fakeId"
 >
   <img
     className="list-item-img event-img"
-    src="http://cdn1.theodysseyonline.com/files/2015/12/04/635848643983265445-579762_christmas-puppy-pictures-tzulxzui.jpg"
+    src="https://www.w3schools.com/w3css/img_fjords.jpg"
   />
   <div
     className="list-item-name event-name"
   >
-    Puppy Christmas
+    Some Awesome Event
   </div>
   <div
     className="list-item-bio event-bio"
   >
-    There were puppies and we all played and laughed and danced!
+    This is a really cool event
   </div>
 </a>
 `;

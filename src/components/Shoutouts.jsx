@@ -8,7 +8,10 @@ export default class Shoutouts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shoutouts: []
+      shoutouts: [],
+      shoutoutCategory: '',
+      shoutoutText: '',
+      shoutoutName: ''
     };
   }
 
@@ -26,12 +29,51 @@ export default class Shoutouts extends React.Component {
       });
   }
 
+  onSubmitShoutout(event) {
+    event.preventDefault();
+
+    axios.post('/add', {
+      modelType: 'shoutout',
+      data: {
+        category: this.state.shoutoutCategory,
+        text: this.state.shoutoutText,
+        name: this.state.shoutoutName
+      }
+    })
+      .then((response) => {
+        this.getAllShoutouts();
+      })
+      .catch((error) => {
+        console.log('onSubmitComment error', error);
+      });
+  }
+
+  onChangeShoutoutName(event) {
+    this.setState({shoutoutName: event.target.value});
+  }
+
+  onChangeShoutoutText(event) {
+    this.setState({shoutoutText: event.target.value});
+  }
+  
+  onChangeShoutoutCategory(event) {
+    this.setState({shoutoutCategory: event.target.value});
+  }
+
   render() {
     return (
       <div className="shoutouts container column">
         <Nav/>
         <h1>SHOUTOUTS</h1>
-        <CommentForm/>
+        <CommentForm
+          onSubmit={this.onSubmitShoutout.bind(this)}
+          onChangeName={this.onChangeShoutoutName.bind(this)}
+          onChangeText={this.onChangeShoutoutText.bind(this)}
+          onChangeCategory={this.onChangeShoutoutCategory.bind(this)}
+          name={this.state.shoutoutName}
+          text={this.state.shoutoutText}
+          category={this.state.shoutoutCategory}
+        />
 
         <div className="container row">
           {this.state.shoutouts.map((shoutout, index) => {
