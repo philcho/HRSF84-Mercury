@@ -75,7 +75,7 @@ export default class Shoutouts extends React.Component {
           category={this.state.shoutoutCategory}
         />
 
-        <div className="container row">
+        <div className='shoutouts-box container row'>
           {this.state.shoutouts.map((shoutout, index) => {
             return (
               <Shoutout shoutout={shoutout} key={shoutout._id}/>

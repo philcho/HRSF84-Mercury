@@ -180,3 +180,45 @@ form {
   max-width: 100%;
   margin-bottom: 2rem; 
 }
+
+.shoutouts-box {
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+}
+
+.shoutouts-box .shoutout {
+  text-align: center;
+}
+
+.shoutout-text {
+  font-weight: 900;
+  line-height: 1.75rem;
+}
+
+.shoutout-text:before {
+  content: '“';
+}
+
+.shoutout-text:after {
+  content: '”';
+}
+
+.shoutout-name {
+  font-size: 1.25rem;
+  content: '- ';
+}
+
+.shoutout-name:before {
+  content: '- ';
+}
+
+.shoutout-category {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+
