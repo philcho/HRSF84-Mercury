@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('superlative')
   );
 
+  // load the navbar
   ReactDOM.render(
     <Nav />,
     document.getElementById('nav')
