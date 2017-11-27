@@ -28,3 +28,19 @@
 .superlative-details-info {
   margin: 10px;
 }
+
+.superlative-input {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px
+}
+
+.superlative-label {
+  margin: 15px;
+}
+
+form {
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}

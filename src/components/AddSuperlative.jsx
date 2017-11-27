@@ -7,93 +7,84 @@ export default class AddSuperlative extends React.Component {
     super(props);
 
     this.state = {
-      studentId: window.location.href.split('/profile/')[1],
-      profileData: {
-        bio: '',
-        comments: []
-      },
-      commentName: '',
-      commentText: ''
+      superlative: '', // Ex. 'Best Socks'
+      img: '' // url for the image
     }
   }
 
-  componentDidMount() {
-    this.getProfileData();
+  onSuperlativeChange() {
+    this.setState({ 'superlative': document.getElementById('superlativeName').value });
   }
 
-  getProfileData() {
-    axios.post('/getParticular', {
-      'modelType': 'student',
-      'identifier': {
-        _id: this.state.studentId
-      }
-    })
-      .then((response) => {
-        if (response.data[0]) {
-          this.setState({ profileData: response.data[0] });
-        }
-      })
-      .catch((error) => {
-        console.log('getProfileData error', error);
-      });
+  onImgChange() {
+    this.setState({ 'img': document.getElementById('imgUrl').value });
   }
 
-  onSubmitComment(event) {
+  onSubmitSuperlative(event) {
     event.preventDefault();
 
-    axios.patch('/updateComments', {
-      modelType: 'student',
-      identifier: {
-        _id: this.state.studentId
-      },
-      comment: {
-        name: this.state.commentName,
-        comment: this.state.commentText
+    // TODO: put in borders for a user friendly method of error handling
+    // remove the input borders
+
+    let allFieldsValid = true;
+    if (this.state.superlative.length < 1) {
+      console.log('ERROR! You Need A Superlative!')
+      // set the superlative input field to have a red border
+      allFieldsValid = false;
+    }
+
+    if (this.state.img.length < 1) {
+      console.log('ERROR! You Need An Image!')
+      // set the image input field to have a red border
+      allFieldsValid = false;
+
+      // TODO: If there is no supplied image, then use the unsplash API to get an image
+      // use the superlative as the query string
+      // add in an extra step to let the user preview the unsplash image
+    }
+
+    if (!allFieldsValid) {
+      return undefined; // don't proceed further, there is at least 1 invalid field
+    }
+
+    // add the superlative to the database
+    axios.post('/add', {
+      'modelType': 'superlative',
+      'data': {
+        'superlative': this.state.superlative,
+        'img': this.state.img
       }
     })
       .then((response) => {
-        this.getProfileData();
+        console.log('You have successfully added a superlative!');
       })
-      .catch((error) => {
-        console.log('onSubmitComment error', error);
+      .catch((e) => {
+        console.log('Error in: \'onSubmitSuperlative\':\n', e);
       });
-  }
-
-  onChangeCommentName(event) {
-    this.setState({ commentName: event.target.value });
-  }
-
-  onChangeCommentText(event) {
-    this.setState({ commentText: event.target.value });
   }
 
   render() {
     return (
-      <div className="profile container column">
+      <div className='container column'>
         <Nav />
 
-        <div className="profile-info container column">
-          <img className="profile-picture" src={this.state.profileData.picture} />
+        <h1 className='superlative-label' >Add A New Superlative!</h1>
+        <form onSubmit={(event) => { this.onSubmitSuperlative(event) }} >
+          <fieldset>
+            <label className='superlative-label' htmlFor='superlativeName'>What Is The Superlative?</label>
+            <input className='superlative-input' onChange={() => { this.onSuperlativeChange() }} type='text' id='superlativeName' />
+          </fieldset>
+          <fieldset>
+            <label className='superlative-label' htmlFor='imgUrl'>Image URL</label>
+            <input className='superlative-input' onChange={() => { this.onImgChange() }} type='text' id='imgUrl' />
+          </fieldset>
+          <input type='submit' className='superlative-input superlative-label' />
+        </form>
 
-          <div className="container column">
-            <div className="profile-name">{this.state.profileData.name}</div>
-            <div className="profile-bio">
-              {this.state.profileData.bio.split('\n').map((item, key) => {
-                return <p key={key}>{item}</p>;
-              })}
-            </div>
-          </div>
+        <div className='preview'> {/* This will be a preview of the superlative with the given data */}
+          <div className="list-item-name superlative-name">{this.state.superlative}</div>
+          <img className="list-item-img superlative-img" src={this.state.img} />
         </div>
-
-        <CommentForm
-          onSubmit={this.onSubmitComment.bind(this)}
-          onChangeName={this.onChangeCommentName.bind(this)}
-          onChangeText={this.onChangeCommentText.bind(this)}
-          name={this.state.commentName}
-          text={this.state.commentText}
-        />
-
-        <Comments comments={this.state.profileData.comments} />
       </div>
     );
   }

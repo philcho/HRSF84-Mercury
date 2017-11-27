@@ -129,6 +129,10 @@ app.get('/superlatives', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'dist', 'superlatives.html'));
 });
 
+app.get('/addSuperlative', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'dist', 'addSuperlative.html'));
+});
+
 // =========================
 // ===== Generic Paths =====
 // =========================
