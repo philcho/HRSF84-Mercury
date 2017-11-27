@@ -28,7 +28,13 @@ export default class Superlative extends React.Component {
       return undefined; // don't execute the below code if there is no data
     }
 
-    if (document.getElementsByClassName("chart")[0].childElementCount < 1) { // create a new chart
+    const childrenCount = document.getElementsByClassName("chart")[0].childElementCount;
+    const someVotes = this.state.chartData.map((nominee, index, collection) => {
+      return nominee.votes;
+    });
+    const greatestVoteCount = Math.max.apply(Math, someVotes);
+
+    if (childrenCount < 1) { // create a new chart
       d3.select('.chart')
         .selectAll('div')
         .data(this.state.chartData)
@@ -41,7 +47,7 @@ export default class Superlative extends React.Component {
         .duration(1500)
         // delay causes the transition to appear more organic
         .delay(function (element, index, collection) {
-          return index * 500;
+          return index * 500 * (element.votes / greatestVoteCount) + 500;
         })
         .ease(d3.easeLinear)
         .style('width', (student, index, collection) => { return (student.votes * 20) + 'px'; });
@@ -56,19 +62,34 @@ export default class Superlative extends React.Component {
       let thing = d3.select('.chart').selectAll('div')
         .data(this.state.chartData);
 
-      // add new elements
-      thing.enter().append('div');
-
-      // apply the visual change
-      thing.transition()
+      // extend a bar
+      thing.enter().append('div')
+        .style('background-color', () => { return 'blue'; })
+        .style('border', () => { return '1px solid black'; })
+        .style('margin', () => { return '5px 0px'; })
+        .transition()
         .duration(500)
         .ease(d3.easeLinear)
         .style('width', (student, index, collection) => { return (student.votes * 20) + 'px'; });
 
-      // update the text
+      // apply the visual change (extend the bar)
+      thing
+        .transition()
+        .duration(500)
+        .ease(d3.easeLinear)
+        .style('width', (student, index, collection) => { return (student.votes * 20) + 'px'; });
+
+      // remove then add spans in case if a new student was nominated
+      // removes all old spans
       d3.select('.chart')
         .selectAll('div')
         .select('span')
+        .remove();
+
+      // update the text
+      d3.select('.chart')
+        .selectAll('div')
+        .insert('span')
         .text((student, index, collection) => { return student.name + ': ' + student.votes; });
     }
 
@@ -152,7 +173,7 @@ export default class Superlative extends React.Component {
         <img className="list-item-img superlative-img" src={this.state.superlativeData.img} />
 
         <form onSubmit={(event) => { this.handleVote(event) }} >
-          <input id='input' list="superlatives" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
+          <input id='input' list="chosenSuperlative" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
 
           <datalist id="chosenSuperlative">
             {this.state.nominees.map((studentName, index, collection) => {
@@ -160,7 +181,7 @@ export default class Superlative extends React.Component {
             })}
           </datalist>
 
-          <button>Vote!</button>
+          <button style={inputStyle}>Vote!</button>
         </form>
         <br />
         <div className='chart'></div>
