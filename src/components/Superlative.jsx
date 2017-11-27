@@ -8,37 +8,67 @@ export default class Superlative extends React.Component {
     super(props);
 
     this.state = {
-      'superlativeData': {
-      },
-      'nominees': [] // this is the list of people to vote for
-      // this is in addition to the superlativeData.nominees, because this is only the names, not complex objects
+      'superlativeData': {},
+      'nominees': [], // this is the list of people to vote for
+      // nominees's data is from the list of students
+      'chartData': [] // this is the data for the d3 chart
     }
   }
 
   componentDidMount() {
+    this.getStudents();
     this.getSuperlativeData();
   }
 
+  generateChart() {
+    // removes any previous instance of a chart
+    // this lets it update when a new vote is made
+    var myNode = document.getElementsByClassName("chart")[0];
+    myNode.innerHTML = '';
+
+    if (this.state.chartData.length < 1) { // no votes in yet
+      d3.select('.chart')
+        .append('h1')
+        .text(() => { return 'No votes in yet... So be the first!'; });
+      return undefined; // don't execute the below code if there is no data
+    }
+
+    // d3 code
+    d3.select('.chart')
+      .selectAll('div')
+      .data(this.state.chartData)
+      .enter()
+      .append('div')
+      .style('width', (student, index, collection) => { return (student.votes * 50) + 'px'; })
+      .style('background-color', () => { return 'blue'; })
+      .style('border', () => { return '1px solid black'; })
+      .style('margin', () => { return '5px 0px'; })
+      .insert('span')
+      .text((student, index, collection) => { return student.name + ': ' + student.votes; });
+  }
+
   getSuperlativeData() {
-    // Example URL: http://localhost:3000/superlative/Most%20Likely%20To%20Be%20An%20Axe%20Murder
+    // This function uses the current URL
+    // Example URL: http://localhost:3000/superlative/Best%20Socks
 
     // get the superlative id and undo the url encoding
     const superlativeName = decodeURIComponent(window.location.href.split('/superlative/')[1]);
 
-    axios.post('/getParticularSuperlative', {
-      superlativeInfo: {
-        _id: superlativeName
+    axios.post('/getParticular', {
+      'modelType': 'superlative',
+      'identifier': {
+        'superlative': superlativeName
       }
     })
       .then((response) => {
         if (response.data[0]) {
-          console.log('data', response.data[0]);
           this.setState({
             superlativeData: response.data[0],
-            nominees: response.data[0].nominees.map((nominee, index, collection) => {
-              return nominee.name;
+            chartData: response.data[0].nominees.map((nominee, index, collection) => {
+              return { 'name': nominee.name, 'votes': nominee.votes };
             })
           });
+          this.generateChart(); // update the Chart with the new data
         }
       })
       .catch((error) => {
@@ -46,8 +76,19 @@ export default class Superlative extends React.Component {
       });
   }
 
+  getStudents() {
+    axios.get('/getAllStudents')
+      .then((students) => {
+        this.setState({
+          'nominees': students.data.map((student, index, collection) => {
+            return student.name;
+          })
+        });
+      });
+  }
+
   getLeaders() {
-    if (this.state.superlativeData.nominees.length < 1) {
+    if (this.state.chartData.length < 1) {
       return (
         <h3>
           No votes in yet. Be the first!
@@ -75,10 +116,8 @@ export default class Superlative extends React.Component {
         },
         'nomineeName': person
       })
-        .then((response) => {
-          // update the superlativeData
-          // This is a decent enough place to update, in case if someone else voted since the user loaded this page
-          this.setState({ 'superlativeData': response.data });
+        .then(() => { // update the data
+          this.getSuperlativeData();
         })
         .catch((error) => {
           console.log('Error in updating the vote:', error);
@@ -97,8 +136,8 @@ export default class Superlative extends React.Component {
 
     return (
       <div className="superlative list-item container column">
-        <div className="list-item-name superative-name">{this.state.superlativeData.superlative}</div>
-        <img className="list-item-img superative-img" src={this.state.superlativeData.img} />
+        <div className="list-item-name superlative-name">{this.state.superlativeData.superlative}</div>
+        <img className="list-item-img superlative-img" src={this.state.superlativeData.img} />
 
         <form onSubmit={(event) => { this.handleVote(event) }} >
           <input id='input' list="superlatives" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
@@ -111,8 +150,9 @@ export default class Superlative extends React.Component {
 
           <button>Vote!</button>
         </form>
-
-        <div>Leaderboard here</div>
+        <br />
+        <p>Leaderboard here</p>
+        <div className='chart'></div>
       </div>
     );
   }
