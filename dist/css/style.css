@@ -79,8 +79,47 @@ img {
   color: rgba(255, 255, 255, 0.6);
 }
 
+.form-comment {
+  margin: 2rem auto;
+}
+
+.form-comment form {
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.form-comment select {
+  width: 48%;
+  min-width: 300px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+}
+
 .form-input {
-  padding: 5px;
+  width: 48%;
+  min-width: 200px;
+  margin: 0 1% 1rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
   border: 1px solid black;
-  margin: 5px
+}
+
+.form-input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.form-comment input[type="submit"] {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.form-comment input[type="submit"]:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
