@@ -80,6 +80,8 @@ img {
 }
 
 .form-comment {
+  width: 800px;
+  max-width: 100%;
   margin: 2rem auto;
 }
 
@@ -122,4 +124,10 @@ img {
 
 .form-comment input[type="submit"]:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.event-details-info .container {
+  width: 800px;
+  max-width: 100%;
+  margin: 2rem auto;
 }
