@@ -6,14 +6,23 @@
 }
 
 .chart {
-  padding: 10px;
+  padding: 10px 10px 10px 23rem;
   border: 1px solid black;
 }
 
 .chart > div {
+  position: relative;
+  height: 2.5rem;
   background-color: blue;
   border: 1px solid black;
   margin: 5px 0;
+}
+
+.chart > div span {
+  position: absolute;
+  left: -23rem;
+  width: 22rem;
+  text-align: right;
 }
 
 .superlative-details-info {
