@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments should render correctly with props 1`] = `
+<div
+  className="container column"
+>
+  <div
+    className="comment"
+    key="_fakeId"
+  >
+    Some Awesome Name: A great comment!
+  </div>
+</div>
+`;
