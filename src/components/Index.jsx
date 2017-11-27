@@ -17,7 +17,7 @@ export default class Index extends React.Component {
           <div className="subtitle-collective subtitle-page">Your space. Your memories. Your community.</div>
         </div>
 
-        <div class="stripes">
+        <div className="stripes">
           <span></span>
           <span></span>
           <span></span>
@@ -26,3 +26,4 @@ export default class Index extends React.Component {
     );
   }
 }
+

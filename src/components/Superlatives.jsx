@@ -45,3 +45,4 @@ export default class Superlatives extends React.Component {
     );
   }
 }
+

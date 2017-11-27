@@ -12,3 +12,4 @@ const SuperlativeLink = ({ superlative }) => {
 };
 
 export default SuperlativeLink;
+

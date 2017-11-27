@@ -62,11 +62,11 @@ export default class Profile extends React.Component {
   }
 
   onChangeCommentName(event) {
-    this.setState({commentName: event.target.value});
+    this.setState({ commentName: event.target.value });
   }
 
   onChangeCommentText(event) {
-    this.setState({commentText: event.target.value});
+    this.setState({ commentText: event.target.value });
   }
 
   render() {
@@ -100,3 +100,4 @@ export default class Profile extends React.Component {
     );
   }
 }
+
