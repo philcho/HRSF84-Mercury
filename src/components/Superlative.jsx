@@ -29,6 +29,10 @@ export default class Superlative extends React.Component {
     }
 
     const childrenCount = document.getElementsByClassName("chart")[0].childElementCount;
+    const someVotes = this.state.chartData.map((nominee, index, collection) => {
+      return nominee.votes;
+    });
+    const greatestVoteCount = Math.max.apply(Math, someVotes);
 
     if (childrenCount < 1) { // create a new chart
       d3.select('.chart')
@@ -43,7 +47,7 @@ export default class Superlative extends React.Component {
         .duration(1500)
         // delay causes the transition to appear more organic
         .delay(function (element, index, collection) {
-          return index * 500;
+          return index * 500 * (element.votes / greatestVoteCount) + 500;
         })
         .ease(d3.easeLinear)
         .style('width', (student, index, collection) => { return (student.votes * 20) + 'px'; });
@@ -177,7 +181,7 @@ export default class Superlative extends React.Component {
             })}
           </datalist>
 
-          <button>Vote!</button>
+          <button style={inputStyle}>Vote!</button>
         </form>
         <br />
         <div className='chart'></div>
