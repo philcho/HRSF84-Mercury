@@ -174,3 +174,9 @@ form {
   padding: 1rem;
   border-radius: 40px;
 }
+
+.comment {
+  width: 800px;
+  max-width: 100%;
+  margin-bottom: 2rem; 
+}
