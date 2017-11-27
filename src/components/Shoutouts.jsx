@@ -49,15 +49,15 @@ export default class Shoutouts extends React.Component {
   }
 
   onChangeShoutoutName(event) {
-    this.setState({shoutoutName: event.target.value});
+    this.setState({ shoutoutName: event.target.value });
   }
 
   onChangeShoutoutText(event) {
-    this.setState({shoutoutText: event.target.value});
+    this.setState({ shoutoutText: event.target.value });
   }
   
   onChangeShoutoutCategory(event) {
-    this.setState({shoutoutCategory: event.target.value});
+    this.setState({ shoutoutCategory: event.target.value });
   }
 
   render() {
@@ -86,3 +86,4 @@ export default class Shoutouts extends React.Component {
     );
   }
 }
+

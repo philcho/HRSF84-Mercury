@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Shoutout = ({shoutout}) => {
+const Shoutout = ({ shoutout }) => {
   return (
     <div className="shoutout list-item container column">
       <div className="">{shoutout.text}</div>
@@ -11,3 +11,4 @@ const Shoutout = ({shoutout}) => {
 };
 
 export default Shoutout;
+

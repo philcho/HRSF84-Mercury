@@ -12,3 +12,4 @@ const Student = ({ studentData }) => {
 };
 
 export default Student;
+

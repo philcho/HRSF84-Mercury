@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CommentForm = ({onSubmit, onChangeName, onChangeText, onChangeCategory, name, text, category = null}) => {
+const CommentForm = ({ onSubmit, onChangeName, onChangeText, onChangeCategory, name, text, category = null }) => {
   const inputStyle = {
     'border': '1px solid black',
     'padding': '5px',

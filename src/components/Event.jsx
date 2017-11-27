@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Event = ({event}) => {
+const Event = ({ event }) => {
   return (
     <a className="event container column" href={`/event/${event._id}`}>
       <img className="list-item-img event-img" src={event.picture}/>
@@ -11,3 +11,4 @@ const Event = ({event}) => {
 };
 
 export default Event;
+
