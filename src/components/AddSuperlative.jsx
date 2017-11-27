@@ -65,25 +65,25 @@ export default class AddSuperlative extends React.Component {
 
   render() {
     return (
-      <div className='container column'>
+      <div className="container column">
         <Nav />
 
-        <h1 className='superlative-label' >Add A New Superlative!</h1>
+        <h1 className="superlative-label" >Add A New Superlative!</h1>
         <form onSubmit={(event) => { this.onSubmitSuperlative(event) }} >
           <fieldset>
-            <label className='superlative-label' htmlFor='superlativeName'>What Is The Superlative?</label>
-            <input className='superlative-input' onChange={() => { this.onSuperlativeChange() }} type='text' id='superlativeName' />
+            <label className="superlative-label" htmlFor="superlativeName">What Is The Superlative?</label>
+            <input className="superlative-input" onChange={() => { this.onSuperlativeChange() }} type="text" id="superlativeName" />
           </fieldset>
           <fieldset>
-            <label className='superlative-label' htmlFor='imgUrl'>Image URL</label>
-            <input className='superlative-input' onChange={() => { this.onImgChange() }} type='text' id='imgUrl' />
+            <label className="superlative-label" htmlFor="imgUrl">Image URL</label>
+            <input className="superlative-input" onChange={() => { this.onImgChange() }} type="text" id="imgUrl" />
           </fieldset>
-          <input type='submit' className='superlative-input superlative-label' />
+          <input type="submit" className="superlative-input superlative-label" />
         </form>
 
-        <div className='preview'> {/* This will be a preview of the superlative with the given data */}
-          <div className='list-item-name superlative-name'>{this.state.superlative}</div>
-          <img className='list-item-img superlative-img' src={this.state.img} />
+        <div className="preview"> {/* This will be a preview of the superlative with the given data */}
+          <div className="list-item-name superlative-name">{this.state.superlative}</div>
+          <img className="list-item-img superlative-img" src={this.state.img} />
         </div>
       </div>
     );

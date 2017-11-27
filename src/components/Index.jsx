@@ -9,15 +9,15 @@ export default class Index extends React.Component {
 
   render() {
     return (
-      <div className='index container column'>
+      <div className="index container column">
         <Nav/>
 
-        <div className='hero'>
-          <div className='title-collective title-page'>COLLECTIVE</div>
-          <div className='subtitle-collective subtitle-page'>Your space. Your memories. Your community.</div>
+        <div className="hero">
+          <div className="title-collective title-page">COLLECTIVE</div>
+          <div className="subtitle-collective subtitle-page">Your space. Your memories. Your community.</div>
         </div>
 
-        <div className='stripes'>
+        <div className="stripes">
           <span></span>
           <span></span>
           <span></span>

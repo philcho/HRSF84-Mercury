@@ -160,23 +160,23 @@ export default class Superlative extends React.Component {
 
   render() {
     return (
-      <div className='superlative list-item container column'>
-        <div className='list-item-name superlative-name'>{this.state.superlativeData.superlative}</div>
-        <img className='list-item-img superlative-img' src={this.state.superlativeData.img} />
+      <div className="superlative list-item container column">
+        <div className="list-item-name superlative-name">{this.state.superlativeData.superlative}</div>
+        <img className="list-item-img superlative-img" src={this.state.superlativeData.img} />
 
         <form onSubmit={(event) => { this.handleVote(event) }} >
-          <input className='superlative-input' id='input' list='chosenSuperlative' name='superlativeChoice' placeholder='Who will you vote for? ' />
+          <input className="superlative-input" id="input" list="chosenSuperlative" name="superlativeChoice" placeholder="Who will you vote for? " />
 
-          <datalist id='chosenSuperlative'>
+          <datalist id="chosenSuperlative">
             {this.state.nominees.map((studentName, index, collection) => {
               return (<option value={studentName} key={index} />);
             })}
           </datalist>
 
-          <button className='superlative-input' >Vote!</button>
+          <button className="superlative-input" >Vote!</button>
         </form>
         <br />
-        <div className='chart'></div>
+        <div className="chart"></div>
         <br /> <br /> {/* Prevent the bottom of the graph from seeming 'cut off' */}
       </div>
     );
