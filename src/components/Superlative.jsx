@@ -26,6 +26,13 @@ export default class Superlative extends React.Component {
     var myNode = document.getElementsByClassName("chart")[0];
     myNode.innerHTML = '';
 
+    if (this.state.chartData.length < 1) { // no votes in yet
+      d3.select('.chart')
+        .append('h1')
+        .text(() => { return 'No votes in yet... So be the first!'; });
+      return undefined; // don't execute the below code if there is no data
+    }
+
     // d3 code
     d3.select('.chart')
       .selectAll('div')
