@@ -29,6 +29,9 @@ export default class Superlative extends React.Component {
     }
 
     if (document.getElementsByClassName("chart")[0].childElementCount < 1) { // create a new chart
+      //var totalNumOfVotes = d3.sum(this.state.chartData, function(d) { return +d.votes;} )
+      var maxNumOfVotes = d3.max(this.state.chartData, function(d) { return +d.votes;} );
+
       d3.select('.chart')
         .selectAll('div')
         .data(this.state.chartData)
@@ -41,7 +44,7 @@ export default class Superlative extends React.Component {
           return index * 500;
         })
         .ease(d3.easeLinear)
-        .style('width', (student, index, collection) => { return (student.votes * 20) + 'px'; });
+        .style('width', (student, index, collection) => { return (student.votes / maxNumOfVotes * 100) + '%'; });
 
       // This has to be in a seperate code block, otherwise it will throw an 'is not a function' error
       d3.select('.chart')
