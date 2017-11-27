@@ -8,14 +8,14 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <div className="nav container row">
-        <div id="logo"><a href="/">🌚</a></div>
+      <div className='nav container row'>
+        <div id='logo'><a href='/'>🌚</a></div>
 
-        <div id="menu">
-          <a href="/students">Students</a>
-          <a href="/events">Events</a>
-          <a href="/superlatives">Superlatives</a>
-          <a href="/shoutouts">Shoutouts</a>
+        <div id='menu'>
+          <a href='/students'>Students</a>
+          <a href='/events'>Events</a>
+          <a href='/superlatives'>Superlatives</a>
+          <a href='/shoutouts'>Shoutouts</a>
         </div>
       </div>
     );

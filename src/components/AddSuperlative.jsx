@@ -82,8 +82,8 @@ export default class AddSuperlative extends React.Component {
         </form>
 
         <div className='preview'> {/* This will be a preview of the superlative with the given data */}
-          <div className="list-item-name superlative-name">{this.state.superlative}</div>
-          <img className="list-item-img superlative-img" src={this.state.img} />
+          <div className='list-item-name superlative-name'>{this.state.superlative}</div>
+          <img className='list-item-img superlative-img' src={this.state.img} />
         </div>
       </div>
     );

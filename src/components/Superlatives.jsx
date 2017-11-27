@@ -30,12 +30,12 @@ export default class Superlatives extends React.Component {
       <div>
         <Nav />
 
-        <div className="container column">
+        <div className='container column'>
 
           <h1>Superlatives</h1>
           <a className='addPage' href='/addSuperlative'>Add A Superlative</a>
 
-          <div className="container row">
+          <div className='container row'>
             {this.state.superlatives.map((superlative, index) => {
               return (
                 <SuperlativeLink superlative={superlative} key={superlative._id} />
