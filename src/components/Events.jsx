@@ -34,15 +34,9 @@ export default class Events extends React.Component {
           <div className="title-page">EVENTS</div>
 
           <div className="container column">
-            {/* {this.state.events.map((event, index) => {
+            {this.state.events.map((event, index) => {
               return (<Event event={event} key={event._id}/>);
-            })} */}
-
-            <Event/>
-            <Event/>
-            <Event/>
-            <Event/>
-            <Event/>
+            })}
           </div>
         </div>
       </div>
