@@ -7,11 +7,6 @@ const Student = ({ studentData }) => {
         <img className="list-item-img student-img" src={studentData.picture} />
         <label className="list-item-name student-name">{studentData.name}</label>
       </a>
-
-      {/* <a className="student-box" href="###">
-        <img className="list-item-img student-img" src="https://cdn.dribbble.com/users/2973/screenshots/1331728/drbbbl_01.jpg"/>
-        <label className="list-item-name student-name">Sam Sepiol</label>
-      </a> */}
     </div>
   )
 };
