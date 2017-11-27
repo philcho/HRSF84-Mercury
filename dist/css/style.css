@@ -78,3 +78,9 @@ img {
   margin-top: 1rem;
   color: rgba(255, 255, 255, 0.6);
 }
+
+.form-input {
+  padding: 5px;
+  border: 1px solid black;
+  margin: 5px
+}
