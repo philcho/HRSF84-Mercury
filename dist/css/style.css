@@ -16,11 +16,17 @@ html {
 
 body {
   background: #FFF;
-  font-family: 'Space Mono', serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: 1.5rem;
-  font-weight: 300;
-  color: #222;
+  font-weight: 400;
+  color: #444;
   line-height: 1.5;
+}
+
+a {
+  display: inline-block;
+  color: #444;
+  text-decoration: none;
 }
 
 img {
@@ -50,23 +56,25 @@ img {
   padding: 0 2rem;
 }
 
+.nav a {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .nav a:not(:last-child) {
   margin-right: 1rem;
 }
 
 .title-page {
-  background-image: linear-gradient(45deg, #FD8BA9, #9A94E8, #2EDBF8, #F5F1C8, #FD8BA9);
-  background-color: #6122FF;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 3.5rem;
-  font-weight: bold;
-  letter-spacing: 0.2rem;
+  font-weight: 700;
 }
 
 .subtitle-page {
-  font-size: 2.5rem;
-  letter-spacing: 0.2rem;
+  font-size: 2rem;
   margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.6);
 }
