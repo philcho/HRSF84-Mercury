@@ -162,6 +162,7 @@ export default class Superlative extends React.Component {
           <button>Vote!</button>
         </form>
         <br />
+
         <div className='chart'></div>
       </div>
     );
