@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment Form should render correctly 1`] = `
+<div
+  className="form-comment container"
+>
+  <form>
+    <input
+      name="name"
+      style={
+        Object {
+          "border": "1px solid black",
+          "margin": "5px",
+          "padding": "5px",
+        }
+      }
+      type="text"
+      value="Bob Loblaw"
+    />
+    <input
+      name="comment"
+      style={
+        Object {
+          "border": "1px solid black",
+          "margin": "5px",
+          "padding": "5px",
+        }
+      }
+      type="text"
+      value="Rock on."
+    />
+    <input
+      type="submit"
+      value="Submit Comment"
+    />
+  </form>
+</div>
+`;
+
+exports[`Comment Form should render correctly with props 1`] = `
+<div
+  className="form-comment container"
+>
+  <form>
+    <input
+      name="name"
+      style={
+        Object {
+          "border": "1px solid black",
+          "margin": "5px",
+          "padding": "5px",
+        }
+      }
+      type="text"
+      value="Bob Loblaw"
+    />
+    <input
+      name="comment"
+      style={
+        Object {
+          "border": "1px solid black",
+          "margin": "5px",
+          "padding": "5px",
+        }
+      }
+      type="text"
+      value="Rock on."
+    />
+    <input
+      type="submit"
+      value="Submit Comment"
+    />
+  </form>
+</div>
+`;
