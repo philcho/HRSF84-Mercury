@@ -139,8 +139,8 @@ const loadParticular = (modelType = 'student', identifier) => {
     });
 };
 
-const loadAll = (modelType = 'student') => {
-  return getModelType(modelType).find().exec()
+const loadAll = (modelType = 'student', sortField = '_id') => {
+  return getModelType(modelType).find().sort({ [sortField]: 1 }).exec()
     .then((data) => {
       return data;
     })
