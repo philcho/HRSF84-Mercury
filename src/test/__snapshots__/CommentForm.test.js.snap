@@ -19,10 +19,14 @@ exports[`Comment Form should render correctly with props 1`] = `
       type="text"
       value="Rock on."
     />
-    <input
-      type="submit"
-      value="Submit Comment"
-    />
+    <div
+      className="submit-box"
+    >
+      <input
+        type="submit"
+        value="Submit Comment"
+      />
+    </div>
   </form>
 </div>
 `;

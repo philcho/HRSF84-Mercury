@@ -6,17 +6,21 @@ const CommentForm = ({ onSubmit, onChangeName, onChangeText, onChangeCategory, n
       <form onSubmit={onSubmit}>
         {(category !== null) ?
           (
-            <select onChange={onChangeCategory}>
-              <option value='Quote'>Quote</option>
-              <option value='To Everyone'>To Everyone</option>
-              <option value='To Staff'>To Staff</option>
-              <option value='Meme'>Meme</option>
-            </select>
+            <div className="select-box">
+              <select onChange={onChangeCategory}>
+                <option value="Quote">Quote</option>
+                <option value="To Everyone">To Everyone</option>
+                <option value="To Staff">To Staff</option>
+                <option value="Meme">Meme</option>
+              </select>
+            </div>
           ) : ''
         }
-        <input className='form-input' type='text' name='name' placeholder='name' onChange={onChangeName} value={name} />
-        <input className='form-input' type='text' name='comment' placeholder='comment' onChange={onChangeText} value={text} />
-        <input type='submit' value='Submit Comment' />
+        <input className='form-input' type="text" name='name' placeholder='name' onChange={onChangeName} value={name} />
+        <input className='form-input' type="text" name='comment' placeholder='comment' onChange={onChangeText} value={text} />
+        <div className="submit-box">
+          <input type='submit' value='Submit Comment' />
+        </div>
       </form>
     </div>
   )
