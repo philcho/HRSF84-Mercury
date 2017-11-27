@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shoutout should render correctly with props 1`] = `
+<div
+  className="shoutout list-item container column"
+>
+  <div
+    className=""
+  >
+    Some amazing shoutout text
+  </div>
+  <div
+    className=""
+  >
+    Some Awesome Shoutout
+  </div>
+  <div
+    className=""
+  >
+    Meme
+  </div>
+</div>
+`;
