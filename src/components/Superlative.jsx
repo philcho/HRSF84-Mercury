@@ -185,6 +185,7 @@ export default class Superlative extends React.Component {
         </form>
         <br />
         <div className='chart'></div>
+        <br /> <br /> {/* Prevent the bottom of the graph from seeming 'cut off' */}
       </div>
     );
   }
