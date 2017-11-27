@@ -6,26 +6,16 @@ exports[`Comment Form should render correctly with props 1`] = `
 >
   <form>
     <input
+      className="form-input"
       name="name"
-      style={
-        Object {
-          "border": "1px solid black",
-          "margin": "5px",
-          "padding": "5px",
-        }
-      }
+      placeholder="name"
       type="text"
       value="Bob Loblaw"
     />
     <input
+      className="form-input"
       name="comment"
-      style={
-        Object {
-          "border": "1px solid black",
-          "margin": "5px",
-          "padding": "5px",
-        }
-      }
+      placeholder="comment"
       type="text"
       value="Rock on."
     />
