@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SuperlativeLink should render correctly with props 1`] = `
+<a
+  className="superlative-details-info container column"
+  href="/superlative/This is a really cool superlative"
+>
+  <img
+    className="superlative-img"
+    src="https://www.w3schools.com/w3css/img_fjords.jpg"
+  />
+  <div
+    className="container column"
+  >
+    <div
+      className="superlative-name"
+    >
+      This is a really cool superlative
+    </div>
+  </div>
+</a>
+`;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const CommentForm = ({ onSubmit, onChangeName, onChangeText, onChangeCategory, name, text, category = null }) => {
   return (
-    <div className='form-comment container'>
+    <div className="form-comment container">
       <form onSubmit={onSubmit}>
         {(category !== null) ?
           (
@@ -16,10 +16,10 @@ const CommentForm = ({ onSubmit, onChangeName, onChangeText, onChangeCategory, n
             </div>
           ) : ''
         }
-        <input className='form-input' type="text" name='name' placeholder='name' onChange={onChangeName} value={name} />
-        <input className='form-input' type="text" name='comment' placeholder='comment' onChange={onChangeText} value={text} />
+        <input className="form-input" type="text" name="name" placeholder="name" onChange={onChangeName} value={name} />
+        <input className="form-input" type="text" name="comment" placeholder="comment" onChange={onChangeText} value={text} />
         <div className="submit-box">
-          <input type='submit' value='Submit Comment' />
+          <input type="submit" value="Submit Comment" />
         </div>
       </form>
     </div>

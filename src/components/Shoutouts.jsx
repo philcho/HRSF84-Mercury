@@ -62,7 +62,7 @@ export default class Shoutouts extends React.Component {
 
   render() {
     return (
-      <div className='shoutouts container column'>
+      <div className="shoutouts container column">
         <Nav/>
         <h1>SHOUTOUTS</h1>
         <CommentForm
@@ -75,7 +75,7 @@ export default class Shoutouts extends React.Component {
           category={this.state.shoutoutCategory}
         />
 
-        <div className='container row'>
+        <div className="container row">
           {this.state.shoutouts.map((shoutout, index) => {
             return (
               <Shoutout shoutout={shoutout} key={shoutout._id}/>

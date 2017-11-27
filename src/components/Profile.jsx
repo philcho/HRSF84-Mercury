@@ -71,15 +71,15 @@ export default class Profile extends React.Component {
 
   render() {
     return (
-      <div className='profile container column'>
+      <div className="profile container column">
         <Nav />
 
-        <div className='profile-info container column'>
-          <img className='profile-picture' src={this.state.profileData.picture} />
+        <div className="profile-info container column">
+          <img className="profile-picture" src={this.state.profileData.picture} />
 
-          <div className='container column'>
-            <div className='profile-name'>{this.state.profileData.name}</div>
-            <div className='profile-bio'>
+          <div className="container column">
+            <div className="profile-name">{this.state.profileData.name}</div>
+            <div className="profile-bio">
               {this.state.profileData.bio.split('\n').map((item, key) => {
                 return <p key={key}>{item}</p>;
               })}

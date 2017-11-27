@@ -6,10 +6,10 @@ import Event from '../components/Event';
 describe('Event', () => {
   it('should render correctly with props', () => {
     const event = {
-      "_id":"_fakeId",
-      "name":"Some Awesome Event",
-      "picture":"https://www.w3schools.com/w3css/img_fjords.jpg",
-      "description":"This is a really cool event",
+      '_id':'_fakeId',
+      'name':'Some Awesome Event',
+      'picture':'https://www.w3schools.com/w3css/img_fjords.jpg',
+      'description':'This is a really cool event'
     };
     const output = shallow(
       <Event event={event} />

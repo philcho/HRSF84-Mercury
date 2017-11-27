@@ -15,13 +15,13 @@ describe('Event Details', () => {
     mock.onPost('/getParticular').reply(200, {});
 
     const eventData = {
-      "_id":"5a0dd97850afe3ca33f34c04",
-      "name":"Graduation",
-      "date":"October the 21",
-      "picture":"http://cdn1.theodysseyonline.com/files/2015/12/04/635848643983265445-579762_christmas-puppy-pictures-tzulxzui.jpg",
-      "description":"Oh the places we'll go!",
-      "__v":0,
-      "comments":[]
+      '_id':'5a0dd97850afe3ca33f34c04',
+      'name':'Graduation',
+      'date':'October the 21',
+      'picture':'http://cdn1.theodysseyonline.com/files/2015/12/04/635848643983265445-579762_christmas-puppy-pictures-tzulxzui.jpg',
+      'description':'Oh the places we\'ll go!',
+      '__v':0,
+      'comments':[]
     };
     const output = shallow(
       <EventDetails />
