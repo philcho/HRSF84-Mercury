@@ -53,7 +53,7 @@ app.get(/.+bundle.js.*/, (req, res, next) => {
 // =====================
 
 app.get('/getAllStudents', (req, res, next) => {
-  db.loadAll('student')
+  db.loadAll('student', 'name')
     .then((data) => {
       res.send(JSON.stringify(data));
     })
