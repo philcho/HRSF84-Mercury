@@ -10,14 +10,18 @@ exports[`Event should render correctly with props 1`] = `
     src="https://www.w3schools.com/w3css/img_fjords.jpg"
   />
   <div
-    className="list-item-name event-name"
+    className="event-text"
   >
-    Some Awesome Event
-  </div>
-  <div
-    className="list-item-bio event-bio"
-  >
-    This is a really cool event
+    <div
+      className="list-item-name event-name"
+    >
+      Some Awesome Event
+    </div>
+    <div
+      className="list-item-bio event-bio"
+    >
+      This is a really cool event
+    </div>
   </div>
 </a>
 `;

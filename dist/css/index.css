@@ -15,6 +15,7 @@ html {
   font-size: 10rem;
   font-weight: 700;
   color: #FFF;
+  text-transform: uppercase;
 }
 
 .subtitle-collective {
@@ -26,7 +27,7 @@ html {
   display: grid;
   position: absolute;
   align-content: space-between;
-  grid: repeat(2, 200px) / 1fr minmax(0, 1000px) 1fr;
+  grid: repeat(4, 200px) / 1fr minmax(0, 1000px) 1fr;
   bottom: 0;
   left: 50%;
   width: 100%;

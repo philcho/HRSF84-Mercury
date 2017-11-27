@@ -13,7 +13,7 @@ export default class Index extends React.Component {
         <Nav/>
 
         <div className="hero">
-          <div className="title-collective title-page">COLLECTIVE</div>
+          <div className="title-collective">Collective</div>
           <div className="subtitle-collective subtitle-page">Your space. Your memories. Your community.</div>
         </div>
 
@@ -26,4 +26,3 @@ export default class Index extends React.Component {
     );
   }
 }
-

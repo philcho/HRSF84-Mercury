@@ -31,7 +31,7 @@ export default class Students extends React.Component {
         <Nav/>
 
         <div className="students container column">
-          <div className="title-page">STUDENTS</div>
+          <div className="title-page">Students</div>
 
           <div className="container row">
             {this.state.studentsData.map((student, index, collection) => {
