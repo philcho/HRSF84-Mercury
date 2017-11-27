@@ -44,7 +44,11 @@ export default class Superlative extends React.Component {
         .duration(1500)
         // delay causes the transition to appear more organic
         .delay(function (element, index, collection) {
-          return index * 500 * (element.votes / greatestVoteCount) + 500;
+          // Make sure that the delay time is neither to long nor too short
+          let delayTime = index * 500 * (element.votes / greatestVoteCount) + 500;
+          delayTime = Math.min.apply(Math, [delayTime, 2000]);
+          delayTime = Math.max.apply(Math, [delayTime, 500]);
+          return delayTime;
         })
         .ease(d3.easeLinear)
         .style('width', (student, index, collection) => { return (student.votes * 20) + 'px'; });
