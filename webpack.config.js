@@ -15,7 +15,8 @@ module.exports = {
       'event-details': './loadEventDetails.js',
       'shoutouts': './loadShoutouts.js',
       'superlative': './loadSuperlative.js',
-      'superlatives': './loadSuperlatives.js'
+      'superlatives': './loadSuperlatives.js',
+      'addSuperlative': './loadAddSuperlative.js'
     }
   ,
   output: {
