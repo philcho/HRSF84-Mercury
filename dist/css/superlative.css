@@ -6,6 +6,7 @@
 }
 
 .chart {
+  width: 100%;
   padding: 10px 10px 10px 24rem;
   border: 1px solid black;
 }
