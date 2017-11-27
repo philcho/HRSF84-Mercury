@@ -5,17 +5,17 @@ exports[`Student should render correctly with props 1`] = `
   className="student container column"
 >
   <a
-    className="list-item student-box"
-    href="/profile/5a0d089080bcabc5ac8cb222"
+    className="student-box"
+    href="###"
   >
     <img
       className="list-item-img student-img"
-      src="https://www.w3schools.com/w3css/img_fjords.jpg"
+      src="https://cdn.dribbble.com/users/2973/screenshots/1331728/drbbbl_01.jpg"
     />
     <label
       className="list-item-name student-name"
     >
-      Frodo Baggins
+      Sam Sepiol
     </label>
   </a>
 </div>

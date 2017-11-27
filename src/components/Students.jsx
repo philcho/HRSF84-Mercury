@@ -34,19 +34,9 @@ export default class Students extends React.Component {
           <div className="title-page">STUDENTS</div>
 
           <div className="container row">
-            {/* {this.state.studentsData.map((student, index, collection) => {
+            {this.state.studentsData.map((student, index, collection) => {
               return (<Student studentData={student} key={student._id} />);
-            })} */}
-
-            <Student/>
-            <Student/>
-            <Student/>
-            <Student/>
-            <Student/>
-            <Student/>
-            <Student/>
-            <Student/>
-            <Student/>
+            })}
           </div>
 
         </div>
