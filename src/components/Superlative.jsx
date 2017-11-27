@@ -34,9 +34,6 @@ export default class Superlative extends React.Component {
         .data(this.state.chartData)
         .enter()
         .append('div')
-        .style('background-color', () => { return 'blue'; })
-        .style('border', () => { return '1px solid black'; })
-        .style('margin', () => { return '5px 0px'; })
         .transition()
         .duration(1500)
         // delay causes the transition to appear more organic
@@ -71,7 +68,6 @@ export default class Superlative extends React.Component {
         .select('span')
         .text((student, index, collection) => { return student.name + ': ' + student.votes; });
     }
-
   }
 
   getSuperlativeData() {
