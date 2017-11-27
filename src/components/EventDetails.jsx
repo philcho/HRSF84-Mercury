@@ -78,7 +78,7 @@ export default class EventDetails extends React.Component {
           <img className="event-img" src={this.state.eventDetailsData.picture} />
 
           <div className="container column">
-            <div className="event-name">{this.state.eventDetailsData.name}</div>
+            <div className="event-name title-page">{this.state.eventDetailsData.name}</div>
             <div className="event-date">{this.state.eventDetailsData.date}</div>
             <div className="event-bio">{this.state.eventDetailsData.description}</div>
           </div>
@@ -97,4 +97,3 @@ export default class EventDetails extends React.Component {
     );
   }
 };
-

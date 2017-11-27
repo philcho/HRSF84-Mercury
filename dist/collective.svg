@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>collective</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FD8BA9" offset="0%"></stop>
+            <stop stop-color="#9A94E8" offset="19.5017531%"></stop>
+            <stop stop-color="#2EDBF8" offset="48.6028693%"></stop>
+            <stop stop-color="#F5F1C8" offset="74.3031631%"></stop>
+            <stop stop-color="#FD8BA9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="collective">
+            <path d="M25,0 C11.2121212,0 0,11.2121212 0,25 C0,38.7878788 11.2121212,50 25,50 C38.7878788,50 50,38.7878788 50,25 C50,11.2121212 38.7878788,0 25,0 Z" id="circle" fill="url(#linearGradient-1)" fill-rule="nonzero" transform="translate(25.000000, 25.000000) rotate(90.000000) translate(-25.000000, -25.000000) "></path>
+            <path d="M19,33 C10.2,33 3,26.8 3,19.1 C3,17.9 4,17 5.3,17 C6.6,17 7.6,17.9 7.6,19.1 C7.6,24.4 12.7,28.8 19,28.8 C25.3,28.8 30.4,24.5 30.4,19.1 C30.4,17.9 31.4,17 32.7,17 C34,17 35,17.9 35,19.1 C35,26.8 27.8,33 19,33 Z" id="smile" fill="#FFFFFF" transform="translate(19.000000, 25.000000) rotate(90.000000) translate(-19.000000, -25.000000) "></path>
+            <path d="M32.7,9 C34.35,9 35.7,10.35 35.7,12 C35.7,13.65 34.35,15 32.7,15 C31.05,15 29.7,13.65 29.7,12 C29.7,10.35 31.05,9 32.7,9 Z" id="eye" fill="#FFFFFF"></path>
+            <path d="M32.7,41 C31.05,41 29.7,39.65 29.7,38 C29.7,36.35 31.05,35 32.7,35 C34.35,35 35.7,36.35 35.7,38 C35.7,39.65 34.35,41 32.7,41 Z" id="eye" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

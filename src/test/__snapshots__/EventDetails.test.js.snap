@@ -16,7 +16,7 @@ exports[`Event Details should render correctly when passed data 1`] = `
       className="container column"
     >
       <div
-        className="event-name"
+        className="event-name title-page"
       >
         Graduation
       </div>

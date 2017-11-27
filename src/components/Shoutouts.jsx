@@ -55,7 +55,7 @@ export default class Shoutouts extends React.Component {
   onChangeShoutoutText(event) {
     this.setState({ shoutoutText: event.target.value });
   }
-  
+
   onChangeShoutoutCategory(event) {
     this.setState({ shoutoutCategory: event.target.value });
   }
@@ -64,7 +64,7 @@ export default class Shoutouts extends React.Component {
     return (
       <div className="shoutouts container column">
         <Nav/>
-        <h1>SHOUTOUTS</h1>
+        <div className="title-page">Shoutouts</div>
         <CommentForm
           onSubmit={this.onSubmitShoutout.bind(this)}
           onChangeName={this.onChangeShoutoutName.bind(this)}
@@ -86,4 +86,3 @@ export default class Shoutouts extends React.Component {
     );
   }
 }
-

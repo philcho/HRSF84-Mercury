@@ -27,6 +27,15 @@ a {
   display: inline-block;
   color: #444;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover,
+a:active {
+  background-image: linear-gradient(90deg, #FD8BA9, #9A94E8, #2EDBF8, #F5F1C8, #FD8BA9);
+  background-size: 120% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 img {
@@ -53,7 +62,7 @@ img {
   justify-content: space-between;
   width: 100%;
   height: 4rem;
-  padding: 0 2rem;
+  padding: 0 3rem;
 }
 
 .nav a {
@@ -69,8 +78,13 @@ img {
 
 .title-page {
   font-family: 'Oswald', sans-serif;
-  font-size: 3.5rem;
+  font-size: 6rem;
   font-weight: 700;
+  background-image: linear-gradient(45deg, #FD8BA9, #9A94E8, #2EDBF8, #F5F1C8, #FD8BA9);
+  background-size: 120% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
 }
 
 .subtitle-page {
@@ -79,17 +93,28 @@ img {
   color: rgba(255, 255, 255, 0.6);
 }
 
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .form-comment {
   width: 800px;
   max-width: 100%;
   margin: 2rem auto;
 }
 
+form {
+}
+
 .form-comment form {
+  font-family: 'Work Sans', sans-serif;
   width: 100%;
-  padding: 2rem;
+  /*padding: 2rem;*/
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  /*border: 1px solid rgba(0, 0, 0, 0.6);*/
 }
 
 .form-comment select {
@@ -98,17 +123,20 @@ img {
   margin-bottom: 1rem;
   padding: 0.5rem;
   font-size: 1.2rem;
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(224, 129, 172, 1);
+  border-radius: 10px;
+  margin: 2rem 0;
   background-color: transparent;
 }
 
 .form-input {
-  width: 48%;
-  min-width: 200px;
-  margin: 0 1% 1rem;
+  font-family: 'Work Sans', sans-serif;
+  width: 300px;
+  margin: 2rem 1rem;
   padding: 0.5rem;
   font-size: 1.5rem;
-  border: 1px solid black;
+  border: 2px solid rgba(179, 226, 236, 1);
+  border-radius: 10px;
 }
 
 .form-input::placeholder {
@@ -116,18 +144,33 @@ img {
 }
 
 .form-comment input[type="submit"] {
+  font-family: 'Work Sans', sans-serif;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  border: 2px solid rgba(224, 129, 172, 1);
   cursor: pointer;
+  margin: 2rem 0;
 }
 
 .form-comment input[type="submit"]:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(224, 129, 172, 1);
 }
 
 .event-details-info .container {
   width: 800px;
   max-width: 100%;
   margin: 2rem auto;
+}
+
+.border-outer {
+  background: linear-gradient(145deg, rgba(179, 226, 236, 1) 50%, rgba(224, 129, 172, 1) 100%);
+  padding: 2px;
+  border-radius: 40px;
+}
+
+.border-inner {
+  background: #FFF;
+  padding: 1rem;
+  border-radius: 40px;
 }

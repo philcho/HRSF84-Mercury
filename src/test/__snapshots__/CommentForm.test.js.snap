@@ -4,28 +4,34 @@ exports[`Comment Form should render correctly with props 1`] = `
 <div
   className="form-comment container"
 >
-  <form>
-    <input
-      className="form-input"
-      name="name"
-      placeholder="name"
-      type="text"
-      value="Bob Loblaw"
-    />
-    <input
-      className="form-input"
-      name="comment"
-      placeholder="comment"
-      type="text"
-      value="Rock on."
-    />
+  <form
+    className="border-outer"
+  >
     <div
-      className="submit-box"
+      className="border-inner"
     >
       <input
-        type="submit"
-        value="Submit Comment"
+        className="form-input"
+        name="name"
+        placeholder="name"
+        type="text"
+        value="Bob Loblaw"
       />
+      <input
+        className="form-input"
+        name="comment"
+        placeholder="comment"
+        type="text"
+        value="Rock on."
+      />
+      <div
+        className="submit-box"
+      >
+        <input
+          type="submit"
+          value="Submit Comment"
+        />
+      </div>
     </div>
   </form>
 </div>

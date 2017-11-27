@@ -31,7 +31,7 @@ export default class Events extends React.Component {
         <Nav/>
 
         <div className="events list container column">
-          <div className="title-page">EVENTS</div>
+          <div className="title-page">Events</div>
 
           <div className="container column">
             {this.state.events.map((event, index) => {
@@ -43,4 +43,3 @@ export default class Events extends React.Component {
     );
   }
 };
-

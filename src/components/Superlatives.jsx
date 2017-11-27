@@ -31,9 +31,11 @@ export default class Superlatives extends React.Component {
         <Nav />
 
         <div className="container column">
+          <div className="title-page">Superlatives</div>
 
-          <h1>Superlatives</h1>
-          <a className="addPage" href="/addSuperlative">Add A Superlative</a>
+          <a className="addPage border-outer button" href="/addSuperlative">
+            <div className="border-inner">Add a Superlative!</div>
+          </a>
 
           <div className="container row">
             {this.state.superlatives.map((superlative, index) => {
@@ -47,4 +49,3 @@ export default class Superlatives extends React.Component {
     );
   }
 }
-
