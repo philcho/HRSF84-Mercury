@@ -2,42 +2,49 @@ html {
   height: 100%;
 }
 
-body {
-  background: linear-gradient(142deg, #736EFF 0%, #40DEE1 100%);
-  font-size: 1rem;
-  color: #FFF;
+.hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .title-collective {
-  font-size: 6rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10rem;
+  font-weight: 700;
+  color: #FFF;
 }
 
-.box {
-  position: relative;
+.subtitle-collective {
+  font-weight: 300;
+  margin-top: -2rem;
 }
 
-.box:before {
-  content: '';
+.stripes {
+  display: grid;
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
+  align-content: space-between;
+  grid: repeat(2, 200px) / 1fr minmax(0, 1000px) 1fr;
   bottom: 0;
-  background: #FFF;
-  border-radius: 10px;
-  mix-blend-mode: multiply;
-  filter: drop-shadow(-10px -10px 0 rgba(4, 244, 255, 0.4));
+  left: 50%;
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(115deg,#5C99FF 0,#A1DEE9 100%);
+  transform: skewY(-10deg) translate(-50%, -50%);
+  z-index: -1;
 }
 
-.box:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: #FFF;
-  border-radius: 10px;
-  mix-blend-mode: multiply;
-  filter: drop-shadow(10px 10px 0 rgba(194, 39, 255, 0.4));
+.stripes span:nth-child(1) {
+  grid-column: 2;
+}
+
+.stripes span:nth-child(2) {
+  background: linear-gradient(100grad,rgba(103,114,229,0),rgba(103,114,229,.3) 50%,#6772e5);
+}
+
+.stripes span:nth-child(3) {
+  grid-row: 2;
+  background: linear-gradient(100grad, rgba(143,239,251,.9), rgba(143,239,251,.55) 50%, rgba(143,239,251,.3) 75%, rgba(143,239,251,0));
 }

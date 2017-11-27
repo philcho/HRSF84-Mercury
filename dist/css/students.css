@@ -10,6 +10,7 @@
   width: 300px;
   height: 300px;
   object-fit: cover; /* Displays image centered (horiz and vert) and undistorted at the width and height specified above. */
+  box-shadow: 0 15px 30px 0 rgba(62, 57, 107, 0.25), 0 0 0 transparent;
   transition: all 0.3s ease;
 }
 
@@ -18,21 +19,20 @@
   width: 100%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   opacity: 0;
+  transform: translate(-50%, -50%);
   transition: all 0.3s ease;
 }
 
 .student-img {
-  transform-origin: 100% 100%; /* push down */
+  transform-origin: 0% 0%;
 }
 
 .student-box:hover .student-name {
   opacity: 1;
-  cursor: pointer;
 }
 
 .student-box:hover .student-img {
-  transform: rotate3d(1, 0, 0, 80deg); /* push down */
+  transform: rotate3d(1, 0, 0, -80deg);
 }
