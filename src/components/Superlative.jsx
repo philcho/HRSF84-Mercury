@@ -28,7 +28,7 @@ export default class Superlative extends React.Component {
       return undefined; // don't execute the below code if there is no data
     }
 
-    const childrenCount = document.getElementsByClassName("chart")[0].childElementCount;
+    const childrenCount = document.getElementsByClassName('chart')[0].childElementCount;
     const someVotes = this.state.chartData.map((nominee, index, collection) => {
       return nominee.votes;
     });
@@ -156,14 +156,14 @@ export default class Superlative extends React.Component {
 
   render() {
     return (
-      <div className="superlative list-item container column">
-        <div className="list-item-name superlative-name">{this.state.superlativeData.superlative}</div>
-        <img className="list-item-img superlative-img" src={this.state.superlativeData.img} />
+      <div className='superlative list-item container column'>
+        <div className='list-item-name superlative-name'>{this.state.superlativeData.superlative}</div>
+        <img className='list-item-img superlative-img' src={this.state.superlativeData.img} />
 
         <form onSubmit={(event) => { this.handleVote(event) }} >
-          <input className='superlative-input' id='input' list="chosenSuperlative" name="superlativeChoice" placeholder="Who will you vote for? " />
+          <input className='superlative-input' id='input' list='chosenSuperlative' name='superlativeChoice' placeholder='Who will you vote for? ' />
 
-          <datalist id="chosenSuperlative">
+          <datalist id='chosenSuperlative'>
             {this.state.nominees.map((studentName, index, collection) => {
               return (<option value={studentName} key={index} />);
             })}

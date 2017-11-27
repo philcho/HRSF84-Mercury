@@ -71,16 +71,16 @@ export default class EventDetails extends React.Component {
 
   render() {
     return (
-      <div className="event-details container column">
+      <div className='event-details container column'>
         <Nav />
 
-        <div className="event-details-info container column">
-          <img className="event-img" src={this.state.eventDetailsData.picture} />
+        <div className='event-details-info container column'>
+          <img className='event-img' src={this.state.eventDetailsData.picture} />
 
-          <div className="container column">
-            <div className="event-name">{this.state.eventDetailsData.name}</div>
-            <div className="event-date">{this.state.eventDetailsData.date}</div>
-            <div className="event-bio">{this.state.eventDetailsData.description}</div>
+          <div className='container column'>
+            <div className='event-name'>{this.state.eventDetailsData.name}</div>
+            <div className='event-date'>{this.state.eventDetailsData.date}</div>
+            <div className='event-bio'>{this.state.eventDetailsData.description}</div>
           </div>
         </div>
 
