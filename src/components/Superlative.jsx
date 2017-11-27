@@ -21,11 +21,6 @@ export default class Superlative extends React.Component {
   }
 
   generateChart() {
-    // removes any previous instance of a chart
-    // this lets it update when a new vote is made
-    var myNode = document.getElementsByClassName("chart")[0];
-    myNode.innerHTML = '';
-
     if (this.state.chartData.length < 1) { // no votes in yet
       d3.select('.chart')
         .append('h1')
@@ -33,18 +28,50 @@ export default class Superlative extends React.Component {
       return undefined; // don't execute the below code if there is no data
     }
 
-    // d3 code
-    d3.select('.chart')
-      .selectAll('div')
-      .data(this.state.chartData)
-      .enter()
-      .append('div')
-      .style('width', (student, index, collection) => { return (student.votes * 50) + 'px'; })
-      .style('background-color', () => { return 'blue'; })
-      .style('border', () => { return '1px solid black'; })
-      .style('margin', () => { return '5px 0px'; })
-      .insert('span')
-      .text((student, index, collection) => { return student.name + ': ' + student.votes; });
+    if (document.getElementsByClassName("chart")[0].childElementCount < 1) { // create a new chart
+      d3.select('.chart')
+        .selectAll('div')
+        .data(this.state.chartData)
+        .enter()
+        .append('div')
+        .style('background-color', () => { return 'blue'; })
+        .style('border', () => { return '1px solid black'; })
+        .style('margin', () => { return '5px 0px'; })
+        .transition()
+        .duration(1500)
+        // delay causes the transition to appear more organic
+        .delay(function (element, index, collection) {
+          return index * 500;
+        })
+        .ease(d3.easeLinear)
+        .style('width', (student, index, collection) => { return (student.votes * 20) + 'px'; });
+
+      // This has to be in a seperate code block, otherwise it will throw an 'is not a function' error
+      d3.select('.chart')
+        .selectAll('div')
+        .insert('span')
+        .text((student, index, collection) => { return student.name + ': ' + student.votes; });
+    } else { // update an existing chart
+      // bind the new data
+      let thing = d3.select('.chart').selectAll('div')
+        .data(this.state.chartData);
+
+      // add new elements
+      thing.enter().append('div');
+
+      // apply the visual change
+      thing.transition()
+        .duration(500)
+        .ease(d3.easeLinear)
+        .style('width', (student, index, collection) => { return (student.votes * 20) + 'px'; });
+
+      // update the text
+      d3.select('.chart')
+        .selectAll('div')
+        .select('span')
+        .text((student, index, collection) => { return student.name + ': ' + student.votes; });
+    }
+
   }
 
   getSuperlativeData() {
@@ -85,21 +112,6 @@ export default class Superlative extends React.Component {
           })
         });
       });
-  }
-
-  getLeaders() {
-    if (this.state.chartData.length < 1) {
-      return (
-        <h3>
-          No votes in yet. Be the first!
-        </h3>
-      );
-    } else {
-      // get the top 3 and display them
-      <h3>
-        People have voted, so figure out the leader(s) here!
-      </h3>
-    }
   }
 
   handleVote(event) {
@@ -151,7 +163,6 @@ export default class Superlative extends React.Component {
           <button>Vote!</button>
         </form>
         <br />
-        <p>Leaderboard here</p>
         <div className='chart'></div>
       </div>
     );

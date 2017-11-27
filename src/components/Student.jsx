@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Student = ({studentData}) => {
+const Student = ({ studentData }) => {
   return (
     <div className="student container column">
       <a className="list-item student-box" href={`/profile/${studentData._id}`}>
