@@ -152,7 +152,7 @@ export default class Superlative extends React.Component {
         <img className="list-item-img superlative-img" src={this.state.superlativeData.img} />
 
         <form onSubmit={(event) => { this.handleVote(event) }} >
-          <input id='input' list="superlatives" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
+          <input id='input' list="chosenSuperlative" style={inputStyle} name="superlativeChoice" placeholder="Who will you vote for? " />
 
           <datalist id="chosenSuperlative">
             {this.state.nominees.map((studentName, index, collection) => {
